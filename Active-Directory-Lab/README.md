@@ -63,11 +63,7 @@ Tested GPO application on a client VM and resolved a critical "silent failure" r
 * **Scalability:** Demonstrated the ability to control thousands of objects via granular OU structures.
 * **Troubleshooting:** Gained experience in diagnosing GPO "silent failures" using delegation and inheritance analysis.
 
-## Future Enhancements
-* PowerShell automation for bulk user/group creation.
-* Implementation of Loopback Processing for specialized kiosk workstations.
-* Event log monitoring for failed GPO processing.
-
 ---
 **Author:** Nick Hugo  
+
 *Aspiring IT Support / Systems Administrator* *CompTIA A+ | CompTIA Security+*
