@@ -1,112 +1,114 @@
-Active Directory & Group Policy Home Lab
-Overview
+# Active Directory & Group Policy Home Lab Overview
 
 This lab simulates a small enterprise Active Directory environment using Windows Server 2022 and Windows 11 client virtual machines. The goal is to demonstrate foundational IT skills related to identity management, centralized policy enforcement, and security controls used in corporate environments.
 
 All configurations were performed in an isolated virtual lab environment and documented to reflect real-world IT workflows and troubleshooting methodologies.
-Lab Environment
 
-    Domain Controller: Windows Server 2022
+## Lab Environment
 
-    Client OS: Windows 11 Enterprise
+- **Domain Controller:** Windows Server 2022
+- **Client OS:** Windows 11 Enterprise
+- **Domain Name:** labs.local
+- **Management Tools:** Active Directory Users and Computers (ADUC), Group Policy Management Console (GPMC), File Server Resource Manager (FSRM)
+- **Virtualization:** VirtualBox (Internal Network)
 
-    Domain Name: labs.local
+## Completed Activities
 
-    Management Tools: Active Directory Users and Computers (ADUC), Group Policy Management Console (GPMC), File Server Resource Manager (FSRM)
-
-    Virtualization: VirtualBox (Internal Network)
-
-Completed Activities
-Activity 1 – Password Policy GPO
+### Activity 1 – Password Policy GPO
 
 Configured a domain-linked Group Policy to enforce enterprise password standards:
 
-    Enforced minimum password length and complexity requirements.
+- Enforced minimum password length and complexity requirements.
+- Configured maximum password age to ensure regular credential rotation.
 
-    Configured maximum password age to ensure regular credential rotation.
+**Skills:** Security baseline enforcement, Account Policy configuration.
 
-    Skills: Security baseline enforcement, Account Policy configuration.
+**Screenshots:** Activity1_MinLength.png, Activity1_Complexity.png, Activity1_MaxAge.png
 
-    Screenshots: Activity1_MinLength.png, Activity1_Complexity.png, Activity1_MaxAge.png
-
-Activity 2 – Drive Mapping GPO (Basic)
+### Activity 2 – Drive Mapping GPO (Basic)
 
 Created a user-based GPO to automatically map network drives via Group Policy Preferences (GPP):
 
-    Configured network paths and assigned persistent drive letters.
+- Configured network paths and assigned persistent drive letters.
+- Targeted specific User OUs for department-specific access.
 
-    Targeted specific User OUs for department-specific access.
+**Skills:** Group Policy Preferences, network resource mapping.
 
-    Skills: Group Policy Preferences, network resource mapping.
-
-Activity 3 – Desktop Wallpaper Policy
+### Activity 3 – Desktop Wallpaper Policy
 
 Standardized the user desktop environment to reflect corporate branding:
 
-    Utilized Administrative Templates to enforce a specific wallpaper image and display style.
+- Utilized Administrative Templates to enforce a specific wallpaper image and display style.
 
-    Skills: Administrative Templates, User Experience (UX) standardization.
+**Skills:** Administrative Templates, User Experience (UX) standardization.
 
-Activity 4 – Restrict Control Panel Access
+### Activity 4 – Restrict Control Panel Access
 
 Implemented a security lockdown GPO to prohibit unauthorized system changes:
 
-    Enabled "Prohibit access to Control Panel and PC settings" for non-administrative users.
+- Enabled "Prohibit access to Control Panel and PC settings" for non-administrative users.
 
-    Skills: Desktop lockdown, risk reduction.
+**Skills:** Desktop lockdown, risk reduction.
 
-Activity 5 – Disable USB Devices
+### Activity 5 – Disable USB Devices
 
 Hardened workstation security by restricting unauthorized hardware:
 
-    Disabled Read/Write access to removable storage devices via Computer Configuration.
+- Disabled Read/Write access to removable storage devices via Computer Configuration.
 
-    Skills: Data Loss Prevention (DLP), hardware security enforcement.
+**Skills:** Data Loss Prevention (DLP), hardware security enforcement.
 
-Activity 6 – GPO Troubleshooting & Testing
+### Activity 6 – GPO Troubleshooting & Testing
 
 Resolved a critical "silent failure" regarding Security Filtering and Computer Objects:
 
-    Diagnosis: Identified that Computer Objects required "Read" access (MS16-072) to process policies.
+- **Diagnosis:** Identified that Computer Objects required "Read" access (MS16-072) to process policies.
+- **Resolution:** Modified Delegation to grant Authenticated Users "Read" permissions while restricting "Apply Group Policy" to the target group.
 
-    Resolution: Modified Delegation to grant Authenticated Users "Read" permissions while restricting "Apply Group Policy" to the target group.
+**Skills:** Advanced GPMC delegation, troubleshooting policy inheritance.
 
-    Skills: Advanced GPMC delegation, troubleshooting policy inheritance.
-
-Activity 7 – File Services, Storage Governance & FSRM
+### Activity 7 – File Services, Storage Governance & FSRM
 
 Implemented a secure, managed file-sharing environment with automated mapping and storage controls.
 
-    Security & Permissions: Configured a "Least Privilege" model using Share Permissions (Full Control) and NTFS Permissions (Read-Only) for Domain Users.
+- **Security & Permissions:** Configured a "Least Privilege" model using Share Permissions (Full Control) and NTFS Permissions (Read-Only) for Domain Users.
+- **Network Troubleshooting:** Resolved an APIPA (169.254.x.x) connectivity issue by manually configuring IPv4 static addressing and DNS pointing to the DC.
+- **GPO Automation:** Deployed the S: Drive automatically to the USA > Users OU using Group Policy Preferences.
+- **FSRM Implementation:** Deployed File Server Resource Manager to enforce storage quotas (80% threshold alerts) and active file screening (blocking unauthorized file types via the "SHARWEED" template).
 
-    Network Troubleshooting: Resolved an APIPA (169.254.x.x) connectivity issue by manually configuring IPv4 static addressing and DNS pointing to the DC.
+**Skills:** FSRM, NTFS/Share Permissions, Network Troubleshooting, GPO Automation.
 
-    GPO Automation: Deployed the S: Drive automatically to the USA > Users OU using Group Policy Preferences.
+**Screenshots:** Activity7_NTFS_Permissions.png, Activity7_Client_IP_DNS.png, Activity7_GPO_Config.png, Activity7_GPResult_Check.png, Activity7_FSRM_Quota.png, Activity7_FSRM_Screen.png, Activity7_Final_Explorer.png
 
-    FSRM Implementation: Deployed File Server Resource Manager to enforce storage quotas (80% threshold alerts) and active file screening (blocking unauthorized file types via the "SHARWEED" template).
+### Activity 8 – Domain Hardening and Advanced Security Policies
 
-    Skills: FSRM, NTFS/Share Permissions, Network Troubleshooting, GPO Automation.
+Implemented a multi-layered security posture within the LABS.local domain by enforcing strict password requirements, account lockout protections, and granular user rights assignments.
 
-    Screenshots: Activity7_NTFS_Permissions.png, Activity7_Client_IP_DNS.png, Activity7_GPO_Config.png, Activity7_GPResult_Check.png, Activity7_FSRM_Quota.png, Activity7_FSRM_Screen.png, Activity7_Final_Explorer.png
+- **Password and Account Lockout Policies:** Configured the Default Domain Policy to enforce a 12-character minimum password length and password complexity requirements. Implemented a 3-strike account lockout threshold to prevent brute-force attacks.
+- **Fine-Grained Password Policies (FGPP):** Created an advanced Password Settings Object (PSO) named "AdminPasswordPolicy" with a 15-character minimum length and Precedence 1, assigned to the "#IT-Admins" group to ensure high-privilege accounts meet elevated security standards.
+- **User Rights Assignment (Access Control):** Created a "User Rights" GPO to deny local logon to the "Restricted_Users" group and restricted Remote Desktop Access to authorized IT personnel only.
+- **Troubleshooting:** Diagnosed a GPO propagation issue using `gpresult /r` and resolved by linking the GPO to the Domain Root to ensure consistent policy application regardless of Organizational Unit (OU) placement.
 
-Key Takeaways
+**Skills:** Fine-Grained Password Policies, User Rights Assignment, Account Lockout Configuration, GPO propagation troubleshooting, Defense-in-depth security.
 
-    Centralized Management: Reduced configuration drift by managing settings and storage from a single DC.
+**Screenshots:** Activity8_Account_Lockout_Policy.png, Activity8_Complexity_Error.png, Activity8_Local_Logon_Denied.png, Activity8_Lockout_Error.png, Activity8_Password_Policy.png, Activity8_User_Rights_Assignment.png, Activity8_RDP_Denial_Success.png, Activity8_FGPP_Admin_Policy.png
 
-    Storage Governance: Demonstrated the ability to protect server volume space using quotas and screening.
+## Key Takeaways
 
-    Troubleshooting: Gained experience in diagnosing both GPO logic failures and Layer 3 networking issues (APIPA).
+- **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
+- **Storage Governance:** Demonstrated the ability to protect server volume space using quotas and screening.
+- **Troubleshooting:** Gained experience in diagnosing both GPO logic failures and Layer 3 networking issues (APIPA).
+- **Security Mindset:** Applied the Principle of Least Privilege across both the filesystem and the OS UI.
+- **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
 
-    Security Mindset: Applied the Principle of Least Privilege across both the filesystem and the OS UI.
+## Future Enhancements
 
-Future Enhancements
+- PowerShell automation for bulk user/group creation.
+- Implementation of Loopback Processing for specialized kiosk workstations.
+- Setting up an SMTP Relay to test live FSRM email alerts.
 
-    PowerShell automation for bulk user/group creation.
+---
 
-    Implementation of Loopback Processing for specialized kiosk workstations.
-
-    Setting up an SMTP Relay to test live FSRM email alerts.
-
-Author: Nick Hugo
-
-Aspiring IT Support / Systems Administrator CompTIA A+ | CompTIA Security+
+**Author:** Nick Hugo  
+Aspiring IT Support / Systems Administrator  
+CompTIA A+ | CompTIA Security+
