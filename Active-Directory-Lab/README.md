@@ -107,6 +107,18 @@ Implemented a single-purpose kiosk workstation using a dedicated service account
 
 **Screenshots:** Activity9_AD_ServiceAccount.png, Activity9_Autologon_Configuration.png, Activity9_Startup_Folder.png, Activity9_Chrome_Shortcut_Properties.png, Activity9_User_Rights_Assignment.png
 
+### Activity 10 – Advanced Windows File Sharing, Effective Permissions, and Inheritance
+
+Implemented advanced NTFS permission strategies in real-world workplace scenarios, including selective inheritance control, explicit deny permissions, and least privilege access models.
+
+- **Folder Structure and Share Configuration:** Created a hierarchical folder structure (C:\Common with Project and Events subfolders) and configured dual-layer permissions (Share + NTFS) to establish baseline access control.
+- **Permission Inheritance and Selective Access Control:** Broke inheritance on the Project folder, removed overly permissive access (Everyone = Full Control), and granted targeted access to the Project security group. Created a Contracts subfolder to verify permission propagation from parent to child.
+- **Explicit Deny Permissions:** Configured a scenario where user "John" was explicitly denied access to a Confidential subfolder while maintaining broader group-based access for other employees, demonstrating that Deny permissions always take precedence over Allow permissions.
+
+**Skills:** Breaking and managing NTFS inheritance, explicit Deny configuration, permission precedence understanding, dual-layer permission model (Share vs. NTFS), security group-based permissions, least privilege access control.
+
+**Screenshots:** Activity10_Break_Inheritance.png, Activity10_Project_Folder_Permissions.png, Activity10_Confidential_Deny_Permissions.png
+
 ## Key Takeaways
 
 - **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
@@ -115,6 +127,7 @@ Implemented a single-purpose kiosk workstation using a dedicated service account
 - **Security Mindset:** Applied the Principle of Least Privilege across both the filesystem and the OS UI.
 - **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
 - **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
+- **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, and effective permissions calculation in complex file-sharing environments.
 
 ## Future Enhancements
 
@@ -122,6 +135,8 @@ Implemented a single-purpose kiosk workstation using a dedicated service account
 - Implementation of Loopback Processing for specialized kiosk workstations.
 - Setting up an SMTP Relay to test live FSRM email alerts.
 - Deploy AppLocker or Windows Defender Application Control (WDAC) for application whitelisting on kiosk systems.
+- Implement Dynamic Access Control (DAC) with claims-based permissions for attribute-based access.
+- Configure File Classification Infrastructure (FCI) to automatically apply permissions based on file metadata.
 
 ---
 
