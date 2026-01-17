@@ -93,6 +93,20 @@ Implemented a multi-layered security posture within the LABS.local domain by enf
 
 **Screenshots:** Activity8_Account_Lockout_Policy.png, Activity8_Complexity_Error.png, Activity8_Local_Logon_Denied.png, Activity8_Lockout_Error.png, Activity8_Password_Policy.png, Activity8_User_Rights_Assignment.png, Activity8_RDP_Denial_Success.png, Activity8_FGPP_Admin_Policy.png
 
+### Activity 9 – Service Accounts and Kiosk Mode Configuration
+
+Implemented a single-purpose kiosk workstation using a dedicated service account with automated login, restricted access rights, and browser auto-launch functionality.
+
+- **Service Account Creation:** Created a "Service Accounts" OU within Active Directory and provisioned a service account (`$Website-login@labs.local`) following naming conventions for non-human identities.
+- **Automated Login:** Configured Sysinternals Autologon to automatically authenticate the service account upon system boot, eliminating manual login requirements for the kiosk workstation.
+- **Browser Auto-Launch and Kiosk Mode:** Placed a Chrome shortcut in the Startup folder and configured launch parameters (`-start-fullscreen`) to automatically open a specific webpage in fullscreen mode upon login.
+- **Power Management:** Disabled display and system sleep settings to ensure continuous operation for 24/7 kiosk deployments.
+- **Access Control Hardening:** Implemented User Rights Assignment policies to deny local logon and Remote Desktop access for the service account on other domain systems, restricting its use to the designated kiosk workstation only.
+
+**Skills:** Service account provisioning, automated authentication, application auto-start configuration, User Rights Assignment, least privilege access control, kiosk deployment best practices.
+
+**Screenshots:** Activity9_AD_ServiceAccount.png, Activity9_Autologon_Configuration.png, Activity9_Startup_Folder.png, Activity9_Chrome_Shortcut_Properties.png, Activity9_User_Rights_Assignment.png
+
 ## Key Takeaways
 
 - **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
@@ -100,12 +114,14 @@ Implemented a multi-layered security posture within the LABS.local domain by enf
 - **Troubleshooting:** Gained experience in diagnosing both GPO logic failures and Layer 3 networking issues (APIPA).
 - **Security Mindset:** Applied the Principle of Least Privilege across both the filesystem and the OS UI.
 - **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
+- **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
 
 ## Future Enhancements
 
 - PowerShell automation for bulk user/group creation.
 - Implementation of Loopback Processing for specialized kiosk workstations.
 - Setting up an SMTP Relay to test live FSRM email alerts.
+- Deploy AppLocker or Windows Defender Application Control (WDAC) for application whitelisting on kiosk systems.
 
 ---
 
