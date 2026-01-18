@@ -61,7 +61,7 @@ Activity6_ControlPanel_Restricted.png – Control Panel blocked message on clien
 
 Activity6_GPResult.png – gpresult /r output showing applied GPOs.
 
-(Optional) Activity6_DelegationTab.png – Delegation tab showing Authenticated Users with Read permissions.
+Activity6_DelegationTab.png – Delegation tab showing Authenticated Users with Read permissions.
 
 Notes / Observations
 
@@ -70,5 +70,6 @@ Security Filtering must include both user and computer accounts to prevent silen
 Policies may require gpupdate /force and log off/log on to apply.
 
 Testing with a dedicated test user avoids accidentally restricting administrator access.
+
 
 Documenting the troubleshooting process demonstrates practical AD/GPO problem-solving skills.
