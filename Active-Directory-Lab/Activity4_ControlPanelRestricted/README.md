@@ -1,35 +1,33 @@
-ACTIVITY 4: IMPLEMENTING GROUP POLICY OBJECTS (GPO) AND USER RESTRICTIONS
+# Activity 4: Restrict Control Panel and System Settings
 
-OBJECTIVE: To demonstrate administrative control over the user environment by implementing Group Policy Objects (GPO) designed to prevent unauthorized system modifications and harden the workstation OS.
+## Objective
+To demonstrate administrative control over the user environment by implementing Group Policy Objects (GPO) designed to prevent unauthorized system modifications. This activity focuses on hardening the workstation OS by restricting access to critical configuration tools.
 
-TASKS PERFORMED:
+---
 
-    GPO CREATION
+## Technical Tasks & Proficiency
 
-    Created a custom Group Policy Object within the Group Policy Management Console (GPMC) to manage departmental user restrictions.
+### 1. GPO Engineering
+* **Management Console:** Utilized the Group Policy Management Console (GPMC) to create a targeted restriction policy.
+* **Administrative Template Path:** `User Configuration > Policies > Administrative Templates > Control Panel`
+* **Policy Setting:** Enabled **"Prohibit access to Control Panel and PC settings"**.
 
-    Identified the specific Administrative Template path for system-level lockdown.
+### 2. Operational Impact
+* **Process Blocking:** This policy effectively disables `Control.exe` and `SystemSettings.exe` for the targeted users.
+* **UI Suppression:** Automatically removes the Control Panel from the Windows Start menu, Settings app, and File Explorer navigation.
+* **Targeted Enforcement:** Linked the GPO specifically to the standard user OU to ensure that while end-user environments are locked down, IT Administrators retain the necessary access for system maintenance.
 
-    ENFORCING CONTROL PANEL RESTRICTIONS
+---
 
-    Configured the "Prohibit access to Control Panel and PC settings" policy.
+## Evidence of Completion
 
-    This setting was enabled to disable "Control.exe" and "SystemSettings.exe," effectively blocking users from accessing hardware settings, account configurations, and system properties.
+### GPO Configuration
+The following evidence shows the administrative template set to **Enabled**, confirming the system-level block is active.
 
-    Verified that the policy removes the Control Panel from the Start screen and File Explorer.
+![Control Panel Restricted GPO](Screenshots/Activity4_ControlPanelRestricted.png)
 
-    POLICY APPLICATION
+---
 
-    Linked the GPO to the appropriate Organizational Unit (OU) to ensure targeted enforcement for standard users while maintaining administrative access.
-
-    Prepared the environment for a background policy refresh on the Windows client.
-
-VERIFICATION:
-
-    Confirmed the policy was set to "Enabled" within the Group Policy Management Editor.
-
-    Validated that the policy is supported on all client versions from Windows 2000 through Windows 11.
-
-CAPTURED EVIDENCE FILES:
-
-    Activity4_ControlPanelRestricted.png (Shows the enabled GPO configuration in the Management Editor)
+## Key Takeaways
+* **Attack Surface Reduction:** By restricting access to system settings, the likelihood of local configuration drift or accidental system compromise is significantly reduced.
+* **Policy Support:** Validated that this administrative template remains a consistent security control across legacy and modern versions of Windows (Windows 2000 through Windows 11).
