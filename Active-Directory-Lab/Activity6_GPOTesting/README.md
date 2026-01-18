@@ -1,75 +1,54 @@
-Activity 6 – GPO Application & Testing: Control Panel Restriction
+# Activity 6: GPO Application & Troubleshooting (The MS16-072 Fix)
 
-Objective:
-Test and apply previously configured Group Policy Objects (GPOs) on a Windows client VM, ensuring policies enforce as intended while troubleshooting any issues.
+## Objective
+To validate the application of Group Policy Objects (GPOs) on a Windows 11 client and troubleshoot a "silent failure" regarding Security Filtering and policy inheritance.
 
-Steps Completed
+---
 
-Configured static IP on Windows Server VM and verified network connectivity.
+## Technical Tasks & Workflow
 
-Joined client VM (TestClient1) to domain Labs.local and confirmed domain membership.
+### 1. Environment Preparation
+* **Domain Integration:** Successfully joined the Windows 11 workstation (`TestClient1`) to the `labs.local` domain.
+* **OU Structure:** Organized the environment by placing the computer object in the `USA > Computers` OU and the user account in the `USA > Users` OU.
+* **GPO Linking:** Linked specific policies (Password Policy, Drive Mapping, Wallpaper, USB Lockdown, and Control Panel Restriction) to their respective OUs.
 
-Created a test user account TestUser in the Restricted_Users security group.
+**Evidence:**
+![GPMC OU Overview](Screenshots/Activity6_GPMC_Overview.png)
+![Domain Join Confirmation](Screenshots/Activity6_DomainJoinConfirmation.png)
 
-Placed client VM in USA Computers OU.
+---
 
-Linked GPOs to their respective OUs:
+## Troubleshooting Case Study: GPO Silent Failure
 
-Password Policy → USA Computers OU
+### The Problem
+After configuring the **"Restrict Control Panel"** GPO and running `gpupdate /force`, the policy failed to apply to the test user. The GPO did not appear in the `gpresult /r` output despite the user being in the correct Security Filter group.
 
-Drive Mapping → USA Users OU
+### The Root Cause (MS16-072)
+Investigation revealed a failure caused by the **MS16-072 security update**. By removing "Authenticated Users" from the Security Filtering and only adding the "Restricted_Users" group, the **Computer Object** lost its ability to "Read" the GPO. Since GPOs are retrieved using the computer's context, the policy was ignored.
 
-Desktop Wallpaper → USA Users OU
+### The Resolution
+1. **Delegation Adjustment:** Navigated to the **Delegation Tab** of the GPO.
+2. **Read Permissions:** Added **Authenticated Users** and granted them **Read** permissions only (avoiding "Apply Group Policy").
+3. **Scope Alignment:** Ensured the `Restricted_Users` group maintained both **Read** and **Apply Group Policy** permissions.
 
-Disable USB Devices → USA Computers OU
+**Evidence:**
+![Delegation Tab Configuration](Screenshots/Activity6_DelegationTab.png)
+![Security Filtering Scope](Screenshots/Activity6_SecurityFiltering.png)
 
-Restrict Control Panel → USA Users OU (initially Security Filtering included Restricted_Users only)
+---
 
-Attempted GPO application on TestUser via gpupdate /force—policy did not apply.
+## Final Verification & Results
+After the delegation fix, a `gpupdate /force` was performed. 
 
-Problem Encountered
+* **GPResult:** Confirmed the "Restrict Control Panel" policy is now listed under "Applied Group Policy Objects."
+* **UI Enforcement:** Confirmed that attempting to access the Control Panel triggers the administrative restriction message.
 
-Issue:
-The "Restrict Control Panel" GPO did not appear in gpresult for the test user and did not enforce restrictions.
+**Evidence:**
+![GPResult Verification](Screenshots/Activity6_GPResult.png)
+![Control Panel Blocked](Screenshots/Activity6_ControlPanel_Restricted.png)
 
-Cause:
-MS16-072 security change in Windows prevents the computer account from reading a GPO when Authenticated Users is removed from Security Filtering. Only adding the restricted user group caused the computer object to lose "Read" access, resulting in a silent GPO failure.
+---
 
-Resolution
-
-Added Authenticated Users (or Domain Computers) to the Delegation tab of the GPO.
-
-Assigned Read permissions only to the broader group.
-
-Ensured Restricted_Users group retained Read + Apply Group Policy permissions in the Scope tab.
-
-Forced GPO update with gpupdate /force and performed a fresh Sign-out/Sign-in on the client VM.
-
-Verification
-
-gpresult /r confirmed that the Restrict Control Panel GPO applied to TestUser.
-
-Control Panel access successfully blocked on the client VM.
-
-Screenshots
-
-Activity6_GPMC_Overview.png – GPOs linked to OUs in GPMC.
-
-Activity6_SecurityFiltering.png – Restricted_Users and Authenticated Users permissions.
-
-Activity6_ControlPanel_Restricted.png – Control Panel blocked message on client.
-
-Activity6_GPResult.png – gpresult /r output showing applied GPOs.
-
-Activity6_DelegationTab.png – Delegation tab showing Authenticated Users with Read permissions.
-
-Notes / Observations
-
-Security Filtering must include both user and computer accounts to prevent silent GPO failures.
-
-Policies may require gpupdate /force and log off/log on to apply.
-
-Testing with a dedicated test user avoids accidentally restricting administrator access.
-
-
-Documenting the troubleshooting process demonstrates practical AD/GPO problem-solving skills.
+## Key Takeaways
+* **Computer Context Matters:** Policies require the computer account to have "Read" access even for User-based restrictions.
+* **Troubleshooting Methodology:** Utilized `gpresult` and GPMC Delegation logs to identify and resolve a common enterprise-level GPO conflict.
