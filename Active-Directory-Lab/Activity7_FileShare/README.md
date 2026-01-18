@@ -1,49 +1,49 @@
-Activity 7: File Services, GPO Automation, and Storage Governance
-Objective
+# Activity 7: File Services, GPO Automation, and Storage Governance
 
-To provision a centralized network file share, automate resource deployment via Group Policy, and implement storage governance using File Server Resource Manager (FSRM) within an Active Directory environment.
+## Objective
+To provision a centralized network file share, automate resource deployment via Group Policy Preferences (GPP), and implement enterprise storage governance using File Server Resource Manager (FSRM) within the `labs.local` Active Directory environment.
 
-Technical Tasks & Proficiency
-1. Secure File Share Implementation
+---
 
-    Directory Provisioning: Created a centralized directory (C:\SHARED) on Windows Server 2022.
+## Technical Tasks & Proficiency
 
-    Access Control: Implemented a dual-layer permission strategy to enforce the Principle of Least Privilege:
+### 1. Secure File Share Implementation
+* **Directory Provisioning:** Established a centralized storage root (`C:\SHARED`) on the Windows Server 2022 instance.
+* **Access Control:** Implemented a dual-layer permission strategy (Share vs NTFS) to enforce the Principle of Least Privilege.
 
-        Share Permissions: Everyone: Full Control.
+**Evidence:**
+![NTFS Permissions](Activity7_FileShare/Screenshots/Activity7_NTFS_Permissions.png)
 
-        NTFS Permissions: Domain Users: Read-only.
+### 2. Network Troubleshooting (Connectivity & DNS)
+* **Incident:** Resolved an **APIPA (169.254.x.x)** addressing issue on the Client VM.
+* **Resolution:** Configured a Static IPv4 and aligned the Preferred DNS to the Domain Controller’s IP.
 
-        Outcome: Users can access resources over the network but are restricted from modifying or deleting existing data.
+**Evidence:**
+![Client IP and DNS Configuration](Activity7_FileShare/Screenshots/Activity7_IP_DNS_Config.png)
 
-![Activity7_NTFS_Permissions.png]
-2. Network Troubleshooting (Connectivity & DNS)
+### 3. Automation via Group Policy (GPO)
+* **Centralized Management:** Linked a **"Mapped Drives"** GPO to the target OU.
+* **Deployment:** Leveraged GPP to map the **S: Drive** persistently.
 
-    Symptom: Client VM failed to reach the server due to an APIPA (169.254.x.x) addressing issue.
+**Evidence:**
+![GPO Link Status](Activity7_FileShare/Screenshots/Activity7_GPO_Link.png)
+![GPO Mapping Configuration](Activity7_FileShare/Screenshots/Activity7_GPO_Mapping_Config.png)
 
-    Resolution: Transitioned the client from DHCP to a Static IPv4 configuration.
+### 4. Storage Management with FSRM
+* **Quota Management:** Deployed a directory quota on the **SHARED** folder with a Hard Limit.
+* **File Screening:** Configured a file screen to restrict storage to authorized file types, preventing server resource bloat.
 
-    DNS Alignment: Manually configured the Preferred DNS to point to the Domain Controller’s IP, resolving "Unidentified Network" errors and allowing domain resource discovery.
+**Evidence:**
+![FSRM Quota Configuration](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota_Config.png)
+![FSRM Quota Overview](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota_Overview.png)
+![FSRM Screen Configuration](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen_Config.png)
+![FSRM Screen Validation](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen_Validation.png)
 
-![Activity7_Client_IP_DNS.png]
-3. Automation via Group Policy (GPO)
+---
 
-    Centralized Management: Created and linked a GPO titled "Mapped Drives" to the USA > Users Organizational Unit (OU).
+## Final Validation
+The successful implementation was verified by the automated appearance of the **S: Drive** in the Windows 11 File Explorer.
 
-    GPO Preferences: Configured a persistent drive map for the S: drive using User Configuration > Preferences.
-
-    Deployment: Successfully forced policy application using gpupdate /force and verified deployment via gpresult /r.
-
-![Activity7_GPO_Config.png] ![Activity7_GPResult_Check.png]
-4. Storage Management with FSRM
-
-    Quota Management: Deployed a directory quota on the shared folder with a Hard Limit and a 80% threshold alert to ensure proactive capacity management.
-
-    File Screening: Developed a custom File Screen template ("SHARWEED") to restrict storage to authorized file types only (Text Files), preventing unauthorized data (Executables, Media) from consuming server resources.
-
-![Activity7_FSRM_Quota.png] ![Activity7_FSRM_Screen.png]
-Final Validation
-
-The success of this activity was confirmed by the automatic appearance of the S: Drive in the Windows 11 File Explorer. The final environment ensures that users have immediate access to necessary files while the server remains protected by strict NTFS permissions and FSRM storage policies.
-
-![Activity7_Final_Explorer.png]
+**Evidence:**
+![Mapped Drive Success](Activity7_FileShare/Screenshots/Activity7_Mapped_Drive_Success.png)
+![Final Explorer View](Activity7_FileShare/Screenshots/Activity7_Mapped_Drive_Explorer.png)
