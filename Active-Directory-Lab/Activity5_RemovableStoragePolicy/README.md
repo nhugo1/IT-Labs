@@ -1,35 +1,39 @@
-ACTIVITY 5: REMOVABLE STORAGE LOCKDOWN AND DATA LOSS PREVENTION (DLP)
+# Activity 5: Removable Storage Lockdown and Data Loss Prevention (DLP)
 
-OBJECTIVE: To enhance the physical security of the network by disabling all removable storage devices through Group Policy, preventing unauthorized data exfiltration and protecting the domain from malware introduced via USB drives.
+## Objective
+To enhance the physical security of the domain by disabling all removable storage devices via Group Policy. This prevents unauthorized data exfiltration (DLP) and protects the network from hardware-based malware threats, such as "Rubber Ducky" attacks.
 
-TASKS PERFORMED:
+---
 
-    GPO CONFIGURATION FOR REMOVABLE MEDIA
+## Technical Tasks & Proficiency
 
-    Created or modified a Group Policy Object targeting workstation security.
+### 1. GPO Configuration for Removable Media
+* **Targeting:** Created a system-wide security GPO applied to the Workstation OUs.
+* **Policy Path:** `Computer Configuration > Policies > Administrative Templates > System > Removable Storage Access`.
+* **Enforcement:** Enabled the **"All Removable Storage classes: Deny all access"** setting. 
 
-    Navigated to: Computer Configuration > Policies > Administrative Templates > System > Removable Storage Access.
+### 2. Scope of Restriction
+* This policy enforces a "Deny" at the kernel level for all removable media, including:
+    * USB Flash Drives and External HDDs.
+    * Optical Media (CDs/DVDs).
+    * Portable Devices (MTP/Phones).
+* **Precedence:** This "Deny All" setting takes precedence over any individual "Allow" settings, ensuring a foolproof security baseline.
 
-    ENFORCING "DENY ALL" ACCESS
+---
 
-    Enabled the policy: "All Removable Storage classes: Deny all access."
+## Security Impact
+* **Malware Mitigation:** Effectively blocks the primary vector for offline malware introduction and automated hardware exploits.
+* **Data Loss Prevention:** Establishes a foundational DLP standard by ensuring corporate data cannot be copied to unmanaged, unencrypted external devices.
 
-    This setting takes precedence over individual removable storage settings, effectively disabling the ability to read from or write to any USB flash drive, external hard drive, or optical media (CD/DVD).
+---
 
-    Verified that the policy applies at the system level, meaning it affects all users who log into the specific machine.
+## Evidence of Completion
 
-    SECURITY IMPACT
+### GPO Configuration
+![Disable USB Devices Policy](Screenshots/Activity5_DisableUSBDevices.png)
 
-    Mitigated the risk of "Rubber Ducky" style hardware attacks and unauthorized software installations.
+---
 
-    Established a basic Data Loss Prevention (DLP) standard by ensuring company data cannot be copied to unmanaged external devices.
-
-VERIFICATION:
-
-    Confirmed the status is set to "Enabled" within the Group Policy Management Editor as shown in documentation.
-
-    Validated that the policy is supported on all client versions from Windows Vista through Windows 11.
-
-CAPTURED EVIDENCE FILES:
-
-    Activity5_DisableUSBDevices.png (Shows the "Deny all access" policy enabled in GPMC)
+## Verification
+* **Status:** Verified as **Enabled** within the Group Policy Management Editor.
+* **Compatibility:** Validated for all domain-joined clients (Windows Vista through Windows 11).
