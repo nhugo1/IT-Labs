@@ -1,168 +1,136 @@
-**Skills# Active Directory & Group Policy Home Lab Overview
+Active Directory & Group Policy Home Lab Overview
 
 This lab simulates a small enterprise Active Directory environment using Windows Server 2022 and Windows 11 client virtual machines. The goal is to demonstrate foundational IT skills related to identity management, centralized policy enforcement, and security controls used in corporate environments.
 
 All configurations were performed in an isolated virtual lab environment and documented to reflect real-world IT workflows and troubleshooting methodologies.
+Lab Environment
 
-## Lab Environment
+    Domain Controller: Windows Server 2022
 
-- **Domain Controller:** Windows Server 2022
-- **Client OS:** Windows 11 Enterprise
-- **Domain Name:** labs.local
-- **Management Tools:** Active Directory Users and Computers (ADUC), Group Policy Management Console (GPMC), File Server Resource Manager (FSRM)
-- **Virtualization:** VirtualBox (Internal Network)
+    Client OS: Windows 11 Enterprise
 
-## Completed Activities
+    Domain Name: labs.local
 
-### Activity 1 – Password Policy GPO
+    Management Tools: Active Directory Users and Computers (ADUC), Group Policy Management Console (GPMC), File Server Resource Manager (FSRM)
+
+    Virtualization: VirtualBox (Internal Network)
+
+Completed Activities
+Activity 1 – Password Policy GPO
 
 Configured a domain-linked Group Policy to enforce enterprise password standards:
 
-- Enforced minimum password length and complexity requirements.
-- Configured maximum password age to ensure regular credential rotation.
+    Enforced minimum password length and complexity requirements.
 
-**Skills:** Security baseline enforcement, Account Policy configuration.
+    Configured maximum password age to ensure regular credential rotation.
 
-**Screenshots:** [Activity1_MinLength.png](Activity1_PasswordPolicy/Screenshots/Activity1_MinLength.png), [Activity1_Complexity.png](Activity1_PasswordPolicy/Screenshots/Activity1_Complexity.png), [Activity1_MaxAge.png](Activity1_PasswordPolicy/Screenshots/Activity1_MaxAge.png)
+Skills: Security baseline enforcement, Account Policy configuration.
 
-### Activity 2 – Drive Mapping GPO (Basic)
+Screenshots: Activity1_MinLength.png, Activity1_Complexity.png, Activity1_MaxAge.png
+Activity 2 – Drive Mapping GPO (Basic)
 
 Created a user-based GPO to automatically map network drives via Group Policy Preferences (GPP):
 
-- Configured network paths and assigned persistent drive letters.
-- Targeted specific User OUs for department-specific access.
+    Configured network paths and assigned persistent drive letters.
 
-**Skills:** Group Policy Preferences, network resource mapping.
+    Targeted specific User OUs for department-specific access.
 
-**Screenshots:** [Activity2_MappedDriveSettings.png](Activity2_DriveMapping/Screenshots/Activity2_MappedDriveSettings.png), [Activity2_DriveMapsList.png](Activity2_DriveMapping/Screenshots/Activity2_DriveMapsList.png)
+Skills: Group Policy Preferences, network resource mapping.
 
-### Activity 3 – Desktop Wallpaper Policy
+Screenshots: Activity2_MappedDriveSettings.png, Activity2_DriveMapsList.png
+Activity 3 – Desktop Wallpaper Policy
 
 Standardized the user desktop environment to reflect corporate branding:
 
-- Utilized Administrative Templates to enforce a specific wallpaper image and display style.
+    Utilized Administrative Templates to enforce a specific wallpaper image and display style.
 
-**Skills:** Administrative Templates, User Experience (UX) standardization.
+Skills: Administrative Templates, User Experience (UX) standardization.
 
-**Screenshots:** [Activity3_WallpaperSettings.png](Activity3_DesktopWallpaperPolicy/Screenshots/Activity3_WallpaperSettings.png), [Activity3_WallpaperEnabled.png](Activity3_DesktopWallpaperPolicy/Screenshots/Activity3_WallpaperEnabled.png)
-
-### Activity 4 – Restrict Control Panel Access
+Screenshots: Activity3_WallpaperSettings.png, Activity3_WallpaperEnabled.png
+Activity 4 – Restrict Control Panel Access
 
 Implemented a security lockdown GPO to prohibit unauthorized system changes:
 
-- Enabled "Prohibit access to Control Panel and PC settings" for non-administrative users.
+    Enabled "Prohibit access to Control Panel and PC settings" for non-administrative users.
 
-**Skills:** Desktop lockdown, risk reduction.
+Skills: Desktop lockdown, risk reduction.
 
-**Screenshots:** [Activity4_ControlPanelRestricted.png](Activity4_ControlPanelRestricted/Screenshots/Activity4_ControlPanelRestricted.png)
-
-### Activity 5 – Disable USB Devices
+Screenshots: Activity4_ControlPanelRestricted.png
+Activity 5 – Disable USB Devices
 
 Hardened workstation security by restricting unauthorized hardware:
 
-- Disabled Read/Write access to removable storage devices via Computer Configuration.
+    Disabled Read/Write access to removable storage devices via Computer Configuration.
 
-**Skills:** Data Loss Prevention (DLP), hardware security enforcement.
+Skills: Data Loss Prevention (DLP), hardware security enforcement.
 
-**Screenshots:** [Activity5_DisableUSBDevices.png](Activity5_RemovableStoragePolicy/Screenshots/Activity5_DisableUSBDevices.png)
-
-### Activity 6 – GPO Troubleshooting & Testing
+Screenshots: Activity5_DisableUSBDevices.png
+Activity 6 – GPO Troubleshooting & Testing
 
 Resolved a critical "silent failure" regarding Security Filtering and Computer Objects:
 
-- **Diagnosis:** Identified that Computer Objects required "Read" access (MS16-072) to process policies.
-- **Resolution:** Modified Delegation to grant Authenticated Users "Read" permissions while restricting "Apply Group Policy" to the target group.
+    Diagnosis: Identified that Computer Objects required "Read" access (MS16-072) to process policies.
 
-**Skills:** Advanced GPMC delegation, troubleshooting policy inheritance.
+    Resolution: Modified Delegation to grant Authenticated Users "Read" permissions while restricting "Apply Group Policy" to the target group.
 
-**Screenshots:** [Activity6_GPMC_Overview.png](Activity6_GPOTesting/Screenshots/Activity6_GPMC_Overview.png), [Activity6_SecurityFiltering.png](Activity6_GPOTesting/Screenshots/Activity6_SecurityFiltering.png), [Activity6_ControlPanel_Restricted.png](Activity6_GPOTesting/Screenshots/Activity6_ControlPanel_Restricted.png), [Activity6_GPResult.png](Activity6_GPOTesting/Screenshots/Activity6_GPResult.png), [Activity6_DelegationTab.png](Activity6_GPOTesting/Screenshots/Activity6_DelegationTab.png)
+Skills: Advanced GPMC delegation, troubleshooting policy inheritance.
 
-### Activity 7 – File Services, Storage Governance & FSRM
+Screenshots: Activity6_GPO_Linked_OUs.png, Activity6_DelegationTab.png, Activity6_Client1_in_USA_OU.png, Activity6_DomainJoinConfirmation.png
+Activity 7 – File Services, Storage Governance & FSRM
 
 Implemented a secure, managed file-sharing environment with automated mapping and storage controls.
 
-- **Security & Permissions:** Configured a "Least Privilege" model using Share Permissions (Full Control) and NTFS Permissions (Read-Only) for Domain Users.
-- **Network Troubleshooting:** Resolved an APIPA (169.254.x.x) connectivity issue by manually configuring IPv4 static addressing and DNS pointing to the DC.
-- **GPO Automation:** Deployed the S: Drive automatically to the USA > Users OU using Group Policy Preferences.
-- **FSRM Implementation:** Deployed File Server Resource Manager to enforce storage quotas (80% threshold alerts) and active file screening (blocking unauthorized file types via the "SHARWEED" template).
+    Security & Permissions: Configured a "Least Privilege" model using Share Permissions (Full Control) and NTFS Permissions (Read-Only) for Domain Users.
 
-**Skills:** FSRM, NTFS/Share Permissions, Network Troubleshooting, GPO Automation.
+    Network Troubleshooting: Resolved connectivity issues by manually configuring IPv4 static addressing and DNS.
 
-**Screenshots:** [Activity7_NTFS_Permissions.png](Activity7_FileShare/Screenshots/Activity7_NTFS_Permissions.png), [Activity7_Client_IP_DNS.png](Activity7_FileShare/Screenshots/Activity7_Client_IP_DNS.png), [Activity7_GPO_Config.png](Activity7_FileShare/Screenshots/Activity7_GPO_Config.png), [Activity7_GPResult_Check.png](Activity7_FileShare/Screenshots/Activity7_GPResult_Check.png), [Activity7_FSRM_Quota.png](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota.png), [Activity7_FSRM_Screen.png](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen.png), [Activity7_Final_Explorer.png](Activity7_FileShare/Screenshots/Activity7_Final_Explorer.png)
+    FSRM Implementation: Deployed FSRM to enforce storage quotas and active file screening.
 
-### Activity 8 – Domain Hardening and Advanced Security Policies
+Skills: FSRM, NTFS/Share Permissions, Network Troubleshooting, GPO Automation.
 
-Implemented a multi-layered security posture within the LABS.local domain by enforcing strict password requirements, account lockout protections, and granular user rights assignments.
+Screenshots: Activity7_NTFS_Permissions.png, Activity7_IP_DNS_Config.png, Activity7_GPO_Mapping_Config.png, Activity7_FSRM_Quota_Overview.png, Activity7_FSRM_Screen_Validation.png, Activity7_Mapped_Drive_Success.png
+Activity 8 – Domain Hardening and Advanced Security Policies
 
-- **Password and Account Lockout Policies:** Configured the Default Domain Policy to enforce a 12-character minimum password length and password complexity requirements. Implemented a 3-strike account lockout threshold to prevent brute-force attacks.
-- **Fine-Grained Password Policies (FGPP):** Created an advanced Password Settings Object (PSO) named "AdminPasswordPolicy" with a 15-character minimum length and Precedence 1, assigned to the "#IT-Admins" group to ensure high-privilege accounts meet elevated security standards.
-- **User Rights Assignment (Access Control):** Created a "User Rights" GPO to deny local logon to the "Restricted_Users" group and restricted Remote Desktop Access to authorized IT personnel only.
-- **Troubleshooting:** Diagnosed a GPO propagation issue using `gpresult /r` and resolved by linking the GPO to the Domain Root to ensure consistent policy application regardless of Organizational Unit (OU) placement.
+Implemented a multi-layered security posture within the LABS.local domain.
 
-**Skills:** Fine-Grained Password Policies, User Rights Assignment, Account Lockout Configuration, GPO propagation troubleshooting, Defense-in-depth security.
+    FGPP: Created a Password Settings Object (PSO) for the "#IT-Admins" group.
 
-**Screenshots:** [Activity8_Account_Lockout_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_Account_Lockout_Policy.png), [Activity8_Complexity_Error.png](Activity8_SecurityPolicies/Screenshots/Activity8_Complexity_Error.png), [Activity8_Local_Logon_Denied.png](Activity8_SecurityPolicies/Screenshots/Activity8_Local_Logon_Denied.png), [Activity8_Lockout_Error.png](Activity8_SecurityPolicies/Screenshots/Activity8_Lockout_Error.png), [Activity8_Password_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_Password_Policy.png), [Activity8_User_Rights_Assignment.png](Activity8_SecurityPolicies/Screenshots/Activity8_User_Rights_Assignment.png), [Activity8_RDP_Denial_Success.png](Activity8_SecurityPolicies/Screenshots/Activity8_RDP_Denial_Success.png), [Activity8_FGPP_Admin_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_FGPP_Admin_Policy.png)
+    User Rights: Created a "User Rights" GPO to deny local logon to restricted users.
 
-### Activity 9 – Service Accounts and Kiosk Mode Configuration
+Skills: Fine-Grained Password Policies, User Rights Assignment, Account Lockout.
 
-Implemented a single-purpose kiosk workstation using a dedicated service account with automated login, restricted access rights, and browser auto-launch functionality.
+Screenshots: Activity8_Account_Lockout_Policy.png, Activity8_Complexity_Error.png, Activity8_Local_Logon_Denied.png, Activity8_Lockout_Error.png, Activity8_Password_Policy.png, Activity8_User_Rights_Assignment.png, Activity8_RDP_Denial_Success.png, Activity8_FGPP_Admin_Policy.png
+Activity 9 – Service Accounts and Kiosk Mode Configuration
 
-- **Service Account Creation:** Created a "Service Accounts" OU within Active Directory and provisioned a service account (`$Website-login@labs.local`) following naming conventions for non-human identities.
-- **Automated Login:** Configured Sysinternals Autologon to automatically authenticate the service account upon system boot, eliminating manual login requirements for the kiosk workstation.
-- **Browser Auto-Launch and Kiosk Mode:** Placed a Chrome shortcut in the Startup folder and configured launch parameters (`-start-fullscreen`) to automatically open a specific webpage in fullscreen mode upon login.
-- **Power Management:** Disabled display and system sleep settings to ensure continuous operation for 24/7 kiosk deployments.
-- **Access Control Hardening:** Implemented User Rights Assignment policies to deny local logon and Remote Desktop access for the service account on other domain systems, restricting its use to the designated kiosk workstation only.
+Implemented a single-purpose kiosk workstation using a dedicated service account.
 
-**Skills:** Service account provisioning, automated authentication, application auto-start configuration, User Rights Assignment, least privilege access control, kiosk deployment best practices.
+Skills: Service account provisioning, Autologon, kiosk deployment.
 
-**Screenshots:** [Activity9_AD_ServiceAccount.png](Activity9_ServiceAccounts/Screenshots/Activity9_AD_ServiceAccount.png), [Activity9_Autologon_Configuration.png](Activity9_ServiceAccounts/Screenshots/Activity9_Autologon_Configuration.png), [Activity9_Startup_Folder.png](Activity9_ServiceAccounts/Screenshots/Activity9_Startup_Folder.png), [Activity9_Chrome_Shortcut_Properties.png](Activity9_ServiceAccounts/Screenshots/Activity9_Chrome_Shortcut_Properties.png), [Activity9_User_Rights_Assignment.png](Activity9_ServiceAccounts/Screenshots/Activity9_User_Rights_Assignment.png)
+Screenshots: Activity9_AD_ServiceAccount.png, Activity9_Autologon_Configuration.png, Activity9_Startup_Folder.png, Activity9_Chrome_Shortcut_Properties.png, Activity9_User_Rights_Assignment.png
+Activity 10 – Advanced Windows File Sharing, Effective Permissions, and Inheritance
 
-### Activity 10 – Advanced Windows File Sharing, Effective Permissions, and Inheritance
+Implemented advanced NTFS permission strategies including selective inheritance control and explicit deny.
 
-Implemented advanced NTFS permission strategies in real-world workplace scenarios, including selective inheritance control, explicit deny permissions, and least privilege access models.
+Skills: Breaking inheritance, Explicit Deny, Least Privilege.
 
-- **Folder Structure and Share Configuration:** Created a hierarchical folder structure (C:\Common with Project and Events subfolders) and configured dual-layer permissions (Share + NTFS) to establish baseline access control.
-- **Permission Inheritance and Selective Access Control:** Broke inheritance on the Project folder, removed overly permissive access (Everyone = Full Control), and granted targeted access to the Project security group. Created a Contracts subfolder to verify permission propagation from parent to child.
-- **Explicit Deny Permissions:** Configured a scenario where user "John" was explicitly denied access to a Confidential subfolder while maintaining broader group-based access for other employees, demonstrating that Deny permissions always take precedence over Allow permissions.
+Screenshots: Activity10_Break_Inheritance.png, Activity10_Project_Folder_Permissions.png, Activity10_Confidential_Deny_Permissions.png
+Activity 11 – NTFS vs Share Permissions
 
-**Skills:** Breaking and managing NTFS inheritance, explicit Deny configuration, permission precedence understanding, dual-layer permission model (Share vs. NTFS), security group-based permissions, least privilege access control.
+Demonstrated mastery of the dual-layer Windows permission model via four real-world scenarios.
 
-**Screenshots:** [Activity10_Break_Inheritance.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Break_Inheritance.png), [Activity10_Project_Folder_Permissions.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Project_Folder_Permissions.png), [Activity10_Confidential_Deny_Permissions.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Confidential_Deny_Permissions.png)
+Skills: Effective permissions, Write-Only access, folder isolation.
 
-### Activity 11 – NTFS vs Share Permissions
+Screenshots: Activity11_Marketing_NTFS_Permissions.png, Activity11_HR_Share_Permissions.png, Activity11_HR_NTFS_Permissions.png, Activity11_Vendor_NTFS_Permissions.png, Activity11_Licenses_Inheritance_Broken.png
+Key Takeaways
 
-Demonstrated mastery of the dual-layer Windows permission model by implementing four real-world file sharing scenarios that require understanding of how Share Permissions and NTFS Permissions interact to determine effective access.
+    Centralized Management: Reduced configuration drift via GPMC.
 
-- **Marketing Department (Restrictive NTFS):** Configured permissive Share permissions (Everyone = Full Control) with restrictive NTFS permissions (Marketing_Interns = Read only), demonstrating that the most restrictive permission governs access.
-- **HR Department (Complete Isolation):** Removed Everyone from Share permissions and restricted both Share and NTFS access to HR_Staff only, creating a completely isolated folder invisible to non-HR users.
-- **Vendor Access (Write-Only Drop Box):** Configured Vendors group with Write-only NTFS permissions, creating a secure drop box where external parties can upload files but cannot view or download any content, including their own submissions.
-- **IT Software Repository (Subfolder Restriction):** Granted IT_Staff full access to the Software folder, then broke inheritance on the Licenses subfolder to restrict access exclusively to #IT-Admins, demonstrating selective inheritance control for sensitive subfolders.
+    Storage Governance: Protected volume space using FSRM.
 
-**Skills:** Dual-layer permission model (Share + NTFS), effective permissions calculation, write-only access patterns, complete folder isolation, inheritance control, least privilege enforcement, secure external collaboration models.
+    Security Mindset: Applied Least Privilege across the filesystem and UI.
 
-**Screenshots:** [Activity11_Marketing_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Marketing_NTFS_Permissions.png), [Activity11_HR_Share_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_HR_Share_Permissions.png), [Activity11_HR_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_HR_NTFS_Permissions.png), [Activity11_Vendor_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Vendor_NTFS_Permissions.png), [Activity11_Licenses_Inheritance_Broken.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Licenses_Inheritance_Broken.png)
+Author: Nick Hugo
 
-## Key Takeaways
+Aspiring IT Support / Systems Administrator
 
-- **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
-- **Storage Governance:** Demonstrated the ability to protect server volume space using quotas and screening.
-- **Troubleshooting:** Gained experience in diagnosing both GPO logic failures and Layer 3 networking issues (APIPA).
-- **Security Mindset:** Applied the Principle of Least Privilege across both the filesystem and the OS UI.
-- **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
-- **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
-- **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, effective permissions calculation, and the dual-layer permission model in complex file-sharing environments.
-
-## Future Enhancements
-
-- PowerShell automation for bulk user/group creation.
-- Implementation of Loopback Processing for specialized kiosk workstations.
-- Setting up an SMTP Relay to test live FSRM email alerts.
-- Deploy AppLocker or Windows Defender Application Control (WDAC) for application whitelisting on kiosk systems.
-- Implement Dynamic Access Control (DAC) with claims-based permissions for attribute-based access.
-- Configure File Classification Infrastructure (FCI) to automatically apply permissions based on file metadata.
-
----
-
-**Author:** Nick Hugo  
-Aspiring IT Support / Systems Administrator  
 CompTIA A+ | CompTIA Security+
