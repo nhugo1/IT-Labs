@@ -1,3 +1,5 @@
-theme: jekyll-theme-cayman
-title: Nick Hugo - IT Labs
-description: Hands-on IT infrastructure and security projects
+theme: jekyll-theme-slate
+title: Nick Hugo | IT Portfolio
+description: Enterprise Infrastructure & Security Lab Documentation
+show_downloads: false
+google_analytics:
