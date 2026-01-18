@@ -119,6 +119,19 @@ Implemented advanced NTFS permission strategies in real-world workplace scenario
 
 **Screenshots:** Activity10_Break_Inheritance.png, Activity10_Project_Folder_Permissions.png, Activity10_Confidential_Deny_Permissions.png
 
+### Activity 11 – NTFS vs Share Permissions
+
+Demonstrated mastery of the dual-layer Windows permission model by implementing four real-world file sharing scenarios that require understanding of how Share Permissions and NTFS Permissions interact to determine effective access.
+
+- **Marketing Department (Restrictive NTFS):** Configured permissive Share permissions (Everyone = Full Control) with restrictive NTFS permissions (Marketing_Interns = Read only), demonstrating that the most restrictive permission governs access.
+- **HR Department (Complete Isolation):** Removed Everyone from Share permissions and restricted both Share and NTFS access to HR_Staff only, creating a completely isolated folder invisible to non-HR users.
+- **Vendor Access (Write-Only Drop Box):** Configured Vendors group with Write-only NTFS permissions, creating a secure drop box where external parties can upload files but cannot view or download any content, including their own submissions.
+- **IT Software Repository (Subfolder Restriction):** Granted IT_Staff full access to the Software folder, then broke inheritance on the Licenses subfolder to restrict access exclusively to #IT-Admins, demonstrating selective inheritance control for sensitive subfolders.
+
+**Skills:** Dual-layer permission model (Share + NTFS), effective permissions calculation, write-only access patterns, complete folder isolation, inheritance control, least privilege enforcement, secure external collaboration models.
+
+**Screenshots:** Activity11_Marketing_NTFS_Permissions.png, Activity11_HR_Share_Permissions.png, Activity11_HR_NTFS_Permissions.png, Activity11_Vendor_NTFS_Permissions.png, Activity11_Licenses_Inheritance_Broken.png
+
 ## Key Takeaways
 
 - **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
@@ -127,18 +140,7 @@ Implemented advanced NTFS permission strategies in real-world workplace scenario
 - **Security Mindset:** Applied the Principle of Least Privilege across both the filesystem and the OS UI.
 - **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
 - **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
-- **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, and effective permissions calculation in complex file-sharing environments.
-
-## Future Enhancements
-
-- PowerShell automation for bulk user/group creation.
-- Implementation of Loopback Processing for specialized kiosk workstations.
-- Setting up an SMTP Relay to test live FSRM email alerts.
-- Deploy AppLocker or Windows Defender Application Control (WDAC) for application whitelisting on kiosk systems.
-- Implement Dynamic Access Control (DAC) with claims-based permissions for attribute-based access.
-- Configure File Classification Infrastructure (FCI) to automatically apply permissions based on file metadata.
-
----
+- **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, effective permissions calculation, and the dual-layer permission model in complex file-sharing environments.
 
 **Author:** Nick Hugo  
 Aspiring IT Support / Systems Administrator  
