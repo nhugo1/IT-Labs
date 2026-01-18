@@ -1,21 +1,36 @@
-## Activity 2 – Drive Mapping GPO
+# Activity 2: Automated Network Drive Mapping via GPP
 
-**Objective:**  
-Create a GPO to automatically map network drives for users in the USA OU.
+## Objective
+To streamline user access to network resources by automating the mapping of departmental shared drives. This ensures that users in the `USA` OU have immediate access to necessary file shares upon login without manual intervention.
 
-**Steps Completed:**
-1. Opened **Group Policy Management Console (GPMC)** on Windows Server 2022.  
-2. Created a new GPO named **"Drive Mapping"** and linked it to the USA OU.  
-3. Opened **GPO Editor**, navigated to: User Configuration → Preferences → Windows Settings → Drive Maps  
-4. Right-clicked **Drive Maps → New → Mapped Drive**.  
-- Configured:
-  - **Location / Network Path:** `\\Labs\folder`  
-  - **Drive Letter:** `A:`  
-**Screenshots:**  
-  - `Screenshots/Activity2_MappedDriveSettings.png`  
-  - `Screenshots/Activity2_DriveMapsList.png`
+---
 
-**Notes / Observations:**  
-- Drive mapping via GPO reduces manual setup and help desk tickets.  
-- Changes to path or drive letter demonstrate centralized management.  
-- Naming conventions help organize multiple GPOs efficiently.
+## Technical Tasks & Workflow
+
+### 1. GPO Infrastructure
+* **Console:** Group Policy Management Console (GPMC).
+* **Linking:** Created and linked the **"Drive Mapping"** GPO to the `USA` OU to target user-specific environment settings.
+
+### 2. Group Policy Preferences (GPP) Configuration
+* **Policy Path:** `User Configuration > Preferences > Windows Settings > Drive Maps`
+* **Action:** Configured a "Create" action for the network path.
+* **Resource Path:** Defined the UNC path as `\\Labs\folder`.
+* **Letter Assignment:** Assigned the persistent drive letter **S:** (Note: Common practice uses S: for Shared or P: for Public; ensure this matches your specific lab screenshot).
+
+---
+
+## Evidence of Configuration
+
+### Drive Map Preference Settings
+Detailed view of the mapping properties, including the UNC path and reconnect settings.
+![Mapped Drive Settings](Screenshots/Activity2_MappedDriveSettings.png)
+
+### GPMC Preferences List
+Verification of the drive mapping object within the GPP list.
+![Drive Maps List](Screenshots/Activity2_DriveMapsList.png)
+
+---
+
+## Key Takeaways
+* **Centralized Administration:** Demonstrated how to update network paths for hundreds of users from a single console, significantly reducing help desk tickets.
+* **Modern vs. Legacy:** Utilized GPP instead of logon scripts, allowing for better reporting and the "Reconnect" feature, which ensures the drive stays mapped across sessions.
