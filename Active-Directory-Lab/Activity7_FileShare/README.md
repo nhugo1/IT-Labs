@@ -9,41 +9,50 @@ To provision a centralized network file share, automate resource deployment via 
 
 ### 1. Secure File Share Implementation
 * **Directory Provisioning:** Established a centralized storage root (`C:\SHARED`) on the Windows Server 2022 instance.
-* **Access Control:** Implemented a dual-layer permission strategy (Share vs NTFS) to enforce the Principle of Least Privilege.
+* **Access Control Model:** Implemented a dual-layer permission strategy to enforce the **Principle of Least Privilege (PoLP)**:
+    * **Share Permissions:** Everyone: Full Control.
+    * **NTFS Permissions:** Domain Users: Read-only.
 
 **Evidence:**
-![NTFS Permissions](Activity7_FileShare/Screenshots/Activity7_NTFS_Permissions.png)
+![NTFS Permissions](Screenshots/Activity7_NTFS_Permissions.png)
 
-### 2. Network Troubleshooting (Connectivity & DNS)
-* **Incident:** Resolved an **APIPA (169.254.x.x)** addressing issue on the Client VM.
-* **Resolution:** Configured a Static IPv4 and aligned the Preferred DNS to the Domain Controller’s IP.
+---
+
+### 2. Troubleshooting Case Study: APIPA & DNS Resolution
+* **Issue:** Client VM was unable to join the domain or reach the file share.
+* **Diagnosis:** Running `ipconfig` revealed an **APIPA address (169.254.x.x)**, indicating a failure to reach the DHCP server.
+* **Resolution:** Transitioned the client to a **Static IPv4 configuration** and manually pointed the Preferred DNS to the Domain Controller. This restored connectivity and allowed the client to process Group Policy.
 
 **Evidence:**
-![Client IP and DNS Configuration](Activity7_FileShare/Screenshots/Activity7_IP_DNS_Config.png)
+![Client IP and DNS Configuration](Screenshots/Activity7_IP_DNS_Config.png)
+
+---
 
 ### 3. Automation via Group Policy (GPO)
-* **Centralized Management:** Linked a **"Mapped Drives"** GPO to the target OU.
-* **Deployment:** Leveraged GPP to map the **S: Drive** persistently.
+* **Centralized Management:** Engineered a GPO titled **"Mapped Drives"** and linked it to the departmental OU.
+* **Deployment:** Leveraged Group Policy Preferences (GPP) to map the **S: Drive** persistently.
 
 **Evidence:**
-![GPO Link Status](Activity7_FileShare/Screenshots/Activity7_GPO_Link.png)
-![GPO Mapping Configuration](Activity7_FileShare/Screenshots/Activity7_GPO_Mapping_Config.png)
+![GPO Link Status](Screenshots/Activity7_GPO_Link.png)
+![GPO Mapping Configuration](Screenshots/Activity7_GPO_Mapping_Config.png)
+
+---
 
 ### 4. Storage Management with FSRM
-* **Quota Management:** Deployed a directory quota on the **SHARED** folder with a Hard Limit.
-* **File Screening:** Configured a file screen to restrict storage to authorized file types, preventing server resource bloat.
+* **Quota Management:** Deployed a directory quota on the **SHARED** folder with a **Hard Limit** and an **80% threshold alert** to prevent volume exhaustion.
+* **File Screening:** Configured an active file screen to restrict storage to authorized file types, preventing unauthorized data (Executables/Media) from occupying server space.
 
 **Evidence:**
-![FSRM Quota Configuration](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota_Config.png)
-![FSRM Quota Overview](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota_Overview.png)
-![FSRM Screen Configuration](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen_Config.png)
-![FSRM Screen Validation](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen_Validation.png)
+![FSRM Quota Configuration](Screenshots/Activity7_FSRM_Quota_Config.png)
+![FSRM Quota Overview](Screenshots/Activity7_FSRM_Quota_Overview.png)
+![FSRM Screen Configuration](Screenshots/Activity7_FSRM_Screen_Config.png)
+![FSRM Screen Validation](Screenshots/Activity7_FSRM_Screen_Validation.png)
 
 ---
 
 ## Final Validation
-The successful implementation was verified by the automated appearance of the **S: Drive** in the Windows 11 File Explorer.
+The success of this deployment was confirmed by the automated appearance of the **S: Drive** in the Windows 11 File Explorer.
 
 **Evidence:**
-![Mapped Drive Success](Activity7_FileShare/Screenshots/Activity7_Mapped_Drive_Success.png)
-![Final Explorer View](Activity7_FileShare/Screenshots/Activity7_Mapped_Drive_Explorer.png)
+![Mapped Drive Success](Screenshots/Activity7_Mapped_Drive_Success.png)
+![Final Explorer View](Screenshots/Activity7_Mapped_Drive_Explorer.png)
