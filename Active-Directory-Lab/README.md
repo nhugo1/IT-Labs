@@ -1,4 +1,4 @@
-# Active Directory & Group Policy Home Lab Overview
+**Skills# Active Directory & Group Policy Home Lab Overview
 
 This lab simulates a small enterprise Active Directory environment using Windows Server 2022 and Windows 11 client virtual machines. The goal is to demonstrate foundational IT skills related to identity management, centralized policy enforcement, and security controls used in corporate environments.
 
@@ -23,7 +23,7 @@ Configured a domain-linked Group Policy to enforce enterprise password standards
 
 **Skills:** Security baseline enforcement, Account Policy configuration.
 
-**Screenshots:** Activity1_MinLength.png, Activity1_Complexity.png, Activity1_MaxAge.png
+**Screenshots:** [Activity1_MinLength.png](Activity1_PasswordPolicy/Screenshots/Activity1_MinLength.png), [Activity1_Complexity.png](Activity1_PasswordPolicy/Screenshots/Activity1_Complexity.png), [Activity1_MaxAge.png](Activity1_PasswordPolicy/Screenshots/Activity1_MaxAge.png)
 
 ### Activity 2 – Drive Mapping GPO (Basic)
 
@@ -34,6 +34,8 @@ Created a user-based GPO to automatically map network drives via Group Policy Pr
 
 **Skills:** Group Policy Preferences, network resource mapping.
 
+**Screenshots:** [Activity2_MappedDriveSettings.png](Activity2_DriveMapping/Screenshots/Activity2_MappedDriveSettings.png), [Activity2_DriveMapsList.png](Activity2_DriveMapping/Screenshots/Activity2_DriveMapsList.png)
+
 ### Activity 3 – Desktop Wallpaper Policy
 
 Standardized the user desktop environment to reflect corporate branding:
@@ -41,6 +43,8 @@ Standardized the user desktop environment to reflect corporate branding:
 - Utilized Administrative Templates to enforce a specific wallpaper image and display style.
 
 **Skills:** Administrative Templates, User Experience (UX) standardization.
+
+**Screenshots:** [Activity3_WallpaperSettings.png](Activity3_DesktopWallpaperPolicy/Screenshots/Activity3_WallpaperSettings.png), [Activity3_WallpaperEnabled.png](Activity3_DesktopWallpaperPolicy/Screenshots/Activity3_WallpaperEnabled.png)
 
 ### Activity 4 – Restrict Control Panel Access
 
@@ -50,6 +54,8 @@ Implemented a security lockdown GPO to prohibit unauthorized system changes:
 
 **Skills:** Desktop lockdown, risk reduction.
 
+**Screenshots:** [Activity4_ControlPanelRestricted.png](Activity4_ControlPanelRestricted/Screenshots/Activity4_ControlPanelRestricted.png)
+
 ### Activity 5 – Disable USB Devices
 
 Hardened workstation security by restricting unauthorized hardware:
@@ -57,6 +63,8 @@ Hardened workstation security by restricting unauthorized hardware:
 - Disabled Read/Write access to removable storage devices via Computer Configuration.
 
 **Skills:** Data Loss Prevention (DLP), hardware security enforcement.
+
+**Screenshots:** [Activity5_DisableUSBDevices.png](Activity5_RemovableStoragePolicy/Screenshots/Activity5_DisableUSBDevices.png)
 
 ### Activity 6 – GPO Troubleshooting & Testing
 
@@ -66,6 +74,8 @@ Resolved a critical "silent failure" regarding Security Filtering and Computer O
 - **Resolution:** Modified Delegation to grant Authenticated Users "Read" permissions while restricting "Apply Group Policy" to the target group.
 
 **Skills:** Advanced GPMC delegation, troubleshooting policy inheritance.
+
+**Screenshots:** [Activity6_GPMC_Overview.png](Activity6_GPOTesting/Screenshots/Activity6_GPMC_Overview.png), [Activity6_SecurityFiltering.png](Activity6_GPOTesting/Screenshots/Activity6_SecurityFiltering.png), [Activity6_ControlPanel_Restricted.png](Activity6_GPOTesting/Screenshots/Activity6_ControlPanel_Restricted.png), [Activity6_GPResult.png](Activity6_GPOTesting/Screenshots/Activity6_GPResult.png), [Activity6_DelegationTab.png](Activity6_GPOTesting/Screenshots/Activity6_DelegationTab.png)
 
 ### Activity 7 – File Services, Storage Governance & FSRM
 
@@ -78,7 +88,7 @@ Implemented a secure, managed file-sharing environment with automated mapping an
 
 **Skills:** FSRM, NTFS/Share Permissions, Network Troubleshooting, GPO Automation.
 
-**Screenshots:** Activity7_NTFS_Permissions.png, Activity7_Client_IP_DNS.png, Activity7_GPO_Config.png, Activity7_GPResult_Check.png, Activity7_FSRM_Quota.png, Activity7_FSRM_Screen.png, Activity7_Final_Explorer.png
+**Screenshots:** [Activity7_NTFS_Permissions.png](Activity7_FileShare/Screenshots/Activity7_NTFS_Permissions.png), [Activity7_Client_IP_DNS.png](Activity7_FileShare/Screenshots/Activity7_Client_IP_DNS.png), [Activity7_GPO_Config.png](Activity7_FileShare/Screenshots/Activity7_GPO_Config.png), [Activity7_GPResult_Check.png](Activity7_FileShare/Screenshots/Activity7_GPResult_Check.png), [Activity7_FSRM_Quota.png](Activity7_FileShare/Screenshots/Activity7_FSRM_Quota.png), [Activity7_FSRM_Screen.png](Activity7_FileShare/Screenshots/Activity7_FSRM_Screen.png), [Activity7_Final_Explorer.png](Activity7_FileShare/Screenshots/Activity7_Final_Explorer.png)
 
 ### Activity 8 – Domain Hardening and Advanced Security Policies
 
@@ -91,7 +101,7 @@ Implemented a multi-layered security posture within the LABS.local domain by enf
 
 **Skills:** Fine-Grained Password Policies, User Rights Assignment, Account Lockout Configuration, GPO propagation troubleshooting, Defense-in-depth security.
 
-**Screenshots:** Activity8_Account_Lockout_Policy.png, Activity8_Complexity_Error.png, Activity8_Local_Logon_Denied.png, Activity8_Lockout_Error.png, Activity8_Password_Policy.png, Activity8_User_Rights_Assignment.png, Activity8_RDP_Denial_Success.png, Activity8_FGPP_Admin_Policy.png
+**Screenshots:** [Activity8_Account_Lockout_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_Account_Lockout_Policy.png), [Activity8_Complexity_Error.png](Activity8_SecurityPolicies/Screenshots/Activity8_Complexity_Error.png), [Activity8_Local_Logon_Denied.png](Activity8_SecurityPolicies/Screenshots/Activity8_Local_Logon_Denied.png), [Activity8_Lockout_Error.png](Activity8_SecurityPolicies/Screenshots/Activity8_Lockout_Error.png), [Activity8_Password_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_Password_Policy.png), [Activity8_User_Rights_Assignment.png](Activity8_SecurityPolicies/Screenshots/Activity8_User_Rights_Assignment.png), [Activity8_RDP_Denial_Success.png](Activity8_SecurityPolicies/Screenshots/Activity8_RDP_Denial_Success.png), [Activity8_FGPP_Admin_Policy.png](Activity8_SecurityPolicies/Screenshots/Activity8_FGPP_Admin_Policy.png)
 
 ### Activity 9 – Service Accounts and Kiosk Mode Configuration
 
@@ -105,7 +115,7 @@ Implemented a single-purpose kiosk workstation using a dedicated service account
 
 **Skills:** Service account provisioning, automated authentication, application auto-start configuration, User Rights Assignment, least privilege access control, kiosk deployment best practices.
 
-**Screenshots:** Activity9_AD_ServiceAccount.png, Activity9_Autologon_Configuration.png, Activity9_Startup_Folder.png, Activity9_Chrome_Shortcut_Properties.png, Activity9_User_Rights_Assignment.png
+**Screenshots:** [Activity9_AD_ServiceAccount.png](Activity9_ServiceAccounts/Screenshots/Activity9_AD_ServiceAccount.png), [Activity9_Autologon_Configuration.png](Activity9_ServiceAccounts/Screenshots/Activity9_Autologon_Configuration.png), [Activity9_Startup_Folder.png](Activity9_ServiceAccounts/Screenshots/Activity9_Startup_Folder.png), [Activity9_Chrome_Shortcut_Properties.png](Activity9_ServiceAccounts/Screenshots/Activity9_Chrome_Shortcut_Properties.png), [Activity9_User_Rights_Assignment.png](Activity9_ServiceAccounts/Screenshots/Activity9_User_Rights_Assignment.png)
 
 ### Activity 10 – Advanced Windows File Sharing, Effective Permissions, and Inheritance
 
@@ -117,7 +127,7 @@ Implemented advanced NTFS permission strategies in real-world workplace scenario
 
 **Skills:** Breaking and managing NTFS inheritance, explicit Deny configuration, permission precedence understanding, dual-layer permission model (Share vs. NTFS), security group-based permissions, least privilege access control.
 
-**Screenshots:** Activity10_Break_Inheritance.png, Activity10_Project_Folder_Permissions.png, Activity10_Confidential_Deny_Permissions.png
+**Screenshots:** [Activity10_Break_Inheritance.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Break_Inheritance.png), [Activity10_Project_Folder_Permissions.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Project_Folder_Permissions.png), [Activity10_Confidential_Deny_Permissions.png](Activity10_Advanced_File_Permissions/Screenshots/Activity10_Confidential_Deny_Permissions.png)
 
 ### Activity 11 – NTFS vs Share Permissions
 
@@ -130,7 +140,7 @@ Demonstrated mastery of the dual-layer Windows permission model by implementing 
 
 **Skills:** Dual-layer permission model (Share + NTFS), effective permissions calculation, write-only access patterns, complete folder isolation, inheritance control, least privilege enforcement, secure external collaboration models.
 
-**Screenshots:** Activity11_Marketing_NTFS_Permissions.png, Activity11_HR_Share_Permissions.png, Activity11_HR_NTFS_Permissions.png, Activity11_Vendor_NTFS_Permissions.png, Activity11_Licenses_Inheritance_Broken.png
+**Screenshots:** [Activity11_Marketing_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Marketing_NTFS_Permissions.png), [Activity11_HR_Share_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_HR_Share_Permissions.png), [Activity11_HR_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_HR_NTFS_Permissions.png), [Activity11_Vendor_NTFS_Permissions.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Vendor_NTFS_Permissions.png), [Activity11_Licenses_Inheritance_Broken.png](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Licenses_Inheritance_Broken.png)
 
 ## Key Takeaways
 
@@ -141,6 +151,17 @@ Demonstrated mastery of the dual-layer Windows permission model by implementing 
 - **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
 - **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
 - **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, effective permissions calculation, and the dual-layer permission model in complex file-sharing environments.
+
+## Future Enhancements
+
+- PowerShell automation for bulk user/group creation.
+- Implementation of Loopback Processing for specialized kiosk workstations.
+- Setting up an SMTP Relay to test live FSRM email alerts.
+- Deploy AppLocker or Windows Defender Application Control (WDAC) for application whitelisting on kiosk systems.
+- Implement Dynamic Access Control (DAC) with claims-based permissions for attribute-based access.
+- Configure File Classification Infrastructure (FCI) to automatically apply permissions based on file metadata.
+
+---
 
 **Author:** Nick Hugo  
 Aspiring IT Support / Systems Administrator  
