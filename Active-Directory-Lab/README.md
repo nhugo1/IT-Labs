@@ -129,11 +129,14 @@ Resolved a critical "silent failure" regarding Security Filtering and Computer O
 
 **Screenshots:**
 
-![Activity6_GPMC_Overview](Activity6_GPOTesting/Screenshots/Activity6_GPMC_Overview.png)
-![Activity6_SecurityFiltering](Activity6_GPOTesting/Screenshots/Activity6_SecurityFiltering.png)
-![Activity6_ControlPanel_Restricted](Activity6_GPOTesting/Screenshots/Activity6_ControlPanel_Restricted.png)
-![Activity6_GPResult](Activity6_GPOTesting/Screenshots/Activity6_GPResult.png)
+![Activity6_Client1_in_USA_OU](Activity6_GPOTesting/Screenshots/Activity6_Client1_in_USA_OU.png)
+![Activity6_ClientConnectivity](Activity6_GPOTesting/Screenshots/Activity6_ClientConnectivity.png)
 ![Activity6_DelegationTab](Activity6_GPOTesting/Screenshots/Activity6_DelegationTab.png)
+![Activity6_DomainJoinConfirmation](Activity6_GPOTesting/Screenshots/Activity6_DomainJoinConfirmation.png)
+![Activity6_GPO_Linked_OUs](Activity6_GPOTesting/Screenshots/Activity6_GPO_Linked_OUs.png)
+![Activity6_IPconfig](Activity6_GPOTesting/Screenshots/Activity6_IPconfig.png)
+![Activity6_StaticIP](Activity6_GPOTesting/Screenshots/Activity6_StaticIP.png)
+![Activity6_ipconfig_all](Activity6_GPOTesting/Screenshots/Activity6_ipconfig_all.png)
 
 ### Activity 7 – File Services, Storage Governance & FSRM
 
