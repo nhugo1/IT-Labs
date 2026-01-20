@@ -13,8 +13,14 @@ To validate the application of Group Policy Objects (GPOs) on a Windows 11 clien
 * **GPO Linking:** Linked specific policies (Password Policy, Drive Mapping, Wallpaper, USB Lockdown, and Control Panel Restriction) to their respective OUs.
 
 **Evidence:**
-![GPMC OU Overview](Screenshots/Activity6_GPMC_Overview.png)
+
+![Client in USA OU](Screenshots/Activity6_Client1_in_USA_OU.png)
 ![Domain Join Confirmation](Screenshots/Activity6_DomainJoinConfirmation.png)
+![GPO Linked to OUs](Screenshots/Activity6_GPO_Linked_OUs.png)
+![Static IP Configuration](Screenshots/Activity6_StaticIP.png)
+![IPConfig](Screenshots/Activity6_IPconfig.png)
+![IPConfig All](Screenshots/Activity6_ipconfig_all.png)
+![Client Connectivity](Screenshots/Activity6_ClientConnectivity.png)
 
 ---
 
@@ -32,8 +38,8 @@ Investigation revealed a failure caused by the **MS16-072 security update**. By 
 3. **Scope Alignment:** Ensured the `Restricted_Users` group maintained both **Read** and **Apply Group Policy** permissions.
 
 **Evidence:**
+
 ![Delegation Tab Configuration](Screenshots/Activity6_DelegationTab.png)
-![Security Filtering Scope](Screenshots/Activity6_SecurityFiltering.png)
 
 ---
 
@@ -42,10 +48,6 @@ After the delegation fix, a `gpupdate /force` was performed.
 
 * **GPResult:** Confirmed the "Restrict Control Panel" policy is now listed under "Applied Group Policy Objects."
 * **UI Enforcement:** Confirmed that attempting to access the Control Panel triggers the administrative restriction message.
-
-**Evidence:**
-![GPResult Verification](Screenshots/Activity6_GPResult.png)
-![Control Panel Blocked](Screenshots/Activity6_ControlPanel_Restricted.png)
 
 ---
 
