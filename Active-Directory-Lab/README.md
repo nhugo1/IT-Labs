@@ -30,9 +30,9 @@ All configurations were performed in an isolated virtual lab environment and doc
 | **[Activity 6](./Activity6_GPOTesting/)** | GPO Troubleshooting | MS16-072 Resolution, Delegation & Filtering |
 | **[Activity 7](./Activity7_FileShare/)** | Storage Governance | FSRM, Quotas, File Screening, SMB Shares |
 | **[Activity 8](./Activity8_SecurityPolicies/)** | Advanced Security | FGPP (PSO), User Rights Assignment (URA) |
-| **[Activity 9](./Activity9_ServiceAccountKiosk/)** | Specialized Identities | Service Accounts, Kiosk Mode, Autologon |
-| **[Activity 10](./Activity10_AdvancedPermissions/)** | NTFS Depth | Inheritance Breaks, Explicit Deny Precedence |
-| **[Activity 11](./Activity11_NTFSvsShare/)** | Permission Logic | Effective Permissions, Write-Only "Drop Boxes" |
+| **[Activity 9](./Activity9_ServiceAccounts/)** | Specialized Identities | Service Accounts, Kiosk Mode, Autologon |
+| **[Activity 10](./Activity10_Advanced_File_Permissions/)** | NTFS Depth | Inheritance Breaks, Explicit Deny Precedence |
+| **[Activity 11](./Activity11_NTFS_vs_Share_Permissions/)** | Permission Logic | Effective Permissions, Write-Only "Drop Boxes" |
 
 ---
 
@@ -61,3 +61,4 @@ Documented critical troubleshooting scenarios, such as resolving APIPA addressin
 
 **Author:** Nick Hugo  
 *Aspiring IT Support / Systems Administrator* **Certifications:** CompTIA A+ | CompTIA Security+
+
