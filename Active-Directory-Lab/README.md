@@ -31,6 +31,7 @@ All configurations were performed in an isolated virtual lab environment and doc
 | **[Activity 9](./Activity9_ServiceAccounts/)** | Specialized Identities | Service Accounts, Kiosk Mode, Autologon |
 | **[Activity 10](./Activity10_Advanced_File_Permissions/)** | NTFS Depth | Inheritance Breaks, Explicit Deny Precedence |
 | **[Activity 11](./Activity11_NTFS_vs_Share_Permissions/)** | Permission Logic | Effective Permissions, Write-Only "Drop Boxes" |
+| **[Activity 12](./Activity12_Access_Based_Enumeration/)** | Folder Visibility Control | Access-Based Enumeration (ABE), User Experience |
 
 ---
 
@@ -236,6 +237,24 @@ Demonstrated mastery of the dual-layer Windows permission model by implementing 
 ![Activity11_Vendor_NTFS_Permissions](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Vendor_NTFS_Permissions.png)
 ![Activity11_Licenses_Inheritance_Broken](Activity11_NTFS_vs_Share_Permissions/Screenshots/Activity11_Licenses_Inheritance_Broken.png)
 
+### Activity 12 – Access-Based Enumeration (ABE)
+
+Implemented Access-Based Enumeration to hide folders from users who do not have access permissions, demonstrating how to reduce user confusion and minimize the attack surface by preventing unauthorized users from seeing restricted resources.
+
+- **User and Group Setup:** Created departmental security groups (HR_Dept, IT-Dept) and test users (spiderman@labs.local, batman@labs.local) organized within appropriate Organizational Units.
+- **Folder Structure and Permissions:** Created C:\DeptShares with HR and IT subfolders, configured NTFS permissions to grant Full Control to respective department groups only, and set Share permissions to allow Read access for both groups.
+- **ABE Configuration:** Enabled Access-Based Enumeration on the DeptShares share via Server Manager → File and Storage Services → Shares → Properties → Settings.
+- **Testing and Verification:** Validated that IT-Dept members (spiderman) can only see the IT folder, HR_Dept members (batman) can only see the HR folder, and both folders remain visible to administrators on the server.
+
+**Skills:** Access-Based Enumeration configuration, visibility-based access control, departmental resource isolation, user experience optimization, Windows Server File Services.
+
+**Screenshots:**
+
+![Activity12_ABE_Configuration](Activity12_Access_Based_Enumeration/Screenshots/Activity12_ABE_Configuration.png)
+![Activity12_Server_View_Both_Folders](Activity12_Access_Based_Enumeration/Screenshots/Activity12_Server_View_Both_Folders.png)
+![Activity12_After_ABE_Spiderman](Activity12_Access_Based_Enumeration/Screenshots/Activity12_After_ABE_Spiderman.png)
+![Activity12_After_ABE_Batman](Activity12_Access_Based_Enumeration/Screenshots/Activity12_After_ABE_Batman.png)
+
 ## Key Takeaways
 
 - **Centralized Management:** Reduced configuration drift by managing settings and storage from a single DC.
@@ -245,6 +264,7 @@ Demonstrated mastery of the dual-layer Windows permission model by implementing 
 - **Advanced Security Controls:** Implemented tiered password policies and granular access controls to enforce defense-in-depth security strategies.
 - **Service Account Security:** Demonstrated proper service account lifecycle management, including creation, restriction, and operational deployment in specialized use cases.
 - **NTFS Permission Mastery:** Developed deep understanding of permission inheritance, explicit deny precedence, effective permissions calculation, and the dual-layer permission model in complex file-sharing environments.
+- **Access-Based Enumeration:** Implemented visibility-based access control to improve user experience and reduce reconnaissance opportunities for potential attackers.
 
 ## Future Enhancements
 
