@@ -31,7 +31,7 @@ All configurations were performed in an isolated virtual lab environment and doc
 | **[Activity 9](./Activity9_ServiceAccounts/)** | Specialized Identities | Service Accounts, Kiosk Mode, Autologon |
 | **[Activity 10](./Activity10_Advanced_File_Permissions/)** | NTFS Depth | Inheritance Breaks, Explicit Deny Precedence |
 | **[Activity 11](./Activity11_NTFS_vs_Share_Permissions/)** | Permission Logic | Effective Permissions, Write-Only "Drop Boxes" |
-| **[Activity 12](./Activity12_Access_Based_Enumeration/)** | Folder Visibility Control | Access-Based Enumeration (ABE), User Experience |
+| **[Activity 12](./Activity12_ABE/)** | Folder Visibility Control | Access-Based Enumeration (ABE), User Experience |
 
 ---
 
@@ -280,3 +280,4 @@ Implemented Access-Based Enumeration to hide folders from users who do not have 
 **Author:** Nick Hugo  
 Aspiring IT Support / Systems Administrator  
 CompTIA A+ | CompTIA Security+
+
