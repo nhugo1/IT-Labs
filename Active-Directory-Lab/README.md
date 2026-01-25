@@ -250,10 +250,10 @@ Implemented Access-Based Enumeration to hide folders from users who do not have 
 
 **Screenshots:**
 
-![Activity12_ABE_Configuration](Activity12_Access_Based_Enumeration/Screenshots/Activity12_ABE_Configuration.png)
-![Activity12_Server_View_Both_Folders](Activity12_Access_Based_Enumeration/Screenshots/Activity12_Server_View_Both_Folders.png)
-![Activity12_After_ABE_Spiderman](Activity12_Access_Based_Enumeration/Screenshots/Activity12_After_ABE_Spiderman.png)
-![Activity12_After_ABE_Batman](Activity12_Access_Based_Enumeration/Screenshots/Activity12_After_ABE_Batman.png)
+![Activity12_ABE_Configuration](Activity12_ABE/Screenshots/Activity12_ABE_Configuration.png)
+![Activity12_Server_View_Both_Folders](Activity12_ABE/Screenshots/Activity12_Server_View_Both_Folders.png)
+![Activity12_After_ABE_Spiderman](Activity12_ABE/Screenshots/Activity12_After_ABE_Spiderman.png)
+![Activity12_After_ABE_Batman](Activity12_ABE/Screenshots/Activity12_After_ABE_Batman.png)
 
 ## Key Takeaways
 
@@ -280,4 +280,3 @@ Implemented Access-Based Enumeration to hide folders from users who do not have 
 **Author:** Nick Hugo  
 Aspiring IT Support / Systems Administrator  
 CompTIA A+ | CompTIA Security+
-
