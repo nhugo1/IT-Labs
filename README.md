@@ -8,16 +8,16 @@ Welcome to my technical documentation repository. This site serves as a portfoli
 
 **[View Full Project Documentation](./Active-Directory-Lab/)**
 
-A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 11+ high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
+A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
 
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
-| **Identity & Access** | Active Directory (ADUC), Service Accounts, Fine-Grained Password Policies (FGPP) |
+| **Identity & Access** | Active Directory (ADUC), Service Accounts, Fine-Grained Password Policies (FGPP), Access-Based Enumeration (ABE) |
 | **Policy Enforcement** | Group Policy (GPMC), Administrative Templates, GPP Drive Mapping |
 | **Security Hardening** | USB/Removable Storage Lockdown, User Rights Assignment, Account Lockout |
-| **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas |
+| **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas, Dual-Layer Permission Model |
 | **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
 
 **Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM, VirtualBox.
@@ -27,7 +27,7 @@ A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Con
 ## Technical Skills Baseline
 
 * **Operating Systems:** Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
-* **Security & Compliance:** Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics
+* **Security & Compliance:** Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
 * **Networking:** DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
 
 ---
