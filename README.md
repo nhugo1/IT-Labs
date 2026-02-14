@@ -4,8 +4,8 @@ Welcome to my technical documentation repository. This site serves as a portfoli
 
 ---
 
-## Ticketing & Troubleshooting Lab
-**[View Full Project Documentation](./Ticketing-Troubleshooting-Lab/)**
+## Ticketing & Troubleshooting Lab Series
+**[View Full Project Documentation](Ticketing-Troubleshooting-Lab/)**
 
 A series of simulated technical support scenarios integrating **Jira Service Management** with **Active Directory**. This lab demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
 
@@ -23,7 +23,7 @@ A series of simulated technical support scenarios integrating **Jira Service Man
 ---
 
 ## Active Directory & Group Policy Lab
-**[View Full Project Documentation](./Active-Directory-Lab/)**
+**[View Full Project Documentation](Active-Directory-Lab/)**
 
 A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
 
@@ -37,25 +37,4 @@ A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Con
 | **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas, Dual-Layer Permission Model |
 | **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
 
-**Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM, VirtualBox.
-
----
-
-## Technical Skills Baseline
-
-* **Operating Systems:** Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
-* **Security & Compliance:** Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
-* **Networking:** DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
-
----
-
-## Certifications
-
-* **CompTIA A+**
-* **CompTIA Security+**
-
----
-
-*More projects including Linux Administration and Cloud Networking coming soon...*
-
-[View Project Source on GitHub](https://github.com/nhugo1/IT-Labs)
+**Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM
