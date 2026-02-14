@@ -34,7 +34,7 @@ An incident ticket was generated to track the request. To maintain security, use
 * **Priority:** High (Workstation Locked)
 * **Assignee:** System Administrator
 
-> **View Evidence:** [Ticket Creation Screenshot](./screenshots/Activity1_TicketCreation.png)
+> **View Evidence:** [Ticket Creation Screenshot](./Screenshots/Activity1_TicketCreation.png)
 
 ### 2. AD Diagnosis & Account Unlock
 Navigated to the `Labs.local` domain controller to inspect the user attributes. The account was flagged as "Locked Out" due to the domain's security policy.
@@ -42,17 +42,17 @@ Navigated to the `Labs.local` domain controller to inspect the user attributes. 
 2. Modified **Account Properties** to trigger the unlock.
 3. Reset password to a temporary credential.
 
-> **View Evidence:** [Account Lockout Status](./screenshots/Activity1_AccountLocked.png) | [Password Reset Configuration](./screenshots/Activity1_PasswordReset.png)
+> **View Evidence:** [Account Lockout Status](./Screenshots/Activity1_AccountLocked.png) | [Password Reset Configuration](./Screenshots/Activity1_PasswordReset.png)
 
 ### 3. Endpoint Authentication Success
 The user successfully authenticated on the Windows 11 workstation using the temporary credentials and was immediately prompted to set a new, secure password per the "Must change password at next logon" requirement.
 
-> **View Evidence:** [Successful User Login](./screenshots/Activity1_SuccessfulLogin.png)
+> **View Evidence:** [Successful User Login](./Screenshots/Activity1_SuccessfulLogin.png)
 
 ### 4. Documentation & Resolution
 The ticket was updated with a full audit trail, including root cause analysis (RCA) and follow-up actions (referring the user to the Self-Service Password Reset portal).
 
-> **View Evidence:** [Final Ticket Resolution](./screenshots/Activity1_TicketResolution.png)
+> **View Evidence:** [Final Ticket Resolution](./Screenshots/Activity1_TicketResolution.png)
 
 ---
 
