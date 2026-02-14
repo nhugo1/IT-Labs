@@ -1,41 +1,61 @@
-IT Infrastructure & Security Portfolio
+# IT Infrastructure & Security Portfolio
 
 Welcome to my technical documentation repository. This site serves as a portfolio of hands-on labs focused on enterprise system administration, identity management, and network security hardening.
-Technical Projects
-🛠️ Helpdesk & ITSM Lifecycle Lab
 
-View Full Project Documentation
+---
 
-A series of simulated technical support scenarios integrating Jira Service Management with Active Directory. This lab demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
+## 🛠️ Ticketing & Troubleshooting Lab
+**[View Full Project Documentation](./Ticketing-Troubleshooting-Lab/)**
 
-    Key Focus: Account Lockout recovery, Identity Verification protocols, and Root Cause Analysis (RCA).
+A series of simulated technical support scenarios integrating **Jira Service Management** with **Active Directory**. This lab demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
 
-    Tools: Jira Service Management, ADUC, Windows 11 Enterprise.
+### Technical Skills Demonstrated:
 
-🔐 Windows Server & Group Policy Administration
+| Category | Competencies |
+| :--- | :--- |
+| **ITSM Operations** | Incident Management, Ticket Lifecycle (Jira), Service Level Agreements (SLA) |
+| **Identity Management** | Active Directory Account Unlocks, Secure Password Resets, Forced Password Changes |
+| **Security Protocols** | Multi-factor User Identity Verification, Root Cause Analysis (RCA) |
+| **Documentation** | Detailed Technical Resolution Notes, Internal Knowledge Base updates |
 
-View Full Project Documentation
+**Technologies Used:** Jira Service Management, Active Directory (ADUC), Windows Server 2022, Windows 11 Enterprise.
 
-A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This documentation covers 12 high-impact activities designed to mirror real-world sysadmin tasks.
+---
 
-    Key Focus: GPO Enforcement, NTFS/Share Permissions, and Security Hardening (USB Lockdowns, FGPP).
+## 🔐 Active Directory & Group Policy Lab
+**[View Full Project Documentation](./Active-Directory-Lab/)**
 
-    Tools: Windows Server 2022, GPMC, FSRM, VirtualBox.
+A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
 
-Technical Skills Baseline
+### Technical Skills Demonstrated:
 
-    Operating Systems: Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
+| Category | Competencies |
+| :--- | :--- |
+| **Identity & Access** | Active Directory (ADUC), Service Accounts, Fine-Grained Password Policies (FGPP), Access-Based Enumeration (ABE) |
+| **Policy Enforcement** | Group Policy (GPMC), Administrative Templates, GPP Drive Mapping |
+| **Security Hardening** | USB/Removable Storage Lockdown, User Rights Assignment, Account Lockout |
+| **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas, Dual-Layer Permission Model |
+| **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
 
-    Security & Compliance: Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
+**Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM, VirtualBox.
 
-    Networking: DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
+---
 
-Certifications
+## Technical Skills Baseline
 
-    CompTIA A+
+* **Operating Systems:** Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
+* **Security & Compliance:** Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
+* **Networking:** DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
 
-    CompTIA Security+
+---
 
-More projects including Linux Administration and Cloud Networking coming soon...
+## Certifications
 
-View Project Source on GitHub
+* **CompTIA A+**
+* **CompTIA Security+**
+
+---
+
+*More projects including Linux Administration and Cloud Networking coming soon...*
+
+[View Project Source on GitHub](https://github.com/nhugo1/IT-Labs)
