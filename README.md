@@ -4,7 +4,7 @@ Welcome to my technical documentation repository. This site serves as a portfoli
 
 ---
 
-## 🛠️ Ticketing & Troubleshooting Lab
+## Ticketing & Troubleshooting Lab
 **[View Full Project Documentation](./Ticketing-Troubleshooting-Lab/)**
 
 A series of simulated technical support scenarios integrating **Jira Service Management** with **Active Directory**. This lab demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
@@ -22,7 +22,7 @@ A series of simulated technical support scenarios integrating **Jira Service Man
 
 ---
 
-## 🔐 Active Directory & Group Policy Lab
+## Active Directory & Group Policy Lab
 **[View Full Project Documentation](./Active-Directory-Lab/)**
 
 A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
