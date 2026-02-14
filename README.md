@@ -1,44 +1,41 @@
-# IT Infrastructure & Security Portfolio
+IT Infrastructure & Security Portfolio
 
 Welcome to my technical documentation repository. This site serves as a portfolio of hands-on labs focused on enterprise system administration, identity management, and network security hardening.
+Technical Projects
+🛠️ Helpdesk & ITSM Lifecycle Lab
 
----
+View Full Project Documentation
 
-## Featured Project: Active Directory & Group Policy Lab
+A series of simulated technical support scenarios integrating Jira Service Management with Active Directory. This lab demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
 
-**[View Full Project Documentation](./Active-Directory-Lab/)**
+    Key Focus: Account Lockout recovery, Identity Verification protocols, and Root Cause Analysis (RCA).
 
-A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
+    Tools: Jira Service Management, ADUC, Windows 11 Enterprise.
 
-### Technical Skills Demonstrated:
+🔐 Windows Server & Group Policy Administration
 
-| Category | Competencies |
-| :--- | :--- |
-| **Identity & Access** | Active Directory (ADUC), Service Accounts, Fine-Grained Password Policies (FGPP), Access-Based Enumeration (ABE) |
-| **Policy Enforcement** | Group Policy (GPMC), Administrative Templates, GPP Drive Mapping |
-| **Security Hardening** | USB/Removable Storage Lockdown, User Rights Assignment, Account Lockout |
-| **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas, Dual-Layer Permission Model |
-| **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
+View Full Project Documentation
 
-**Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM, VirtualBox.
+A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This documentation covers 12 high-impact activities designed to mirror real-world sysadmin tasks.
 
----
+    Key Focus: GPO Enforcement, NTFS/Share Permissions, and Security Hardening (USB Lockdowns, FGPP).
 
-## Technical Skills Baseline
+    Tools: Windows Server 2022, GPMC, FSRM, VirtualBox.
 
-* **Operating Systems:** Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
-* **Security & Compliance:** Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
-* **Networking:** DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
+Technical Skills Baseline
 
----
+    Operating Systems: Windows Server 2022, Windows 10/11 Enterprise, Ubuntu Linux
 
-## Certifications
+    Security & Compliance: Principle of Least Privilege (PoLP), Data Loss Prevention (DLP) basics, Access Control Models
 
-* **CompTIA A+**
-* **CompTIA Security+**
+    Networking: DNS, DHCP, IPv4 Subnetting, Troubleshooting (Ping, Tracert, Ipconfig)
 
----
+Certifications
 
-*More projects including Linux Administration and Cloud Networking coming soon...*
+    CompTIA A+
 
-[View Project Source on GitHub](https://github.com/nhugo1/IT-Labs)
+    CompTIA Security+
+
+More projects including Linux Administration and Cloud Networking coming soon...
+
+View Project Source on GitHub
