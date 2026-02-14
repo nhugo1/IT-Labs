@@ -31,28 +31,36 @@ A user (Sarah Mitchell) reported being unable to access her workstation after re
 
 ### 1. Incident Creation (Jira)
 An incident ticket was generated to track the request. To maintain security, user identity was verified prior to processing the administrative reset.
-* **Priority:** High (Workstation Locked)
-* **Assignee:** System Administrator
 
-> **View Evidence:** [Ticket Creation Screenshot](./Screenshots/Activity1_TicketCreation.png)
+**Documentation of Created Ticket:**
+![Jira Ticket Creation](./Screenshots/Activity1_TicketCreation.png)
+
+---
 
 ### 2. AD Diagnosis & Account Unlock
 Navigated to the `Labs.local` domain controller to inspect the user attributes. The account was flagged as "Locked Out" due to the domain's security policy.
-1. Accessed **ADUC** -> **Users**.
-2. Modified **Account Properties** to trigger the unlock.
-3. Reset password to a temporary credential.
 
-> **View Evidence:** [Account Lockout Status](./Screenshots/Activity1_AccountLocked.png) | [Password Reset Configuration](./Screenshots/Activity1_PasswordReset.png)
+**Verified Account Lockout in ADUC:**
+![AD Account Locked](./Screenshots/Activity1_AccountLocked.png)
+
+**Password Reset & Policy Enforcement:**
+![AD Password Reset](./Screenshots/Activity1_PasswordReset.png)
+
+---
 
 ### 3. Endpoint Authentication Success
-The user successfully authenticated on the Windows 11 workstation using the temporary credentials and was immediately prompted to set a new, secure password per the "Must change password at next logon" requirement.
+The user successfully authenticated on the Windows 11 workstation using the temporary credentials and was immediately prompted to set a new, secure password.
 
-> **View Evidence:** [Successful User Login](./Screenshots/Activity1_SuccessfulLogin.png)
+**Successful Domain Login:**
+![Windows 11 Login Success](./Screenshots/Activity1_SuccessfulLogin.png)
+
+---
 
 ### 4. Documentation & Resolution
-The ticket was updated with a full audit trail, including root cause analysis (RCA) and follow-up actions (referring the user to the Self-Service Password Reset portal).
+The ticket was updated with a full audit trail, including root cause analysis (RCA) and follow-up actions.
 
-> **View Evidence:** [Final Ticket Resolution](./Screenshots/Activity1_TicketResolution.png)
+**Final Ticket Disposition:**
+![Jira Ticket Resolution](./Screenshots/Activity1_TicketResolution.png)
 
 ---
 
