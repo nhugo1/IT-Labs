@@ -60,6 +60,9 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 
 **Assessment:** Network connectivity issue affecting Outlook and likely other applications
 
+![Outlook Normal State](screenshots/KAN-4_Outlook_Normal.png)  
+*Outlook in normal working state for comparison*
+
 ![Outlook Offline - Network Error](screenshots/KAN-4_OutlookOffline_NetworkError.png)  
 *Outlook settings showing connection error with features greyed out and disabled*
 
@@ -109,6 +112,9 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 - Quick Settings accidentally accessed and toggled
 
 **Impact:** Complete loss of network connectivity affects Outlook and all network-dependent applications.
+
+![Root Cause - Airplane Mode On](screenshots/KAN-4_RootCause_AirplaneModeOn.png)  
+*Quick Settings showing Airplane mode enabled*
 
 ---
 
