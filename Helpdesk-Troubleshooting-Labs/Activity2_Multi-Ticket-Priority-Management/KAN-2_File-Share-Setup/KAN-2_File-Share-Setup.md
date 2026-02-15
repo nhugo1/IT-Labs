@@ -58,7 +58,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 
 **Issue Identified:** Windows Firewall blocking ICMP packets and File and Printer Sharing
 
-![Ping Failure Troubleshooting](screenshots/KAN-2_PingFailure_Troubleshooting.png)  
+![Ping Failure Troubleshooting](Screenshots/KAN-2_PingFailure_Troubleshooting.png)  
 *Failed ping attempts showing "Request timed out"*
 
 ---
@@ -81,7 +81,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Public network = untrusted (coffee shops, airports)
 - Enabled only for Private to maintain security on public networks
 
-![Firewall Configuration](screenshots/KAN-2_FirewallConfiguration.png)  
+![Firewall Configuration](Screenshots/KAN-2_FirewallConfiguration.png)  
 *Windows Defender Firewall settings showing File and Printer Sharing enabled for Private network*
 
 **Verification:**
@@ -89,7 +89,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Result: 4 packets sent, 4 received, 0% loss
 - Connectivity confirmed in both directions
 
-![Successful Ping](screenshots/KAN-2_PingSuccess.png)  
+![Successful Ping](Screenshots/KAN-2_PingSuccess.png)  
 *Successful ping results with 0% packet loss*
 
 ---
@@ -112,7 +112,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Private profile required for file sharing features
 - Public profile disables sharing for security
 
-![Network Discovery Configuration](screenshots/Kan-2_NetworkDiscovery.png)  
+![Network Discovery Configuration](Screenshots/Kan-2_NetworkDiscovery.png)  
 *Advanced network settings showing Network Discovery and File Sharing enabled, Private profile selected*
 
 ---
@@ -148,7 +148,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Not Full Control (prevents permission changes)
 - Appropriate for trusted home/small office network
 
-![Share Permissions](screenshots/KAN-2_SharePermissions.png)  
+![Share Permissions](Screenshots/KAN-2_SharePermissions.png)  
 *Share permissions window showing Everyone with Read/Write access*
 
 #### Part C: NTFS Permissions (Security Layer)
@@ -171,7 +171,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - NTFS Permissions = file system-level access control
 - Both layers provide security
 
-![NTFS Permissions](screenshots/KAN-2_NTFSPermissions.png)  
+![NTFS Permissions](Screenshots/KAN-2_NTFSPermissions.png)  
 *Security tab showing NTFS permissions for Users group*
 
 ---
@@ -190,7 +190,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 
 **Result:** Successfully connected to network share
 
-![Share Access from Desktop](screenshots/KAN-2_ShareAccess.png)  
+![Share Access from Desktop](Screenshots/KAN-2_ShareAccess.png)  
 *File Explorer showing successful access to \\[LAPTOP-NAME]\LabShare from Desktop*
 
 ---
@@ -216,7 +216,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Automatic reconnection after restart
 - Professional user experience
 
-![Mapped Network Drive](screenshots/KAN-2_MappedDrive.png)  
+![Mapped Network Drive](Screenshots/KAN-2_MappedDrive.png)  
 *File Explorer showing Z: drive mapped to \\[LAPTOP-NAME]\LabShare*
 
 ---
@@ -235,7 +235,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 
 **Result:** File created successfully
 
-![Permission Test - Desktop View](screenshots/KAN-2_PermissionTest_Desktop.png)  
+![Permission Test - Desktop View](Screenshots/KAN-2_PermissionTest_Desktop.png)  
 *Test file created and visible in Desktop's Z:\Accounting drive*
 
 #### Test 2: Verify from Laptop
@@ -249,7 +249,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 
 **Result:** Bidirectional read/write confirmed
 
-![Permission Test - Laptop View](screenshots/KAN-2_PermissionTest_Laptop.png)  
+![Permission Test - Laptop View](Screenshots/KAN-2_PermissionTest_Laptop.png)  
 *Same test file visible from Laptop with modifications - proves bidirectional access*
 
 #### Test 3: Final Verification from Desktop
@@ -310,7 +310,7 @@ Contacted Sarah Chen at ext. 4152. Demonstrated how to access shared files via Z
 
 Time spent: 1.5 hours
 
-![Resolution Notes](screenshots/KAN-2_ResolutionNotes.png)  
+![Resolution Notes](Screenshots/KAN-2_ResolutionNotes.png)  
 *Jira comment showing detailed resolution documentation*
 
 ### Ticket Closure
@@ -318,7 +318,7 @@ Time spent: 1.5 hours
 - **Resolution:** Completed
 - **Time Logged:** 1.5 hours
 
-![Ticket Closure](screenshots/KAN-2_TicketClosure.png)  
+![Ticket Closure](Screenshots/KAN-2_TicketClosure.png)  
 *KAN-2 ticket in closed state with resolution completed*
 
 ---
