@@ -60,10 +60,10 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 
 **Assessment:** Network connectivity issue affecting Outlook and likely other applications
 
-![Outlook Normal State](screenshots/KAN-4_Outlook_Normal.png)  
+![Outlook Normal State](Screenshots/KAN-4_Outlook_Normal.png)  
 *Outlook in normal working state for comparison*
 
-![Outlook Offline - Network Error](screenshots/KAN-4_OutlookOffline_NetworkError.png)  
+![Outlook Offline - Network Error](Screenshots/KAN-4_OutlookOffline_NetworkError.png)  
 *Outlook settings showing connection error with features greyed out and disabled*
 
 ---
@@ -84,7 +84,7 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 
 **Diagnosis:** Computer has no network connectivity whatsoever. This explains why Outlook cannot connect to Exchange server.
 
-![Network Check Failed](screenshots/KAN-4_NetworkCheck_Failed.png)  
+![Network Check Failed](Screenshots/KAN-4_NetworkCheck_Failed.png)  
 *Command Prompt showing failed ping attempts confirming no network connectivity*
 
 ---
@@ -113,7 +113,7 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 
 **Impact:** Complete loss of network connectivity affects Outlook and all network-dependent applications.
 
-![Root Cause - Airplane Mode On](screenshots/KAN-4_RootCause_AirplaneModeOn.png)  
+![Root Cause - Airplane Mode On](Screenshots/KAN-4_RootCause_AirplaneModeOn.png)  
 *Quick Settings showing Airplane mode enabled*
 
 ---
@@ -135,7 +135,7 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 - Network connectivity restored
 - Internet access established
 
-![Airplane Mode Disabled](screenshots/KAN-4_AirplaneModeOff.png)  
+![Airplane Mode Disabled](Screenshots/KAN-4_AirplaneModeOff.png)  
 *Quick Settings showing Airplane mode being disabled to restore network connectivity*
 
 ---
@@ -163,7 +163,7 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 **User Confirmation:**
 User tested sending one of the pending sales proposals - delivered successfully. All email functionality restored.
 
-![Resolution - Outlook Online](screenshots/KAN-4_Resolution_Online.png)  
+![Resolution - Outlook Online](Screenshots/KAN-4_Resolution_Online.png)  
 *Outlook settings showing normal operation with all features enabled and functional*
 
 ---
@@ -242,13 +242,13 @@ Airplane mode was accidentally enabled on user's computer, disabling all network
 
 ### Ticket Management Screenshots
 
-![Ticket Creation](screenshots/KAN-4_TicketCreation.png)  
+![Ticket Creation](Screenshots/KAN-4_TicketCreation.png)  
 *Initial ticket with P2/Medium priority and full issue description*
 
-![Resolution Comments](screenshots/KAN-4_ResolutionComments.png)  
+![Resolution Comments](Screenshots/KAN-4_ResolutionComments.png)  
 *Troubleshooting and resolution documentation in Jira*
 
-![Ticket Closure](screenshots/KAN-4_TicketClosure.png)  
+![Ticket Closure](Screenshots/KAN-4_TicketClosure.png)  
 *Closed ticket showing resolution completed*
 
 ---
