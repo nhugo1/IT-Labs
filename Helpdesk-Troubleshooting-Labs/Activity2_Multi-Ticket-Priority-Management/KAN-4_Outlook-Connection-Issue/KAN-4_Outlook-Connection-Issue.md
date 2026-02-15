@@ -113,9 +113,6 @@ Likely triggered by accidental keyboard shortcut (Fn + Airplane mode key) or uni
 
 **Impact:** Complete loss of network connectivity affects Outlook and all network-dependent applications.
 
-![Root Cause - Airplane Mode On](Screenshots/KAN-4_RootCause_AirplaneModeOn.png)  
-*Quick Settings showing Airplane mode enabled*
-
 ---
 
 ### Step 4: Resolution Implementation (11:55 AM)
@@ -338,3 +335,4 @@ This ticket demonstrates several key helpdesk competencies:
 - Quick visual checks (system tray indicators)
 - Basic network troubleshooting training
 - Self-service knowledge base articles
+
