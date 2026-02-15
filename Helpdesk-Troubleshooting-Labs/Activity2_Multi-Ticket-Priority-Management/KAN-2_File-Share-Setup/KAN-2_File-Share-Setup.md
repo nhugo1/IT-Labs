@@ -112,7 +112,7 @@ Acknowledged request, explained it would be handled after critical and high-prio
 - Private profile required for file sharing features
 - Public profile disables sharing for security
 
-![Network Discovery Configuration](screenshots/KAN-2_NetworkDiscovery.png)  
+![Network Discovery Configuration](screenshots/Kan-2_NetworkDiscovery.png)  
 *Advanced network settings showing Network Discovery and File Sharing enabled, Private profile selected*
 
 ---
