@@ -41,12 +41,12 @@ Opened Resource Monitor (`resmon`) and navigated to the **Memory** tab to check 
 Checked the **Disk** tab in Resource Monitor and sorted by "Total (B/sec)" to identify I/O bottlenecks.
 
 **Findings**:
-- `pagefile.sys` actively thrashing, indicating RAM overflow to disk
+- System process (PID 4) showing high disk activity, indicating pagefile thrashing due to RAM overflow
 - `tiworker.exe` (Windows Modules Installer Worker) consuming high disk I/O
 - Background OS processes saturating the system's already limited resources
 
 ![Disk Thrashing](screenshots/Activity4_SystemPagefile.png)
-*Resource Monitor Disk tab showing pagefile.sys and tiworker.exe dominating disk I/O*
+*Resource Monitor Disk tab showing System (PID 4) and tiworker.exe dominating disk I/O*
 
 ---
 
@@ -72,9 +72,10 @@ the workstation is experiencing severe resource exhaustion.
 
 Findings: 
 Physical RAM is nearly maxed out with zero user applications running. Resource 
-Monitor confirmed high disk thrashing (pagefile.sys) and revealed that background 
-OS processes (tiworker.exe / Windows Update) are saturating the remaining Disk I/O. 
-The hardware cannot handle baseline Windows OS requirements alongside user tasks.
+Monitor confirmed high disk thrashing from System process (PID 4), consistent 
+with pagefile activity due to memory exhaustion. Background OS processes 
+(tiworker.exe / Windows Update) are saturating the remaining Disk I/O. The 
+hardware cannot handle baseline Windows OS requirements alongside user tasks.
 
 Recommendation: 
 Escalated to Procurement. This machine's hardware allocation is below the functional 
