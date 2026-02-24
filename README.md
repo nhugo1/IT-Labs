@@ -1,9 +1,11 @@
 # IT Infrastructure & Security Portfolio
+
 Welcome to my technical documentation repository. This site serves as a portfolio of hands-on labs focused on enterprise system administration, identity management, network security hardening, and technical support operations.
 
 ---
 
 ## Helpdesk & Troubleshooting Lab Series
+
 **[View Full Project Documentation](Helpdesk-Troubleshooting-Labs/)**
 
 A comprehensive series of simulated IT support scenarios demonstrating ticket management, systematic troubleshooting, and technical problem-solving across various priority levels and complexity tiers.
@@ -16,25 +18,34 @@ Standard incident management integrating **Jira Service Management** with **Acti
 **Activity 2: Multi-Ticket Priority Management**  
 Realistic helpdesk simulation handling three concurrent tickets (Critical, Medium, Low priority) requiring triage, systematic prioritization, and resolution based on business impact. Demonstrates ability to manage competing priorities while maintaining professional user communication.
 
+**Activity 3: USB WiFi Adapter Root Cause Analysis**  
+Real production issue showcasing advanced diagnostic methodology using **Event Viewer forensics** to identify driver module crashes. Demonstrates root cause analysis versus symptom treatment, hardware lifecycle assessment, and honest documentation of technical limitations when manufacturer support is unavailable.
+
+**Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation**  
+Performance degradation investigation using **Resource Monitor** and **Task Manager** to identify hardware resource exhaustion. Demonstrates capacity planning, baseline load testing, and business-focused escalation with procurement recommendations based on quantifiable technical evidence.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
 | **ITSM Operations** | Incident Management, Ticket Lifecycle (Jira), Priority Assignment & Triage, Service Level Agreements (SLA) |
 | **Identity Management** | Active Directory Account Unlocks, Secure Password Resets, Forced Password Changes |
-| **System Diagnostics** | Device Manager, Event Viewer Forensics, Driver Troubleshooting, Root Cause Analysis (RCA) |
+| **System Diagnostics** | Device Manager, Event Viewer Forensics, Driver Troubleshooting, Root Cause Analysis (RCA), Resource Monitor, Task Manager Performance Analysis |
+| **Hardware Analysis** | Memory Saturation Identification, Disk I/O Bottleneck Analysis, Pagefile Thrashing Detection, USB Power Management, Driver Version Assessment, Hardware Lifecycle Planning |
 | **Network Troubleshooting** | Connectivity Diagnostics (ping, ipconfig), Windows Firewall Configuration, Network Discovery, Airplane Mode Issues |
 | **File Sharing** | Workgroup Configuration, SMB Shares, Share & NTFS Permissions, Mapped Network Drives |
 | **Email Support** | Outlook/Exchange Connectivity, Connection Troubleshooting, Client Configuration |
 | **Security Protocols** | Multi-factor User Identity Verification, Defense-in-Depth (Dual Permission Layers), Network Profile Configuration (Private vs Public) |
-| **Documentation** | Detailed Technical Resolution Notes, Troubleshooting Methodology Documentation, User Education Materials |
+| **Documentation** | Detailed Technical Resolution Notes, Troubleshooting Methodology Documentation, User Education Materials, Business Impact Assessment |
 | **Time Management** | Concurrent Ticket Handling, Business Impact Assessment, Workaround Identification |
+| **Business Acumen** | Cross-departmental Escalation (Procurement), Hardware Replacement vs. Upgrade Analysis, Cost-Benefit Evaluation |
 
-**Technologies Used:** Jira Service Management, Active Directory (ADUC), Windows Server 2022, Windows 11 Enterprise, Microsoft Outlook, Windows Defender Firewall, Event Viewer, Device Manager.
+**Technologies Used:** Jira Service Management, Active Directory (ADUC), Windows Server 2022, Windows 10/11 Enterprise, Microsoft Outlook, Windows Defender Firewall, Event Viewer, Device Manager, Resource Monitor, Task Manager.
 
 ---
 
 ## Active Directory & Group Policy Lab
+
 **[View Full Project Documentation](Active-Directory-Lab/)**
 
 A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
