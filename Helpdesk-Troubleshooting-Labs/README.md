@@ -76,12 +76,43 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 
 ---
 
+### [Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation](Activity4_Sluggish-Performance/)
+**Scenario:** System experiencing severe performance degradation due to hardware resource exhaustion
+
+**Problem:** User reports 5-minute login times, constant application freezes, and "Not Responding" errors. System unable to handle basic tasks like opening PDFs or multiple browser tabs.
+
+**Skills Demonstrated:**
+- Resource Monitor analysis (Memory and Disk tabs)
+- Task Manager performance diagnostics
+- Memory saturation identification
+- Disk I/O bottleneck analysis
+- Baseline load testing methodology
+- Hardware capacity planning
+- Business-focused escalation and recommendations
+- Professional technical documentation
+
+**Key Technical Findings:**
+- Physical RAM nearly maxed out with zero user applications running
+- System process (PID 4) showing high disk activity from pagefile thrashing
+- Background OS processes (`tiworker.exe`) saturating remaining disk I/O
+- Hardware incapable of meeting baseline Windows OS requirements
+
+**Resolution:** Escalated to Procurement with hardware lifecycle recommendation based on capacity analysis
+
+**Environment:** Windows 10 VM with 2GB RAM (intentionally constrained)
+
+**[View Full Activity →](Activity4_Sluggish-Performance/)**
+
+---
+
 ## Skills Summary
 
 ### Technical Competencies
-- Windows 11 and Server 2022 administration
+- Windows 10, 11 and Server 2022 administration
 - Active Directory user management
 - Device Manager and Event Viewer diagnostics
+- Resource Monitor and Task Manager analysis
+- Memory and disk I/O troubleshooting
 - Network troubleshooting (ping, ipconfig, firewall configuration)
 - File sharing (SMB, permissions, mapped drives)
 - Email client troubleshooting (Outlook/Exchange)
@@ -89,16 +120,19 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 - USB power management and configuration
 - Windows boot process and power management
 - Root cause analysis using system logs
+- Hardware capacity planning and lifecycle assessment
 
 ### Troubleshooting Methodology
 - Systematic diagnostic approach
 - Root cause analysis vs. symptom treatment
 - Event log forensics and pattern identification
+- Baseline load testing
 - Isolation techniques (application vs system-wide issues)
 - Documentation of troubleshooting steps
 - Preventive measures and user education
 - Hardware lifecycle assessment
 - Monitoring and escalation planning
+- Evidence-based decision making
 
 ### Professional Skills
 - Ticket prioritization and triage
@@ -109,6 +143,8 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 - User education for self-service resolution
 - Honest assessment of technical limitations
 - Follow-up and monitoring protocols
+- Cross-departmental escalation (Procurement)
+- Business impact assessment
 
 ### Security Awareness
 - Defense-in-depth security (Share + NTFS permissions)
@@ -122,6 +158,7 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 ## Tools & Technologies
 
 **Platforms:**
+- Windows 10 (VM environment)
 - Windows 11 Enterprise
 - Windows Server 2022 (Domain Controller)
 - Active Directory
@@ -131,6 +168,8 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 - Microsoft Outlook
 - Device Manager
 - Event Viewer (System log analysis)
+- Resource Monitor
+- Task Manager
 - Windows Defender Firewall
 - File Explorer
 - Command Prompt
@@ -145,6 +184,7 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 - Netgear A7500 Nighthawk USB WiFi Adapter
 - Domain-joined workstations
 - Network infrastructure
+- Virtualized environments (resource-constrained testing)
 
 ---
 
@@ -160,6 +200,10 @@ All labs utilize Jira for ticket management and follow industry-standard trouble
 - Home WiFi network
 - Peer-to-peer file sharing
 
+**VM Environment:**
+- Windows 10 with intentionally constrained resources (2GB RAM)
+- Used for capacity analysis and performance troubleshooting scenarios
+
 ---
 
 ## Portfolio Purpose
@@ -172,6 +216,7 @@ These labs demonstrate readiness for entry-level helpdesk and IT support positio
 4. **Soft skills** - Communication, prioritization, and user support
 5. **Continuous improvement** - Preventive measures and user education
 6. **Honest problem-solving** - Acknowledging limitations and planning appropriate escalations
+7. **Business awareness** - Understanding IT's role in organizational productivity and hardware lifecycle management
 
 Each activity includes detailed markdown documentation, annotated screenshots, and Jira ticket evidence to provide a complete view of the troubleshooting process.
 
@@ -183,6 +228,7 @@ Each activity includes detailed markdown documentation, annotated screenshots, a
 - **[Activity 1: Password Lockout →](Activity1_Password-Lockout/)**
 - **[Activity 2: Multi-Ticket Priority Management →](Activity2_Multi-Ticket-Priority-Management/)**
 - **[Activity 3: USB WiFi Adapter Root Cause Analysis →](Activity3_USB-WiFi-Adapter-Root-Cause-Analysis/)**
+- **[Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation →](Activity4_Sluggish-Performance/)**
 
 ---
 
@@ -199,4 +245,4 @@ Additional helpdesk scenarios planned:
 
 ---
 
-**Note:** Activity 3 showcases a real production issue that occurred organically, demonstrating authentic troubleshooting skills rather than simulated scenarios. This provides genuine evidence of diagnostic capabilities and professional problem-solving methodology.
+**Note:** Activities 3 and 4 showcase real-world troubleshooting scenarios - Activity 3 documents a genuine production issue, while Activity 4 demonstrates hardware capacity analysis and business-focused escalation procedures. These activities provide authentic evidence of diagnostic capabilities and professional problem-solving methodology.
