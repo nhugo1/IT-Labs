@@ -1,10 +1,5 @@
 # Activity 2: Remote Access VPN with Windows RRAS
 
-**Series:** Network+ Lab Series | **Domain:** 4.0 Network Security, 1.0 Networking Concepts
-**Tools:** Windows Server 2022 (RRAS), Windows 11 | **Protocol:** L2TP/IPSec | **Difficulty:** Intermediate
-
----
-
 ## Overview
 
 This lab configures a remote access VPN using Windows Server 2022's built-in Routing and Remote Access Service (RRAS). The scenario simulates an employee working remotely who needs to securely connect to the corporate network — one of the most common real-world infrastructure and support tasks in enterprise IT.
