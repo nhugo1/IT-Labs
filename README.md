@@ -69,7 +69,7 @@ A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Con
 
 ## Network+ Lab Series
 
-**[View Full Project Documentation](Network-Labs/)**
+**[View Full Project Documentation](Networking-Labs/)**
 
 A hands-on lab series targeting CompTIA Network+ (N10-009) exam objectives through practical configuration, verification, and documentation. Labs span all five exam domains with emphasis on network implementation, security, and troubleshooting.
 
