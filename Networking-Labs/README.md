@@ -20,7 +20,7 @@ A hands-on lab series built to reinforce CompTIA Network+ (N10-009) exam objecti
 | # | Activity | Tools | Net+ Domain | Status |
 |---|---|---|---|---|
 | 1 | [VLAN Segmentation & Inter-VLAN Routing](./Activity1_VLAN-Segmentation/) | Cisco Packet Tracer | 1.0 / 2.0 | ✅ Complete |
-| 2 | [Remote Access VPN with Windows RRAS](./Activity2_Remote-Access-VPN/) | Windows Server 2022, Windows 11 | 4.0 | 🔄 In Progress |
+| 2 | [Remote Access VPN with Windows RRAS](./Activity2_Remote-Access-VPN/) | Windows Server 2022, Windows 11 | 4.0 | ✅ Complete |
 | 3 | IP Addressing & Subnetting Design | Packet Tracer + Win VMs | 1.0 | 🔜 Upcoming |
 | 4 | DNS & DHCP Configuration & Troubleshooting | Windows Server 2022 | 1.0 / 5.0 | 🔜 Upcoming |
 | 5 | Firewall ACL Configuration & Traffic Filtering | Cisco Packet Tracer | 4.0 | 🔜 Upcoming |
