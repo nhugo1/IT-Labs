@@ -24,6 +24,9 @@ Real production issue showcasing advanced diagnostic methodology using **Event V
 **Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation**  
 Performance degradation investigation using **Resource Monitor** and **Task Manager** to identify hardware resource exhaustion. Demonstrates capacity planning, baseline load testing, and business-focused escalation with procurement recommendations based on quantifiable technical evidence.
 
+**Activity 5: Autodiscover Failure & Outlook Profile Rebuild**  
+Email infrastructure troubleshooting scenario diagnosing a broken Outlook Autodiscover configuration. Demonstrates DNS CNAME record verification, Outlook Test E-mail AutoConfiguration diagnostics, and full profile rebuild via the Control Panel Mail applet.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
@@ -34,7 +37,7 @@ Performance degradation investigation using **Resource Monitor** and **Task Mana
 | **Hardware Analysis** | Memory Saturation Identification, Disk I/O Bottleneck Analysis, Pagefile Thrashing Detection, USB Power Management, Driver Version Assessment, Hardware Lifecycle Planning |
 | **Network Troubleshooting** | Connectivity Diagnostics (ping, ipconfig), Windows Firewall Configuration, Network Discovery, Airplane Mode Issues |
 | **File Sharing** | Workgroup Configuration, SMB Shares, Share & NTFS Permissions, Mapped Network Drives |
-| **Email Support** | Outlook/Exchange Connectivity, Connection Troubleshooting, Client Configuration |
+| **Email Support** | Outlook/Exchange Connectivity, Autodiscover Failure Diagnosis, Profile Rebuild, DNS Record Verification |
 | **Security Protocols** | Multi-factor User Identity Verification, Defense-in-Depth (Dual Permission Layers), Network Profile Configuration (Private vs Public) |
 | **Documentation** | Detailed Technical Resolution Notes, Troubleshooting Methodology Documentation, User Education Materials, Business Impact Assessment |
 | **Time Management** | Concurrent Ticket Handling, Business Impact Assessment, Workaround Identification |
@@ -61,3 +64,32 @@ A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Con
 | **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
 
 **Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM
+
+---
+
+## Network+ Lab Series
+
+**[View Full Project Documentation](Network-Labs/)**
+
+A hands-on lab series targeting CompTIA Network+ (N10-009) exam objectives through practical configuration, verification, and documentation. Labs span all five exam domains with emphasis on network implementation, security, and troubleshooting.
+
+### Featured Activities:
+
+**Activity 1: VLAN Segmentation & Inter-VLAN Routing**  
+Three-VLAN enterprise network built in **Cisco Packet Tracer** using a Cisco 2960 switch and 2911 router. Demonstrates IEEE 802.1Q trunking, access port assignment, and router-on-a-stick inter-VLAN routing with full connectivity verification using ping and show commands.
+
+**Activity 2: Remote Access VPN with Windows RRAS**  
+End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** as the L2TP/IPSec server and the Windows 11 built-in VPN client. Demonstrates IP address pool configuration, pre-shared key authentication, Active Directory dial-in permissions, and tunnel verification via RRAS console and ipconfig.
+
+### Technical Skills Demonstrated:
+
+| Category | Competencies |
+| :--- | :--- |
+| **Network Segmentation** | VLAN design, IEEE 802.1Q tagging, trunk vs. access ports, inter-VLAN routing |
+| **Routing & Switching** | Router-on-a-stick, subinterface configuration, static routing, show ip route verification |
+| **VPN & Remote Access** | L2TP/IPSec tunnel configuration, RRAS role setup, IP address pool management, PSK authentication |
+| **Network Security** | Firewall rule verification, VPN authentication stack (IPSec PSK + MS-CHAPv2), AD dial-in permissions |
+| **Verification & Diagnostics** | ping, traceroute, ipconfig /all, show vlan brief, show ip interface brief, show ip route |
+| **Documentation** | Network topology diagrams, CLI command reference, phase-based lab documentation |
+
+**Technologies Used:** Cisco Packet Tracer, Windows Server 2022 (RRAS), Windows 11, Active Directory, L2TP/IPSec, IEEE 802.1Q.
