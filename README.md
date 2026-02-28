@@ -37,6 +37,7 @@ Email infrastructure troubleshooting scenario diagnosing a broken Outlook Autodi
 | **Hardware Analysis** | Memory Saturation Identification, Disk I/O Bottleneck Analysis, Pagefile Thrashing Detection, USB Power Management, Driver Version Assessment, Hardware Lifecycle Planning |
 | **Network Troubleshooting** | Connectivity Diagnostics (ping, ipconfig), Windows Firewall Configuration, Network Discovery, Airplane Mode Issues |
 | **File Sharing** | Workgroup Configuration, SMB Shares, Share & NTFS Permissions, Mapped Network Drives |
+| **Email Support** | Outlook/Exchange Connectivity, Autodiscover Failure Diagnosis, Profile Rebuild, DNS Record Verification |
 | **Security Protocols** | Multi-factor User Identity Verification, Defense-in-Depth (Dual Permission Layers), Network Profile Configuration (Private vs Public) |
 | **Documentation** | Detailed Technical Resolution Notes, Troubleshooting Methodology Documentation, User Education Materials, Business Impact Assessment |
 | **Time Management** | Concurrent Ticket Handling, Business Impact Assessment, Workaround Identification |
