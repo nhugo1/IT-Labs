@@ -1,8 +1,4 @@
 # Activity 1: VLAN Segmentation & Inter-VLAN Routing
-
-**Series:** Network+ Lab Series | **Domain:** 1.0 Networking Concepts, 2.0 Network Implementation
-**Tool:** Cisco Packet Tracer 8.x | **Protocol:** IEEE 802.1Q | **Difficulty:** Intermediate
-
 ---
 
 ## Overview
@@ -184,3 +180,4 @@ Completed and verified topology with all link lights green and all cross-VLAN pi
 
 
 [← Back to Network+ Lab Series](../README.md)
+
