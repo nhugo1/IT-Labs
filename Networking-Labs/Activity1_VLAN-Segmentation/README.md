@@ -80,7 +80,7 @@ Physical interface G0/0 brought up with no IP. Three subinterfaces created — o
 R1# show ip interface brief
 ```
 
-![Router Subinterface Config](screenshots/Router-Subinterface-Config.png)
+![Router Subinterface Config](screenshots/Activity1_Router-Subinterface-Config..png)
 
 ### Key CLI Commands
 
@@ -180,6 +180,7 @@ Completed and verified topology with all link lights green and all cross-VLAN pi
 
 
 [← Back to Network+ Lab Series](../README.md)
+
 
 
 
