@@ -280,3 +280,5 @@ Implemented Access-Based Enumeration to hide folders from users who do not have 
 **Author:** Nick Hugo  
 Aspiring IT Support / Systems Administrator  
 CompTIA A+ | CompTIA Security+
+
+[← Back to IT Portfolio](https://nhugo1.github.io/IT-Labs/)
