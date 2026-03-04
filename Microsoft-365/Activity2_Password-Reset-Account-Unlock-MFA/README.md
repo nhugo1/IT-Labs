@@ -77,7 +77,7 @@ Click **Reset password** in her profile panel. Select auto-generate password, ch
 To demonstrate the lockout experience, multiple failed sign-in attempts were made against Jamie's account until Microsoft blocked further attempts.
 
 **Important note on cloud-only vs. hybrid environments:**  
-In a cloud-only Entra ID tenant, there is no manual "Unlock account" button exposed in the portal — the lockout clears automatically after the lockout duration expires, or is resolved by resetting the password. In a **hybrid environment** with on-premises Active Directory synced to Entra ID, the unlock is performed directly in **Active Directory Users and Computers (ADUC)** on the user object. This is a key distinction between cloud-only and hybrid identity management.
+In a cloud-only Entra ID tenant, there is no manual "Unlock account" button exposed in the portal — the lockout clears automatically after the lockout duration expires, or is resolved by resetting the password. In a **hybrid environment** with on-premises Active Directory synced to Entra ID via AD Connect, the unlock is performed directly in **Active Directory Users and Computers (ADUC)** on the user object. This is a key distinction between cloud-only and hybrid identity management.
 
 ![Microsoft 365 sign-in error screen showing Jamie Lee's account is locked out due to too many failed sign-in attempts](screenshots/Activity2_AccountLocked.png)
 
@@ -91,7 +91,7 @@ In the Microsoft 365 Admin Center, go to **Users → Active Users** and click **
 
 **Step 2 — Enforce MFA for Jamie Lee**
 
-Locate Jamie Lee in the list, check her name, and in the right panel click **Enable**, then update to **Enforced**. 
+Locate Jamie Lee in the list, check her name, and in the right panel click **Enable**, then update to **Enforced**.
 
 > The per-user MFA portal has three states: **Disabled**, **Enabled** (MFA configured but not yet required), and **Enforced** (user is actively required to register and use MFA on every sign-in). Setting to Enforced rather than just Enabled ensures the user is prompted immediately on next login.
 
@@ -143,3 +143,7 @@ In this cloud-only Entra ID tenant, account lockouts clear automatically and the
 ## Key Takeaways
 
 Password resets and MFA management are among the highest-volume tasks in any IT helpdesk role. Handling them correctly — verifying identity, forcing password changes, understanding the difference between Enabled and Enforced MFA, and recognizing how lockout behavior differs between cloud and hybrid environments — demonstrates the kind of practical, security-conscious approach that distinguishes a strong IT support candidate.
+
+---
+
+[← Back to Microsoft 365 Labs](https://nhugo1.github.io/IT-Labs/Microsoft-365/)
