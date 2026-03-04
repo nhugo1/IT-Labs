@@ -246,3 +246,5 @@ Additional helpdesk scenarios planned:
 ---
 
 **Note:** Activities 3 and 4 showcase real-world troubleshooting scenarios - Activity 3 documents a genuine production issue, while Activity 4 demonstrates hardware capacity analysis and business-focused escalation procedures. These activities provide authentic evidence of diagnostic capabilities and professional problem-solving methodology.
+
+[← Back to IT Portfolio](https://nhugo1.github.io/IT-Labs/)
