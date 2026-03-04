@@ -69,3 +69,7 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 - **Identity:** Microsoft Entra ID
 - **Endpoint Management:** Microsoft Intune
 - **Target Role:** IT Helpdesk / Junior M365 Administrator
+
+---
+
+[← Back to IT Portfolio](https://nhugo1.github.io/IT-Labs/)
