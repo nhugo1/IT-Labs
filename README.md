@@ -93,3 +93,30 @@ End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** a
 | **Documentation** | Network topology diagrams, CLI command reference, phase-based lab documentation |
 
 **Technologies Used:** Cisco Packet Tracer, Windows Server 2022 (RRAS), Windows 11, Active Directory, L2TP/IPSec, IEEE 802.1Q.
+
+---
+
+## Microsoft 365 Administration Lab Series
+
+**[View Full Project Documentation](Microsoft-365/)**
+
+A hands-on lab series covering Microsoft 365 administration in a live tenant environment. Each activity simulates a real-world IT scenario commonly encountered in helpdesk, sysadmin, and cloud admin roles at SMB and mid-market companies. Labs span user lifecycle management, email administration, endpoint management, security, SharePoint, and PowerShell automation.
+
+### Featured Activities:
+
+**Activity 1: New User Onboarding**  
+End-to-end user provisioning in the **Microsoft 365 Admin Center**. Demonstrates license assignment, profile metadata configuration, least privilege role assignment, and first-login verification from both the admin and end-user perspective.
+
+### Technical Skills Demonstrated:
+
+| Category | Competencies |
+| :--- | :--- |
+| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, User Offboarding |
+| **Conditional Access & MFA** | Security Defaults, Conditional Access Policies, Per-User MFA, Break-Glass Accounts |
+| **Exchange & Email** | Shared Mailboxes, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
+| **Endpoint Management** | Intune Enrollment, Device Compliance Policies, App Deployment |
+| **Security & Compliance** | Data Loss Prevention (DLP), Secure Score, Attack Simulator |
+| **SharePoint & Collaboration** | Site Creation, Permission Management, Guest Access, Teams Integration |
+| **PowerShell & Automation** | Microsoft Graph, M365 PowerShell Modules, User Reporting, Bulk Operations |
+
+**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Microsoft Intune, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender, PowerShell.
