@@ -24,9 +24,6 @@ Real production issue showcasing advanced diagnostic methodology using **Event V
 **Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation**  
 Performance degradation investigation using **Resource Monitor** and **Task Manager** to identify hardware resource exhaustion. Demonstrates capacity planning, baseline load testing, and business-focused escalation with procurement recommendations based on quantifiable technical evidence.
 
-**Activity 5: Autodiscover Failure & Outlook Profile Rebuild**  
-Email infrastructure troubleshooting scenario diagnosing a broken Outlook Autodiscover configuration. Demonstrates DNS CNAME record verification, Outlook Test E-mail AutoConfiguration diagnostics, and full profile rebuild via the Control Panel Mail applet.
-
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
