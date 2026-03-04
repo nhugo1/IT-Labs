@@ -107,12 +107,15 @@ A hands-on lab series covering Microsoft 365 administration in a live tenant env
 **Activity 1: New User Onboarding**  
 End-to-end user provisioning in the **Microsoft 365 Admin Center**. Demonstrates license assignment, profile metadata configuration, least privilege role assignment, and first-login verification from both the admin and end-user perspective.
 
+**Activity 2: Password Reset, Account Unlock & Per-User MFA**  
+Simulated helpdesk scenario handling a user sign-in failure and a company-wide MFA rollout. Demonstrates secure password reset procedures, account lockout behavior in cloud-only vs. hybrid Entra ID environments, and the distinction between MFA **Enabled** and **Enforced** states and their effect on the end-user sign-in experience.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
-| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, User Offboarding |
-| **Conditional Access & MFA** | Security Defaults, Conditional Access Policies, Per-User MFA, Break-Glass Accounts |
+| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, User Offboarding |
+| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Security Defaults, Conditional Access Policies, Break-Glass Accounts |
 | **Exchange & Email** | Shared Mailboxes, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
 | **Endpoint Management** | Intune Enrollment, Device Compliance Policies, App Deployment |
 | **Security & Compliance** | Data Loss Prevention (DLP), Secure Score, Attack Simulator |
