@@ -55,4 +55,5 @@ A hands-on lab series built to reinforce CompTIA Network+ (N10-009) exam objecti
 
 ---
 
-*Part of the [IT Infrastructure & Security Portfolio](../)*
+[← Back to IT Portfolio](https://nhugo1.github.io/IT-Labs/)
+
