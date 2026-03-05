@@ -116,16 +116,17 @@ Complete and secure employee offboarding workflow spanning the **Microsoft 365 A
 **Activity 5: Shared Mailbox & Permissions**  
 Proactive shared mailbox creation and delegation configuration in the **Exchange Admin Center**. Demonstrates the difference between Full Access, Send As, and Send on Behalf permissions, end-to-end verification from Outlook on the web, and Exchange Online permission propagation behavior in a real tenant.
 
+**Activity 6: Email Trace & Missing Mail Investigation**  
+Missing mail investigation using the **Message Trace** tool in the Exchange Admin Center. Demonstrates how to search for a specific message, interpret delivery statuses (Delivered, Failed, Filtered as spam, Quarantined), and read the full delivery event log — the primary diagnostic tool for email-related helpdesk tickets in any M365 environment.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
 | **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery |
-| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Security Defaults, Conditional Access Policies, Break-Glass Accounts |
-| **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
-| **Endpoint Management** | Intune Enrollment, Device Compliance Policies, App Deployment |
-| **Security & Compliance** | Data Loss Prevention (DLP), Secure Score, Attack Simulator |
+| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies |
+| **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Message Trace, Mail Flow Diagnostics, Distribution Lists, Email Aliases, Out-of-Office |
+| **Security & Compliance** | Data Loss Prevention (DLP), Secure Score |
 | **SharePoint & Collaboration** | Site Creation, Permission Management, Guest Access, Teams Integration |
-| **PowerShell & Automation** | Microsoft Graph, M365 PowerShell Modules, User Reporting, Bulk Operations |
 
-**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Microsoft Intune, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender, PowerShell.
+**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender, Outlook on the Web.
