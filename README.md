@@ -113,13 +113,16 @@ Security group creation and membership management in **Microsoft Entra ID**. Dem
 **Activity 4: User Offboarding**  
 Complete and secure employee offboarding workflow spanning the **Microsoft 365 Admin Center** and **Exchange Admin Center**. Demonstrates the correct order of operations for access termination, mailbox conversion to shared mailbox for data preservation, license reclamation, group membership cleanup, and soft-delete account removal with a 30-day recovery window.
 
+**Activity 5: Shared Mailbox & Permissions**  
+Proactive shared mailbox creation and delegation configuration in the **Exchange Admin Center**. Demonstrates the difference between Full Access, Send As, and Send on Behalf permissions, end-to-end verification from Outlook on the web, and Exchange Online permission propagation behavior in a real tenant.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
 | **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery |
 | **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Security Defaults, Conditional Access Policies, Break-Glass Accounts |
-| **Exchange & Email** | Shared Mailboxes, Mailbox Conversion, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
+| **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
 | **Endpoint Management** | Intune Enrollment, Device Compliance Policies, App Deployment |
 | **Security & Compliance** | Data Loss Prevention (DLP), Secure Score, Attack Simulator |
 | **SharePoint & Collaboration** | Site Creation, Permission Management, Guest Access, Teams Integration |
