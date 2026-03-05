@@ -20,29 +20,29 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 | Lab | Title | Status |
 |---|---|---|
 | [Activity 5](Activity5_Shared-Mailbox-Permissions/) | Shared Mailbox & Permissions | ✅ Complete |
-| Activity 6 | Email Trace & Missing Mail Investigation | ⏳ Upcoming |
-| Activity 13 | Distribution Lists, Email Aliases & Out-of-Office | ⏳ Upcoming |
+| [Activity 6](Activity6_Email-Trace-Missing-Mail/) | Email Trace & Missing Mail Investigation | ✅ Complete |
+| Activity 7 | Distribution Lists, Email Aliases & Out-of-Office | ⏳ Upcoming |
 
 ### Security & Compliance
 
 | Lab | Title | Status |
 |---|---|---|
-| Activity 7 | Data Loss Prevention (DLP) Policy | ⏳ Upcoming |
-| Activity 8 | Secure Score Review & Hardening | ⏳ Upcoming |
+| Activity 8 | Data Loss Prevention (DLP) Policy | ⏳ Upcoming |
+| Activity 9 | Secure Score Review & Hardening | ⏳ Upcoming |
 
 ### SharePoint & Collaboration
 
 | Lab | Title | Status |
 |---|---|---|
-| Activity 9 | Create & Configure a SharePoint Site | ⏳ Upcoming |
-| Activity 10 | SharePoint Permissions & Guest Access | ⏳ Upcoming |
+| Activity 10 | Create & Configure a SharePoint Site | ⏳ Upcoming |
+| Activity 11 | SharePoint Permissions & Guest Access | ⏳ Upcoming |
 | Activity 12 | Connect SharePoint Document Library to Teams | ⏳ Upcoming |
 
 ### Conditional Access & MFA
 
 | Lab | Title | Status |
 |---|---|---|
-| Activity 11 | Conditional Access Policy | ⏳ Upcoming |
+| Activity 13 | Conditional Access Policy | ⏳ Upcoming |
 
 ---
 
