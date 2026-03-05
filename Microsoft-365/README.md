@@ -13,7 +13,7 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 | [Activity 1](Activity1_New-User-Onboarding/) | New User Onboarding | ✅ Complete |
 | [Activity 2](Activity2_Password-Reset-Account-Unlock-MFA/) | Password Reset, Account Unlock & Per-User MFA | ✅ Complete |
 | [Activity 3](Activity3_Security-Groups-Group-Based-Licensing/) | Security Groups & Group-Based License Assignment | ✅ Complete |
-| Activity 4 | User Offboarding | ⏳ Upcoming |
+| [Activity 4](Activity4_User-Offboarding/) | User Offboarding | ✅ Complete |
 
 ### Conditional Access & MFA
 
