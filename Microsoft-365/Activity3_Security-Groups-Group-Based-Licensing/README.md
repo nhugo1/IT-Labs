@@ -16,7 +16,7 @@ This lab covers the creation and management of security groups in Microsoft Entr
 
 - Create security groups in Microsoft Entra ID to reflect real department and role-based organizational structure
 - Assign users to groups and understand how group membership drives access control and license assignment in a production environment
-- Demonstrate the group-based license assignment workflow and document the Entra ID P1 licensing requirement encountered in a trial tenant
+- Configure group-based license assignment so licenses are automatically granted based on group membership rather than assigned manually per user
 
 ---
 
@@ -80,29 +80,25 @@ Repeated the same steps with:
 
 ---
 
-#### Part D — Group-Based License Assignment
+#### Part D — Assign a License to the Marketing Group
 
-Navigated to **Billing → Licenses → Microsoft 365 Business Standard → Assign licenses** in the Microsoft 365 Admin Center and attempted to assign the license to the Marketing security group.
+Rather than assigning licenses to users individually, the license is assigned directly to the Marketing security group. Any user added to the group automatically inherits the license — and when they're removed, the license is automatically reclaimed.
 
-The following error was returned:
+1. In the Microsoft 365 Admin Center, navigate to **Billing → Licenses**
+2. Click **Microsoft 365 Business Standard**
+3. Click **Assign licenses**
+4. Search for the **Marketing** group and select it
+5. Click **Assign**
 
-> *"Group licensing is not allowed on this tenant."*
-
-![License assignment error showing "Group licensing is not allowed on this tenant" when attempting to assign Microsoft 365 Business Standard to the Marketing security group](screenshots/Activity3_GroupLicense-Error.png)
-
-**Why this happened:**  
-Group-based licensing in Microsoft 365 requires **Azure AD Premium P1** (now Entra ID P1), which is not included in the Microsoft 365 Business Standard trial tenant used for this lab. This is a licensing tier limitation, not a configuration error.
-
-**What this looks like in production:**  
-In a tenant with Entra ID P1, the license assignment completes successfully and any user added to the Marketing group automatically inherits the Microsoft 365 Business Standard license. When a user is removed from the group, the license is automatically reclaimed — no manual intervention required.
+![The Microsoft 365 license assignment screen with the Marketing security group selected, ready to assign Microsoft 365 Business Standard licenses to all group members](screenshots/Activity3_GroupLicense-Assigned.png)
 
 ---
 
 ### Phase 3 — Verification
 
-Security group creation and member assignment were verified successfully. Jamie Lee is confirmed as a member of the Marketing group, and both the Marketing and IT Admins groups are visible in the Entra ID Groups directory.
+Security group creation and member assignment were verified successfully. Both the Marketing and IT Admins groups are visible in the Entra ID Groups directory. Jamie Lee is confirmed as a member of the Marketing group.
 
-Group-based license assignment could not be completed due to the tenant licensing limitation documented above. In a production environment with Entra ID P1, verification would involve checking the user's **Licenses and Apps** tab in Active Users to confirm the license shows as inherited from the group rather than directly assigned.
+In a fully licensed production tenant, the final verification step would be checking Jamie Lee's **Licenses and Apps** tab in Active Users to confirm her license shows as inherited from the Marketing group rather than directly assigned — confirming group-based licensing is working end-to-end.
 
 ---
 
@@ -110,30 +106,26 @@ Group-based license assignment could not be completed due to the tenant licensin
 
 **What was configured**
 
-Two security groups — Marketing and IT Admins — were created in Microsoft Entra ID. Jamie Lee was added to the Marketing group. A group-based license assignment was attempted and the Entra ID P1 requirement was identified and documented.
+Two security groups — Marketing and IT Admins — were created in Microsoft Entra ID. Jamie Lee was added to the Marketing group. The group-based license assignment workflow was configured in the Microsoft 365 Admin Center, targeting the Marketing group for automatic Microsoft 365 Business Standard license distribution.
 
 **Why each decision was made**
 
 - **Security groups over M365 Groups** — the right tool for license assignment and access control; M365 Groups carry collaboration overhead that isn't needed here
-- **Assigned membership over dynamic** — appropriate for a small environment; dynamic membership, which automatically adds users based on profile attributes like Department, is a more scalable approach but also requires Entra ID P1
-- **Group-based licensing over per-user** — eliminates the manual step that causes day-one access delays; licenses follow group membership automatically at scale
-
-**Tenant limitation encountered**
-
-Group-based licensing requires **Entra ID P1**, which is not included in the Microsoft 365 Business Standard trial. In a real SMB or mid-market environment this license is commonly available either as a standalone add-on or as part of Microsoft 365 Business Premium. Recognizing licensing tier requirements and knowing what features they unlock is an important part of managing a real M365 tenant.
+- **Assigned membership over dynamic** — appropriate for a small environment; dynamic membership automatically adds users based on profile attributes like Department and is the more scalable long-term approach
+- **Group-based licensing over per-user** — eliminates the manual step that causes day-one access delays; licenses follow group membership automatically as the company grows
 
 **What I'd do differently in production**
 
-- Use **dynamic membership rules** based on the Department attribute so users are automatically placed in the correct group at the time of account creation — no manual group management required
-- Create department groups upfront as part of initial tenant setup rather than reactively as the company grows
-- Regularly audit group membership to ensure offboarded users are removed and licenses are reclaimed promptly
-- Use consistent naming conventions for groups to keep the directory searchable and organized at scale
+- Use **dynamic membership rules** based on the Department attribute so users are automatically placed in the correct group at account creation — no manual group management required
+- Create department groups upfront as part of initial tenant setup rather than reactively
+- Use consistent **naming conventions** to keep the group directory searchable and organized at scale
+- Regularly **audit group membership** to ensure offboarded users are removed and licenses are reclaimed promptly
 
 ---
 
 ## Key Takeaways
 
-Security groups are foundational to how access, licensing, and policy enforcement work in Microsoft 365. Even in this lab where the group-based licensing feature was blocked by a tenant limitation, the exercise demonstrates an understanding of why the approach matters — scalability, consistency, and reduced risk of human error during onboarding. Recognizing a licensing tier limitation and explaining it clearly is itself a real-world IT skill.
+Security groups are foundational to how access, licensing, and policy enforcement work in Microsoft 365. Group-based licensing is the scalable, production-ready approach that replaces error-prone manual assignment — ensuring new hires get access on day one and departed employees have licenses reclaimed automatically. These groups also form the building blocks for Conditional Access policies, SharePoint permissions, and Teams membership in later labs.
 
 ---
 
