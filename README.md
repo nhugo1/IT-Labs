@@ -107,11 +107,14 @@ End-to-end user provisioning in the **Microsoft 365 Admin Center**. Demonstrates
 **Activity 2: Password Reset, Account Unlock & Per-User MFA**  
 Simulated helpdesk scenario handling a user sign-in failure and a company-wide MFA rollout. Demonstrates secure password reset procedures, account lockout behavior in cloud-only vs. hybrid Entra ID environments, and the distinction between MFA **Enabled** and **Enforced** states and their effect on the end-user sign-in experience.
 
+**Activity 3: Security Groups & Group-Based License Assignment**  
+Security group creation and membership management in **Microsoft Entra ID**. Demonstrates the difference between security groups and Microsoft 365 Groups, department-based group structure design, and the group-based licensing workflow — including identification of the **Entra ID P1** licensing requirement encountered in a trial tenant environment.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
-| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, User Offboarding |
+| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding |
 | **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Security Defaults, Conditional Access Policies, Break-Glass Accounts |
 | **Exchange & Email** | Shared Mailboxes, Distribution Lists, Email Aliases, Out-of-Office, Message Trace |
 | **Endpoint Management** | Intune Enrollment, Device Compliance Policies, App Deployment |
