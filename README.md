@@ -119,6 +119,9 @@ Proactive shared mailbox creation and delegation configuration in the **Exchange
 **Activity 6: Email Trace & Missing Mail Investigation**  
 Missing mail investigation using the **Message Trace** tool in the Exchange Admin Center. Demonstrates how to search for a specific message, interpret delivery statuses (Delivered, Failed, Filtered as spam, Quarantined), and read the full delivery event log — the primary diagnostic tool for email-related helpdesk tickets in any M365 environment.
 
+**Activity 7: Secure Score Review & Hardening**  
+Security posture assessment and hardening using the **Microsoft Secure Score** dashboard in the Defender portal. Demonstrates how to interpret a tenant's score, prioritize recommendations by impact and effort, and implement security improvements — showing security-aware thinking beyond basic administration.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
@@ -126,7 +129,7 @@ Missing mail investigation using the **Message Trace** tool in the Exchange Admi
 | **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery |
 | **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies |
 | **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Message Trace, Mail Flow Diagnostics, Distribution Lists, Email Aliases, Out-of-Office |
-| **Security & Compliance** | Data Loss Prevention (DLP), Secure Score |
+| **Security & Compliance** | Secure Score, Security Posture Assessment, Security Hardening |
 | **SharePoint & Collaboration** | Site Creation, Permission Management, Guest Access, Teams Integration |
 
-**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender, Outlook on the Web.
+**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender Portal, Outlook on the Web.
