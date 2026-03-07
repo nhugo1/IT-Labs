@@ -37,7 +37,7 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 | Lab | Title | Status |
 |---|---|---|
 | [Activity 8](Activity8_SharePoint-Site-Creation/) | Create & Configure a SharePoint Site | ✅ Complete |
-| Activity 9 | SharePoint Permissions & Guest Access | ⏳ Upcoming |
+| [Activity 9](Activity9_SharePoint-Permissions-Guest-Access/) | SharePoint Permissions & Guest Access | ✅ Complete |
 | Activity 10 | SharePoint + Teams Integration | ⏳ Upcoming |
 
 ### Teams Administration
