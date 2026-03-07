@@ -97,7 +97,7 @@ End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** a
 
 **[View Full Project Documentation](Microsoft-365/)**
 
-A hands-on lab series covering Microsoft 365 administration in a live tenant environment. Each activity simulates a real-world IT scenario commonly encountered in helpdesk, sysadmin, and cloud admin roles at SMB and mid-market companies. Labs span user lifecycle management, email administration, endpoint management, security, SharePoint, and PowerShell automation.
+A hands-on lab series covering Microsoft 365 administration in a live tenant environment. Each activity simulates a real-world IT scenario commonly encountered in helpdesk, sysadmin, and cloud admin roles at SMB and mid-market companies. Labs span user lifecycle management, email administration, security hardening, SharePoint, Teams, and endpoint management.
 
 ### Featured Activities:
 
@@ -122,14 +122,19 @@ Missing mail investigation using the **Message Trace** tool in the Exchange Admi
 **Activity 7: Secure Score Review & Hardening**  
 Security posture assessment and hardening using the **Microsoft Secure Score** dashboard in the Defender portal. Demonstrates how to interpret a tenant's score, prioritize recommendations by impact and effort, and implement security improvements — showing security-aware thinking beyond basic administration.
 
+**Activity 8: Create & Configure a SharePoint Site**  
+Production-ready SharePoint team site built from scratch for an HR department use case. Demonstrates deliberate structural decisions — separate document libraries for independent permission management, metadata columns instead of folders for scalable document governance, and homepage customization for day-one usability.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
 | :--- | :--- |
-| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery |
-| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies |
+| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery, Admin Roles & Delegation, SSPR |
+| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies, Named Locations, Break-Glass Accounts |
 | **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Message Trace, Mail Flow Diagnostics, Distribution Lists, Email Aliases, Out-of-Office |
-| **Security & Compliance** | Secure Score, Security Posture Assessment, Security Hardening |
-| **SharePoint & Collaboration** | Site Creation, Permission Management, Guest Access, Teams Integration |
+| **Security & Compliance** | Secure Score, Security Posture Assessment, Security Hardening, Retention Policies |
+| **SharePoint & Collaboration** | Site Creation, Document Libraries, Metadata Columns, Permission Inheritance, Guest Access, Homepage Configuration, Teams Integration |
+| **Teams Administration** | Team & Channel Management, Guest Access Policies, Meeting Policies |
+| **Endpoint Management** | Intune Overview, Device Compliance Policies, Enrollment Flow |
 
-**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Defender Portal, Outlook on the Web.
+**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Teams Admin Center, Microsoft Intune, Microsoft Defender Portal, Outlook on the Web.
