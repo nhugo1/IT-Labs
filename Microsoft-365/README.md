@@ -14,6 +14,8 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 | [Activity 2](Activity2_Password-Reset-Account-Unlock-MFA/) | Password Reset, Account Unlock & Per-User MFA | ✅ Complete |
 | [Activity 3](Activity3_Security-Groups-Group-Based-Licensing/) | Security Groups & Group-Based License Assignment | ✅ Complete |
 | [Activity 4](Activity4_User-Offboarding/) | User Offboarding | ✅ Complete |
+| Activity 15 | Admin Roles & Delegated Access | ⏳ Upcoming |
+| Activity 16 | Self-Service Password Reset (SSPR) | ⏳ Upcoming |
 
 ### Exchange & Email Administration
 
@@ -21,27 +23,40 @@ A hands-on portfolio of Microsoft 365 administration labs built in a live tenant
 |---|---|---|
 | [Activity 5](Activity5_Shared-Mailbox-Permissions/) | Shared Mailbox & Permissions | ✅ Complete |
 | [Activity 6](Activity6_Email-Trace-Missing-Mail/) | Email Trace & Missing Mail Investigation | ✅ Complete |
-| Activity 12 | Distribution Lists, Email Aliases & Out-of-Office | ⏳ Upcoming |
+| Activity 12 | New Department Email Setup | ⏳ Upcoming |
 
 ### Security & Compliance
 
 | Lab | Title | Status |
 |---|---|---|
 | [Activity 7](Activity7_Secure-Score-Hardening/) | Secure Score Review & Hardening | ✅ Complete |
+| Activity 11 | Conditional Access Policy | ⏳ Upcoming |
 
 ### SharePoint & Collaboration
 
 | Lab | Title | Status |
 |---|---|---|
-| Activity 8 | Create & Configure a SharePoint Site | ⏳ Upcoming |
+| [Activity 8](Activity8_SharePoint-Site-Creation/) | Create & Configure a SharePoint Site | ✅ Complete |
 | Activity 9 | SharePoint Permissions & Guest Access | ⏳ Upcoming |
-| Activity 10 | Connect SharePoint Document Library to Teams | ⏳ Upcoming |
+| Activity 10 | SharePoint + Teams Integration | ⏳ Upcoming |
 
-### Conditional Access & MFA
+### Teams Administration
 
 | Lab | Title | Status |
 |---|---|---|
-| Activity 11 | Conditional Access Policy | ⏳ Upcoming |
+| Activity 13 | Microsoft Teams Administration | ⏳ Upcoming |
+
+### Endpoint Management
+
+| Lab | Title | Status |
+|---|---|---|
+| Activity 14 | Intune Overview & Device Compliance | ⏳ Upcoming |
+
+### Retention & Data Management
+
+| Lab | Title | Status |
+|---|---|---|
+| Activity 17 | Retention Policies & Recycle Bin | ⏳ Upcoming |
 
 ---
 
