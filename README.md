@@ -125,6 +125,9 @@ Security posture assessment and hardening using the **Microsoft Secure Score** d
 **Activity 8: Create & Configure a SharePoint Site**  
 Production-ready SharePoint team site built from scratch for an HR department use case. Demonstrates deliberate structural decisions — separate document libraries for independent permission management, metadata columns instead of folders for scalable document governance, and homepage customization for day-one usability.
 
+**Activity 9: SharePoint Permissions & Guest Access**  
+Granular permission management on the HR Department SharePoint site. Demonstrates breaking permission inheritance on a document library, creating a scoped permission group, downgrading member access to read-only on sensitive content, and granting a user access to a single library without site membership — applying least privilege at the library level.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
@@ -133,7 +136,7 @@ Production-ready SharePoint team site built from scratch for an HR department us
 | **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies, Named Locations, Break-Glass Accounts |
 | **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Message Trace, Mail Flow Diagnostics, Distribution Lists, Email Aliases, Out-of-Office |
 | **Security & Compliance** | Secure Score, Security Posture Assessment, Security Hardening, Retention Policies |
-| **SharePoint & Collaboration** | Site Creation, Document Libraries, Metadata Columns, Permission Inheritance, Guest Access, Homepage Configuration, Teams Integration |
+| **SharePoint & Collaboration** | Site Creation, Document Libraries, Metadata Columns, Permission Inheritance, Broken Inheritance, Scoped Access, Guest Access, Homepage Configuration, Teams Integration |
 | **Teams Administration** | Team & Channel Management, Guest Access Policies, Meeting Policies |
 | **Endpoint Management** | Intune Overview, Device Compliance Policies, Enrollment Flow |
 
