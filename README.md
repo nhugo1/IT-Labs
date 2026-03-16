@@ -78,6 +78,9 @@ Three-VLAN enterprise network built in **Cisco Packet Tracer** using a Cisco 296
 **Activity 2: Remote Access VPN with Windows RRAS**  
 End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** as the L2TP/IPSec server and the Windows 11 built-in VPN client. Demonstrates IP address pool configuration, pre-shared key authentication, Active Directory dial-in permissions, and tunnel verification via RRAS console and ipconfig.
 
+**Activity 4: DNS & DHCP Configuration & Troubleshooting**  
+DNS and DHCP server configuration on Windows Server 2022 in a live domain environment. Demonstrates DHCP scope creation, MAC-based reservations, DNS record types (A, PTR, CNAME), reverse lookup zones, and hands-on troubleshooting of both DNS resolution failures and DHCP lease failures using standard CLI tools.
+
 ### Technical Skills Demonstrated:
 
 | Category | Competencies |
@@ -85,11 +88,12 @@ End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** a
 | **Network Segmentation** | VLAN design, IEEE 802.1Q tagging, trunk vs. access ports, inter-VLAN routing |
 | **Routing & Switching** | Router-on-a-stick, subinterface configuration, static routing, show ip route verification |
 | **VPN & Remote Access** | L2TP/IPSec tunnel configuration, RRAS role setup, IP address pool management, PSK authentication |
+| **Network Services** | DHCP scope configuration, MAC-based reservations, APIPA identification, DNS record types (A, PTR, CNAME), reverse lookup zones, DNS scavenging |
 | **Network Security** | Firewall rule verification, VPN authentication stack (IPSec PSK + MS-CHAPv2), AD dial-in permissions |
-| **Verification & Diagnostics** | ping, traceroute, ipconfig /all, show vlan brief, show ip interface brief, show ip route |
+| **Verification & Diagnostics** | ping, traceroute, ipconfig /all, ipconfig /release, ipconfig /renew, ipconfig /flushdns, nslookup, show vlan brief, show ip interface brief, show ip route |
 | **Documentation** | Network topology diagrams, CLI command reference, phase-based lab documentation |
 
-**Technologies Used:** Cisco Packet Tracer, Windows Server 2022 (RRAS), Windows 11, Active Directory, L2TP/IPSec, IEEE 802.1Q.
+**Technologies Used:** Cisco Packet Tracer, Windows Server 2022 (RRAS, DNS, DHCP), Windows 11, Active Directory, L2TP/IPSec, IEEE 802.1Q.
 
 ---
 
