@@ -1,147 +1,47 @@
 # IT Infrastructure & Security Portfolio
 
-Welcome to my technical documentation repository. This site serves as a portfolio of hands-on labs focused on enterprise system administration, identity management, network security hardening, and technical support operations.
+Hands-on technical labs covering enterprise IT administration, network engineering, cloud services, and security operations. Each series is built around real-world scenarios, live environments, and portfolio-quality documentation.
 
 ---
 
-## Helpdesk & Troubleshooting Lab Series
+<details>
+<summary>🖥️ Helpdesk & Troubleshooting</summary>
 
-**[View Full Project Documentation](Helpdesk-Troubleshooting-Labs/)**
+Simulated IT support scenarios covering the full ticket lifecycle — triage, root cause analysis, resolution, and documentation — using Jira Service Management integrated with a live Active Directory environment.
 
-A comprehensive series of simulated IT support scenarios demonstrating ticket management, systematic troubleshooting, and technical problem-solving across various priority levels and complexity tiers.
+**[View Full Documentation →](Helpdesk-Troubleshooting-Labs/)**
 
-### Featured Activities:
-
-**Activity 1: Password Lockout Resolution**  
-Standard incident management integrating **Jira Service Management** with **Active Directory**. Demonstrates the full lifecycle of an IT incident, from ticket ingestion and user verification to technical resolution and documentation.
-
-**Activity 2: Multi-Ticket Priority Management**  
-Realistic helpdesk simulation handling three concurrent tickets (Critical, Medium, Low priority) requiring triage, systematic prioritization, and resolution based on business impact. Demonstrates ability to manage competing priorities while maintaining professional user communication.
-
-**Activity 3: USB WiFi Adapter Root Cause Analysis**  
-Real production issue showcasing advanced diagnostic methodology using **Event Viewer forensics** to identify driver module crashes. Demonstrates root cause analysis versus symptom treatment, hardware lifecycle assessment, and honest documentation of technical limitations when manufacturer support is unavailable.
-
-**Activity 4: Capacity Analysis & Hardware Lifecycle Recommendation**  
-Performance degradation investigation using **Resource Monitor** and **Task Manager** to identify hardware resource exhaustion. Demonstrates capacity planning, baseline load testing, and business-focused escalation with procurement recommendations based on quantifiable technical evidence.
-
-### Technical Skills Demonstrated:
-
-| Category | Competencies |
-| :--- | :--- |
-| **ITSM Operations** | Incident Management, Ticket Lifecycle (Jira), Priority Assignment & Triage, Service Level Agreements (SLA) |
-| **Identity Management** | Active Directory Account Unlocks, Secure Password Resets, Forced Password Changes |
-| **System Diagnostics** | Device Manager, Event Viewer Forensics, Driver Troubleshooting, Root Cause Analysis (RCA), Resource Monitor, Task Manager Performance Analysis |
-| **Hardware Analysis** | Memory Saturation Identification, Disk I/O Bottleneck Analysis, Pagefile Thrashing Detection, USB Power Management, Driver Version Assessment, Hardware Lifecycle Planning |
-| **Network Troubleshooting** | Connectivity Diagnostics (ping, ipconfig), Windows Firewall Configuration, Network Discovery, Airplane Mode Issues |
-| **File Sharing** | Workgroup Configuration, SMB Shares, Share & NTFS Permissions, Mapped Network Drives |
-| **Email Support** | Outlook/Exchange Connectivity, Autodiscover Failure Diagnosis, Profile Rebuild, DNS Record Verification |
-| **Security Protocols** | Multi-factor User Identity Verification, Defense-in-Depth (Dual Permission Layers), Network Profile Configuration (Private vs Public) |
-| **Documentation** | Detailed Technical Resolution Notes, Troubleshooting Methodology Documentation, User Education Materials, Business Impact Assessment |
-| **Time Management** | Concurrent Ticket Handling, Business Impact Assessment, Workaround Identification |
-| **Business Acumen** | Cross-departmental Escalation (Procurement), Hardware Replacement vs. Upgrade Analysis, Cost-Benefit Evaluation |
-
-**Technologies Used:** Jira Service Management, Active Directory (ADUC), Windows Server 2022, Windows 10/11 Enterprise, Microsoft Outlook, Windows Defender Firewall, Event Viewer, Device Manager, Resource Monitor, Task Manager.
+</details>
 
 ---
 
-## Active Directory & Group Policy Lab
+<details>
+<summary>🗂️ Active Directory & Group Policy</summary>
 
-**[View Full Project Documentation](Active-Directory-Lab/)**
+Twelve enterprise administration activities on a Windows Server 2022 Domain Controller with Windows 11 endpoints. Covers identity management, Group Policy enforcement, security hardening, and data governance.
 
-A comprehensive enterprise simulation featuring a Windows Server 2022 Domain Controller and Windows 11 endpoints. This lab documents 12 high-impact activities designed to mirror real-world sysadmin tasks and security requirements.
+**[View Full Documentation →](Active-Directory-Lab/)**
 
-### Technical Skills Demonstrated:
-
-| Category | Competencies |
-| :--- | :--- |
-| **Identity & Access** | Active Directory (ADUC), Service Accounts, Fine-Grained Password Policies (FGPP), Access-Based Enumeration (ABE) |
-| **Policy Enforcement** | Group Policy (GPMC), Administrative Templates, GPP Drive Mapping |
-| **Security Hardening** | USB/Removable Storage Lockdown, User Rights Assignment, Account Lockout |
-| **Data Governance** | NTFS & Share Permissions (Effective Access), Inheritance Control, FSRM Quotas, Dual-Layer Permission Model |
-| **Troubleshooting** | GPO Delegation (MS16-072), DNS/IPv4 configuration, Policy Result (gpresult) |
-
-**Technologies Used:** Windows Server 2022, Active Directory, Group Policy, FSRM
+</details>
 
 ---
 
-## Network+ Lab Series
+<details>
+<summary>🌐 Network+ Lab Series</summary>
 
-**[View Full Project Documentation](Networking-Labs/)**
+Eight labs targeting CompTIA Network+ (N10-009) objectives across all five exam domains. Built in a mixed environment of Cisco Packet Tracer and live Windows Server 2022 / Windows 11 VMs.
 
-A hands-on lab series targeting CompTIA Network+ (N10-009) exam objectives through practical configuration, verification, and documentation. Labs span all five exam domains with emphasis on network implementation, security, and troubleshooting.
+**[View Full Documentation →](Networking-Labs/)**
 
-### Featured Activities:
-
-**Activity 1: VLAN Segmentation & Inter-VLAN Routing**  
-Three-VLAN enterprise network built in **Cisco Packet Tracer** using a Cisco 2960 switch and 2911 router. Demonstrates IEEE 802.1Q trunking, access port assignment, and router-on-a-stick inter-VLAN routing with full connectivity verification using ping and show commands.
-
-**Activity 2: Remote Access VPN with Windows RRAS**  
-End-to-end remote access VPN implementation using **Windows Server 2022 RRAS** as the L2TP/IPSec server and the Windows 11 built-in VPN client. Demonstrates IP address pool configuration, pre-shared key authentication, Active Directory dial-in permissions, and tunnel verification via RRAS console and ipconfig.
-
-**Activity 4: DNS & DHCP Configuration & Troubleshooting**  
-DNS and DHCP server configuration on Windows Server 2022 in a live domain environment. Demonstrates DHCP scope creation, MAC-based reservations, DNS record types (A, PTR, CNAME), reverse lookup zones, and hands-on troubleshooting of both DNS resolution failures and DHCP lease failures using standard CLI tools.
-
-### Technical Skills Demonstrated:
-
-| Category | Competencies |
-| :--- | :--- |
-| **Network Segmentation** | VLAN design, IEEE 802.1Q tagging, trunk vs. access ports, inter-VLAN routing |
-| **Routing & Switching** | Router-on-a-stick, subinterface configuration, static routing, show ip route verification |
-| **VPN & Remote Access** | L2TP/IPSec tunnel configuration, RRAS role setup, IP address pool management, PSK authentication |
-| **Network Services** | DHCP scope configuration, MAC-based reservations, APIPA identification, DNS record types (A, PTR, CNAME), reverse lookup zones, DNS scavenging |
-| **Network Security** | Firewall rule verification, VPN authentication stack (IPSec PSK + MS-CHAPv2), AD dial-in permissions |
-| **Verification & Diagnostics** | ping, traceroute, ipconfig /all, ipconfig /release, ipconfig /renew, ipconfig /flushdns, nslookup, show vlan brief, show ip interface brief, show ip route |
-| **Documentation** | Network topology diagrams, CLI command reference, phase-based lab documentation |
-
-**Technologies Used:** Cisco Packet Tracer, Windows Server 2022 (RRAS, DNS, DHCP), Windows 11, Active Directory, L2TP/IPSec, IEEE 802.1Q.
+</details>
 
 ---
 
-## Microsoft 365 Administration Lab Series
+<details>
+<summary>☁️ Microsoft 365 Administration</summary>
 
-**[View Full Project Documentation](Microsoft-365/)**
+A 17-activity lab series built in a live Microsoft 365 Business Standard tenant. Covers user lifecycle management, Exchange, SharePoint, Teams, security hardening, Conditional Access, and endpoint management.
 
-A hands-on lab series covering Microsoft 365 administration in a live tenant environment. Each activity simulates a real-world IT scenario commonly encountered in helpdesk, sysadmin, and cloud admin roles at SMB and mid-market companies. Labs span user lifecycle management, email administration, security hardening, SharePoint, Teams, and endpoint management.
+**[View Full Documentation →](Microsoft-365/)**
 
-### Featured Activities:
-
-**Activity 1: New User Onboarding**  
-End-to-end user provisioning in the **Microsoft 365 Admin Center**. Demonstrates license assignment, profile metadata configuration, least privilege role assignment, and first-login verification from both the admin and end-user perspective.
-
-**Activity 2: Password Reset, Account Unlock & Per-User MFA**  
-Simulated helpdesk scenario handling a user sign-in failure and a company-wide MFA rollout. Demonstrates secure password reset procedures, account lockout behavior in cloud-only vs. hybrid Entra ID environments, and the distinction between MFA **Enabled** and **Enforced** states and their effect on the end-user sign-in experience.
-
-**Activity 3: Security Groups & Group-Based License Assignment**  
-Security group creation and membership management in **Microsoft Entra ID**. Demonstrates the difference between security groups and Microsoft 365 Groups, department-based group structure design, and the group-based licensing workflow including the **Entra ID P1** licensing requirement for full automation.
-
-**Activity 4: User Offboarding**  
-Complete and secure employee offboarding workflow spanning the **Microsoft 365 Admin Center** and **Exchange Admin Center**. Demonstrates the correct order of operations for access termination, mailbox conversion to shared mailbox for data preservation, license reclamation, group membership cleanup, and soft-delete account removal with a 30-day recovery window.
-
-**Activity 5: Shared Mailbox & Permissions**  
-Proactive shared mailbox creation and delegation configuration in the **Exchange Admin Center**. Demonstrates the difference between Full Access, Send As, and Send on Behalf permissions, end-to-end verification from Outlook on the web, and Exchange Online permission propagation behavior in a real tenant.
-
-**Activity 6: Email Trace & Missing Mail Investigation**  
-Missing mail investigation using the **Message Trace** tool in the Exchange Admin Center. Demonstrates how to search for a specific message, interpret delivery statuses (Delivered, Failed, Filtered as spam, Quarantined), and read the full delivery event log — the primary diagnostic tool for email-related helpdesk tickets in any M365 environment.
-
-**Activity 7: Secure Score Review & Hardening**  
-Security posture assessment and hardening using the **Microsoft Secure Score** dashboard in the Defender portal. Demonstrates how to interpret a tenant's score, prioritize recommendations by impact and effort, and implement security improvements — showing security-aware thinking beyond basic administration.
-
-**Activity 8: Create & Configure a SharePoint Site**  
-Production-ready SharePoint team site built from scratch for an HR department use case. Demonstrates deliberate structural decisions — separate document libraries for independent permission management, metadata columns instead of folders for scalable document governance, and homepage customization for day-one usability.
-
-**Activity 9: SharePoint Permissions & Guest Access**  
-Granular permission management on the HR Department SharePoint site. Demonstrates breaking permission inheritance on a document library, creating a scoped permission group, downgrading member access to read-only on sensitive content, and granting a user access to a single library without site membership — applying least privilege at the library level.
-
-### Technical Skills Demonstrated:
-
-| Category | Competencies |
-| :--- | :--- |
-| **Identity & User Management** | User Provisioning, License Assignment, Usage Location, Profile Metadata, Least Privilege, Password Reset, Account Lockout, Security Groups, Group-Based Licensing, User Offboarding, Soft Delete & Recovery, Admin Roles & Delegation, SSPR |
-| **Conditional Access & MFA** | Per-User MFA (Enabled vs. Enforced), MFA Registration Flow, Conditional Access Policies, Named Locations, Break-Glass Accounts |
-| **Exchange & Email** | Shared Mailboxes, Mailbox Permissions (Full Access, Send As, Send on Behalf), Mailbox Conversion, Message Trace, Mail Flow Diagnostics, Distribution Lists, Email Aliases, Out-of-Office |
-| **Security & Compliance** | Secure Score, Security Posture Assessment, Security Hardening, Retention Policies |
-| **SharePoint & Collaboration** | Site Creation, Document Libraries, Metadata Columns, Permission Inheritance, Broken Inheritance, Scoped Access, Guest Access, Homepage Configuration, Teams Integration |
-| **Teams Administration** | Team & Channel Management, Guest Access Policies, Meeting Policies |
-| **Endpoint Management** | Intune Overview, Device Compliance Policies, Enrollment Flow |
-
-**Technologies Used:** Microsoft 365 Admin Center, Microsoft Entra ID, Exchange Admin Center, SharePoint Admin Center, Microsoft Teams Admin Center, Microsoft Intune, Microsoft Defender Portal, Outlook on the Web.
+</details>
