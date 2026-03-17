@@ -1,12 +1,5 @@
 # Activity 1 — IIS Web Server Installation & Multi-Site Configuration
 
-**Series:** Windows Server Administration  
-**Platform:** Windows Server 2022 — IIS 10.0  
-**Difficulty:** Beginner — Intermediate  
-**Duration:** ~2 hours
-
----
-
 ## Overview
 
 This lab covers the installation, configuration, and troubleshooting of Internet Information Services (IIS) on Windows Server 2022. IIS is Microsoft's built-in web server platform used in enterprise hosting environments to serve web applications and static content over HTTP/HTTPS.
