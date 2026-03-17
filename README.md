@@ -9,7 +9,7 @@
 
 ---
 
-> Hands-on technical labs covering enterprise system administration, network engineering, cloud services, and security operations. Built in live environments — not simulations.
+> Hands-on technical labs covering enterprise system administration, network engineering, cloud services, and security operations. 
 
 ---
 
