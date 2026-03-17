@@ -1,35 +1,47 @@
-# IT Infrastructure & Security Portfolio
+<div align="center">
 
-Hands-on technical labs covering enterprise IT administration, network engineering, cloud services, and security operations.
+# Nicholas Hugo
+### IT Infrastructure & Security Portfolio
+
+*CompTIA A+ · Security+*
+
+</div>
+
+---
+
+> Hands-on technical labs covering enterprise system administration, network engineering, cloud services, and security operations. Built in live environments — not simulations.
+
+---
 
 <details>
-<summary>📂 Navigate to a Lab Series</summary>
+<summary><strong>🗂 Browse Lab Series</strong></summary>
+<br>
 
-- [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/)
-- [Active Directory & Group Policy](Active-Directory-Lab/)
-- [Network+ Lab Series](Networking-Labs/)
-- [Microsoft 365 Administration](Microsoft-365/)
+| | Series | Focus |
+|---|---|---|
+| 🖥 | [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/) | Ticket lifecycle, root cause analysis, ITSM |
+| 🗂 | [Active Directory & Group Policy](Active-Directory-Lab/) | Identity, policy enforcement, security hardening |
+| 🌐 | [Network+ Lab Series](Networking-Labs/) | N10-009 objectives, Packet Tracer, Windows Server |
+| ☁️ | [Microsoft 365 Administration](Microsoft-365/) | Live M365 tenant, Exchange, SharePoint, Entra ID |
 
 </details>
 
 ---
 
-### 🖥️ Helpdesk & Troubleshooting
-Simulated IT support scenarios covering the full ticket lifecycle — triage, root cause analysis, resolution, and documentation — using Jira Service Management integrated with a live Active Directory environment.
+### 🖥 Helpdesk & Troubleshooting
+Four simulated support scenarios using **Jira Service Management** and a live **Active Directory** environment. Covers ticket triage, Event Viewer forensics, root cause analysis, and hardware lifecycle decisions.
 
----
-
-### 🗂️ Active Directory & Group Policy
-Twelve enterprise administration activities on a Windows Server 2022 Domain Controller with Windows 11 endpoints. Covers identity management, Group Policy enforcement, security hardening, and data governance.
-
----
+### 🗂 Active Directory & Group Policy
+Twelve sysadmin activities on a **Windows Server 2022** domain. Identity management, Group Policy enforcement, NTFS permissions, and security hardening across real enterprise configurations.
 
 ### 🌐 Network+ Lab Series
-Eight labs targeting CompTIA Network+ (N10-009) objectives across all five exam domains. Built in a mixed environment of Cisco Packet Tracer and live Windows Server 2022 / Windows 11 VMs.
-
----
+Eight labs across all five **N10-009** exam domains — VLAN segmentation, VPN configuration, Wireshark protocol analysis, DNS/DHCP troubleshooting, and OSI-based methodology.
 
 ### ☁️ Microsoft 365 Administration
-A 17-activity lab series built in a live Microsoft 365 Business Standard tenant. Covers user lifecycle management, Exchange, SharePoint, Teams, security hardening, Conditional Access, and endpoint management.
+Seventeen activities in a live **M365 Business Standard** tenant. User lifecycle, Exchange, SharePoint permissions, Secure Score, Conditional Access, Teams, and endpoint management.
 
 ---
+
+<div align="center">
+<sub>nhugo1.github.io/IT-Labs</sub>
+</div>
