@@ -12,13 +12,11 @@
 <summary><strong>🗂 Browse Lab Series</strong></summary>
 <br>
 
-| | Series | Focus |
-|---|---|---|
-| 🖥 | [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/) | Ticket lifecycle, root cause analysis, ITSM |
-| 🗂 | [Active Directory & Group Policy](Active-Directory-Lab/) | Identity, policy enforcement, security hardening |
-| 🌐 | [Network+ Lab Series](Networking-Labs/) | N10-009 objectives, Packet Tracer, Windows Server |
-| ☁️ | [Microsoft 365 Administration](Microsoft-365/) | Live M365 tenant, Exchange, SharePoint, Entra ID |
-| 🖧 | [Windows Server Administration](Windows-Server-Administration/) | IIS, server roles, enterprise infrastructure |
+- 🖥 [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/)
+- 🗂 [Active Directory & Group Policy](Active-Directory-Lab/)
+- 🌐 [Network+ Lab Series](Networking-Labs/)
+- ☁️ [Microsoft 365 Administration](Microsoft-365/)
+- 🖧 [Windows Server Administration](Windows-Server-Administration/)
 
 </details>
 
