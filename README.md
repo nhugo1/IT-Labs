@@ -2,16 +2,6 @@
 
 Hands-on technical labs covering enterprise IT administration, network engineering, cloud services, and security operations.
 
-<details>
-<summary>📂 Navigate to a Lab Series</summary>
-
-- [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/)
-- [Active Directory & Group Policy](Active-Directory-Lab/)
-- [Network+ Lab Series](Networking-Labs/)
-- [Microsoft 365 Administration](Microsoft-365/)
-
-</details>
-
 ---
 
 ### 🖥️ Helpdesk & Troubleshooting
@@ -31,3 +21,15 @@ Eight labs targeting CompTIA Network+ (N10-009) objectives across all five exam 
 
 ### ☁️ Microsoft 365 Administration
 A 17-activity lab series built in a live Microsoft 365 Business Standard tenant. Covers user lifecycle management, Exchange, SharePoint, Teams, security hardening, Conditional Access, and endpoint management.
+
+---
+
+<details>
+<summary>📂 Navigate to a Lab Series</summary>
+
+- [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/)
+- [Active Directory & Group Policy](Active-Directory-Lab/)
+- [Network+ Lab Series](Networking-Labs/)
+- [Microsoft 365 Administration](Microsoft-365/)
+
+</details>
