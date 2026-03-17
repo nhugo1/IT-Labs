@@ -11,13 +11,13 @@
 <details>
 <summary><strong>🗂 Browse Lab Series</strong></summary>
 <br>
-
-- 🖥 [Helpdesk & Troubleshooting](Helpdesk-Troubleshooting-Labs/)
-- 🗂 [Active Directory & Group Policy](Active-Directory-Lab/)
-- 🌐 [Network+ Lab Series](Networking-Labs/)
-- ☁️ [Microsoft 365 Administration](Microsoft-365/)
-- 🖧 [Windows Server Administration](Windows-Server-Administration/)
-
+<ul>
+<li>🖥 <a href="Helpdesk-Troubleshooting-Labs/">Helpdesk & Troubleshooting</a></li>
+<li>🗂 <a href="Active-Directory-Lab/">Active Directory & Group Policy</a></li>
+<li>🌐 <a href="Networking-Labs/">Network+ Lab Series</a></li>
+<li>☁️ <a href="Microsoft-365/">Microsoft 365 Administration</a></li>
+<li>🖧 <a href="Windows-Server-Administration/">Windows Server Administration</a></li>
+</ul>
 </details>
 
 ---
