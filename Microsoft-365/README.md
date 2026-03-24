@@ -20,7 +20,7 @@ A hands-on lab series built in a live Microsoft 365 Business Standard tenant. Ea
 | [Activity 7](Activity7_Secure-Score-Hardening/) | Secure Score Review & Hardening | Security posture assessment, recommendation implementation | ✅ |
 | [Activity 8](Activity8_SharePoint-Site-Creation/) | Create & Configure a SharePoint Site | Site creation, document libraries, metadata columns, homepage | ✅ |
 | [Activity 9](Activity9_SharePoint-Permissions-Guest-Access/) | SharePoint Permissions & Guest Access | Broken inheritance, scoped access, permission groups | ✅ |
-| Activity 10 | SharePoint + Teams Integration | Library pinning, file sync verification, channel notifications | ⏳ |
+| [Activity 10](Activity10_SharePoint-Teams-Integration/) | SharePoint + Teams Integration | Library pinning, file sync verification, channel notifications | ✅ |
 | Activity 11 | Conditional Access Policy | MFA enforcement, named locations, break-glass accounts | ⏳ |
 | Activity 12 | New Department Email Setup | Distribution lists, email aliases, out-of-office | ⏳ |
 | Activity 13 | Microsoft Teams Administration | Team/channel management, guest access, meeting policies | ⏳ |
