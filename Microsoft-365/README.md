@@ -22,7 +22,7 @@ A hands-on lab series built in a live Microsoft 365 Business Standard tenant. Ea
 | [Activity 9](Activity9_SharePoint-Permissions-Guest-Access/) | SharePoint Permissions & Guest Access | Broken inheritance, scoped access, permission groups | ✅ |
 | [Activity 10](Activity10_SharePoint-Teams-Integration/) | SharePoint + Teams Integration | Library pinning, file sync verification, channel notifications | ✅ |
 | Activity 11 | Conditional Access Policy | MFA enforcement, named locations, break-glass accounts | ⏳ |
-| Activity 12 | New Department Email Setup | Distribution lists, email aliases, out-of-office | ⏳ |
+| [Activity 12](Activity12_New-Department-Email-Setup/) | New Department Email Setup | Distribution lists, email aliases, out-of-office | ✅ |
 | Activity 13 | Microsoft Teams Administration | Team/channel management, guest access, meeting policies | ⏳ |
 | Activity 14 | Intune Overview & Device Compliance | Compliance policies, enrollment flow, device management | ⏳ |
 | Activity 15 | Admin Roles & Delegated Access | Scoped admin roles, least privilege, role assignment | ⏳ |
