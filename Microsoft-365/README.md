@@ -23,11 +23,8 @@ A hands-on lab series built in a live Microsoft 365 Business Standard tenant. Ea
 | [Activity 10](Activity10_SharePoint-Teams-Integration/) | SharePoint + Teams Integration | Library pinning, file sync verification, channel notifications | ✅ |
 | [Activity 11](Activity11_Retention-Policies-Recycle-Bin/) | Conditional Access Policy | MFA enforcement, named locations, break-glass accounts | ✅ |
 | [Activity 12](Activity12_New-Department-Email-Setup/) | New Department Email Setup | Distribution lists, email aliases, out-of-office | ✅ |
-| Activity 13 | Microsoft Teams Administration | Team/channel management, guest access, meeting policies | ⏳ |
-| Activity 14 | Intune Overview & Device Compliance | Compliance policies, enrollment flow, device management | ⏳ |
-| Activity 15 | Admin Roles & Delegated Access | Scoped admin roles, least privilege, role assignment | ⏳ |
-| Activity 16 | Self-Service Password Reset (SSPR) | SSPR configuration, authentication methods, user verification | ⏳ |
-| Activity 17 | Retention Policies & Recycle Bin | Retention policies, recycle bin behavior, data recovery | ⏳ |
+| [Activity 13](Activity13_Admin-Roles-Delegated-Access/) | MAdmin Roles & Delegated Access | Scoped admin roles, least privilege, role assignment | ✅ |
+| [Activity 14](Activity14_Self-Service-Password-Reset/) |Self-Service Password Reset (SSPR) | SSPR configuration, authentication methods, user verification | ✅ |
 
 ---
 
