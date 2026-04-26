@@ -26,7 +26,7 @@ A hands-on lab series built to reinforce CompTIA Network+ (N10-009) exam objecti
 | 5 | IP Addressing & Subnetting Design | Packet Tracer + Win VMs | 1.0 | 🔜 Upcoming |
 | 6 | Firewall ACL Configuration & Traffic Filtering | Cisco Packet Tracer | 4.0 | 🔜 Upcoming |
 | 7 | Static & Dynamic Routing (OSPF) | Cisco Packet Tracer | 2.0 | 🔜 Upcoming |
-| 8 | .[Network Troubleshooting — OSI-Based Methodology](./Activity8_Network-Troubleshooting/) | Win VMs + Packet Tracer | 5.0 | ✅ Complete |
+| 8 | [Network Troubleshooting — OSI-Based Methodology](./Activity8_Network-Troubleshooting/) | Win VMs + Packet Tracer | 5.0 | ✅ Complete |
 
 ---
 
