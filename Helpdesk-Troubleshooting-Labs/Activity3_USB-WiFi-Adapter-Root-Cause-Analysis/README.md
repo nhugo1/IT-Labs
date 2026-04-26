@@ -157,25 +157,7 @@ The final step was documenting the complete troubleshooting methodology, root ca
 
 **User Communication (for end-user):**
 > "I found that your WiFi adapter's driver software was crashing intermittently. I've reinstalled the driver cleanly and disabled some power-saving features that can interfere with USB adapters. Unfortunately, the manufacturer hasn't released driver updates in over 2 years, so if this happens again, we may need to look at replacing the adapter with a newer model. Monitor it for the next couple weeks and let us know immediately if you have any issues."
-
----
-
-## Interview Application
-
-This activity directly addresses common IT helpdesk interview questions:
-
-**"Tell me about a time you had to troubleshoot a recurring technical problem."**
-
-*Sample Answer:* "In my portfolio, I documented a real issue where a user's USB WiFi adapter kept failing intermittently. Instead of just having them replug it each time, I used Event Viewer to identify Event ID 10002 - the MediaTek driver module was crashing. I discovered the driver was 26 months old with no updates available from the manufacturer. I performed a clean driver reinstall and disabled USB power management features that were causing instability. I also set a monitoring plan since the hardware has no manufacturer support, documenting that replacement might be needed if it recurs. This experience taught me the importance of root cause analysis versus just applying workarounds."
-
-**"How do you use Event Viewer in troubleshooting?"**
-
-*Sample Answer:* "Event Viewer is one of my primary diagnostic tools. In a recent case, a user reported intermittent WiFi failures. I filtered the System log for WLAN-AutoConfig and Kernel-PnP events, which revealed Event ID 10002 showing a specific driver module crash. This gave me the exact failure point - the mtkihvux.dll MediaTek driver component - and allowed me to implement a targeted solution rather than trial-and-error troubleshooting."
-
-**"What do you do when there's no perfect technical solution?"**
-
-*Sample Answer:* "I encountered this with a WiFi adapter that had a 26-month-old driver with no manufacturer updates available. I couldn't install a newer driver, so I focused on optimization - clean reinstallation and power management configuration to improve stability. I documented the hardware limitation honestly in the ticket and established monitoring criteria for when replacement would be necessary. Sometimes the professional approach is acknowledging limitations while implementing the best available solution."
-
+> 
 ---
 
 ## Tools & Technologies Used
