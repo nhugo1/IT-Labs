@@ -1,0 +1,672 @@
+<!DOCTYPE html>
+<html lang="en" class="dark">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="description" content="Cure your board blindness by drilling hanging pieces from your own game history.">
+    <title>Denoosed: You Can't Hang</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/pyodide/v0.25.0/full/pyodide.js"></script>
+    <link rel="stylesheet" href="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://unpkg.com/@chrisoakman/chessboardjs@1.0.0/dist/chessboard-1.0.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/localforage/1.10.0/localforage.min.js"></script>
+    <style>
+        * { box-sizing: border-box; touch-action: manipulation; }
+        body { min-height: 100dvh; overflow-y: auto; overscroll-behavior: none; background: #020617; color: #f8fafc; font-family: ui-sans-serif, system-ui, sans-serif; }
+        body::-webkit-scrollbar { width: 4px; }
+        body::-webkit-scrollbar-thumb { background: #1e293b; border-radius: 10px; }
+        #main-app { width: 100%; min-height: 100dvh; display: flex; flex-direction: column; align-items: center; }
+        #board-wrapper { width: 100%; max-width: min(100vw - 32px, 100dvh - 430px, 640px); margin: 0 auto; }
+        #board { width: 100%; border: 2px solid #334155; border-radius: 8px; overflow: hidden; box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.5); background-color: #334155; }
+        #board-overlay { transition: background-color 0.2s ease-in-out; pointer-events: none !important; }
+        .shake { animation: shake 0.3s cubic-bezier(.36,.07,.19,.97) both; }
+        @keyframes shake { 10%, 90% { transform: translate3d(-1px, 0, 0); } 20%, 80% { transform: translate3d(2px, 0, 0); } 30%, 50%, 70% { transform: translate3d(-4px, 0, 0); } 40%, 60% { transform: translate3d(4px, 0, 0); } }
+        .found-sq { background: rgba(168, 85, 247, 0.45) !important; box-shadow: inset 0 0 12px #a855f7; }
+        .stat-val { font-family: ui-monospace, SFMono-Regular, monospace; }
+        #progress-bar { position: absolute; left: 0; top: 0; bottom: 0; background: rgba(168, 85, 247, 0.15); width: 100%; transition: width 0.1s linear; z-index: 0; }
+        @media screen and (orientation: landscape) and (max-height: 700px) {
+            #main-app, #settings-modal, #stats-panel, #instr-modal, #summary-modal, #review-modal { display: none !important; }
+            #landscape-warning { display: flex !important; }
+        }
+    </style>
+</head>
+<body class="bg-slate-950">
+
+    <div id="landscape-warning" class="hidden fixed inset-0 z-[9999] bg-slate-950 text-purple-400 font-black uppercase tracking-[0.1em] text-center p-6 flex-col items-center justify-center">
+        Please rotate your device to portrait mode.
+    </div>
+
+    <div id="main-app" class="px-4 py-3">
+        
+        <div id="summary-modal" class="hidden fixed inset-0 bg-slate-950/98 z-[200] flex flex-col items-center justify-center p-6 backdrop-blur-xl">
+            <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-8 shadow-2xl text-center">
+                <h2 class="text-3xl font-black italic text-white mb-1 uppercase tracking-tighter">Session Over</h2>
+                <p id="summary-mode-label" class="text-[10px] font-mono text-purple-500 uppercase tracking-[0.3em] mb-8">Performance Report</p>
+                <div class="grid grid-cols-2 gap-4 mb-8">
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800"><span class="block text-[9px] uppercase text-slate-500 font-bold mb-1">Avg Speed</span><span id="sum-speed" class="text-2xl font-black text-white stat-val">0s</span></div>
+                    <div class="bg-slate-950 p-4 rounded-2xl border border-slate-800"><span class="block text-[9px] uppercase text-slate-500 font-bold mb-1 text-center" id="sum-score-label">Total Found</span><span id="sum-score" class="text-2xl font-black text-emerald-400 stat-val">0</span></div>
+                </div>
+                <div id="new-pb-badge" class="hidden text-[10px] font-black text-purple-400 uppercase mb-6 animate-pulse">🔥 New High Score!</div>
+                <button onclick="$('#summary-modal').hide()" class="w-full bg-purple-600 py-4 rounded-2xl font-black uppercase tracking-widest text-white shadow-lg">Continue Training</button>
+            </div>
+        </div>
+
+        <div id="instr-modal" class="hidden fixed inset-0 bg-slate-950/98 z-[300] p-6 overflow-y-auto backdrop-blur-xl">
+            <div class="w-full max-w-md mx-auto space-y-6 pb-12">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4"><h2 class="text-2xl font-black italic uppercase text-white">Instructions</h2><button onclick="$('#instr-modal').hide()" class="text-purple-500 font-bold uppercase text-xs">Close</button></div>
+                <section class="space-y-4 text-sm text-slate-300">
+                    <p><strong class="text-white">Speed & Trials:</strong> Find the "Victim." This is a piece currently losing material or undefended.</p>
+                    <p><strong class="text-white">Loose Mode:</strong> Identify EVERY piece for the side to move that currently has 0 defenders.</p>
+                </section>
+            </div>
+        </div>
+
+        <div id="review-modal" class="hidden fixed inset-0 bg-slate-950/98 z-[250] flex flex-col items-center justify-center p-6 backdrop-blur-md">
+            <div class="w-full max-w-sm bg-slate-900 border border-slate-800 rounded-3xl p-6 shadow-2xl text-center">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-3 mb-4"><h2 class="text-xl font-black italic uppercase text-white">Analysis</h2><button onclick="$('#review-modal').hide()" class="text-purple-500 font-bold uppercase text-xs">Close</button></div>
+                <div id="review-board" class="mb-4 aspect-square w-full"></div>
+                <div id="review-content" class="max-h-40 overflow-y-auto w-full space-y-2"></div>
+            </div>
+        </div>
+
+        <div id="stats-panel" class="hidden fixed inset-0 bg-slate-950/98 z-[110] p-6 overflow-y-auto backdrop-blur-md">
+            <div class="w-full max-w-md mx-auto space-y-6 pb-20 text-center">
+                <div class="flex justify-between items-center border-b border-slate-800 pb-4"><h2 class="text-2xl font-black italic uppercase text-white">Stats</h2><button onclick="toggleStats()" class="text-purple-500 font-bold uppercase text-xs">Close</button></div>
+                
+                <div class="space-y-3">
+                    <div id="heatmap-grid" class="w-full aspect-square grid grid-cols-8 grid-rows-8 bg-slate-800 rounded overflow-hidden shadow-2xl"></div>
+                    <p class="text-[10px] text-slate-500 font-medium leading-relaxed italic px-4">
+                        The heatmap tracks <span class="text-red-500 font-bold uppercase">Board Blindness</span>. Red = misses; Blue = vision.
+                    </p>
+                </div>
+
+                <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800"><h4 class="text-[10px] font-black text-slate-500 uppercase mb-4 text-left">Rating Trends</h4><div class="h-40"><canvas id="ratingChart"></canvas></div></div>
+
+                <div class="grid grid-cols-1 gap-4 text-left">
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800"><h4 class="text-[10px] font-black text-emerald-500 uppercase mb-4 tracking-[0.1em]">Attacker Blindspots</h4><div class="h-64"><canvas id="assassinRadar"></canvas></div></div>
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800"><h4 class="text-[10px] font-black text-purple-500 uppercase mb-4 tracking-[0.1em]">Victim Blindspots</h4><div class="h-64"><canvas id="pieceRadar"></canvas></div></div>
+                    <div class="bg-slate-900/50 p-4 rounded-xl border border-slate-800"><h4 class="text-[10px] font-black text-blue-500 uppercase mb-4 tracking-[0.1em]">Spatial Blindspots</h4><div class="h-64"><canvas id="regionRadar"></canvas></div></div>
+                </div>
+
+                <div class="grid grid-cols-2 gap-3">
+                    <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl"><span class="text-[8px] text-slate-500 font-black uppercase block mb-1">30s Record (Total)</span><span id="pb-30-val" class="text-lg font-black text-purple-400 stat-val">0</span></div>
+                    <div class="bg-slate-900 border border-slate-800 p-3 rounded-xl"><span class="text-[8px] text-slate-500 font-black uppercase block mb-1">1m Record (Total)</span><span id="pb-60-val" class="text-lg font-black text-purple-400 stat-val">0</span></div>
+                </div>
+
+                <div class="flex gap-2">
+                    <button onclick="exportData()" class="flex-1 bg-slate-900 border border-slate-800 py-3 rounded-xl text-[9px] font-black uppercase text-slate-400">💾 Backup</button>
+                    <button onclick="$('#import-file').click()" class="flex-1 bg-slate-900 border border-slate-800 py-3 rounded-xl text-[9px] font-black uppercase text-slate-400">📂 Restore</button>
+                    <input type="file" id="import-file" class="hidden" onchange="importData(this)">
+                </div>
+                <button onclick="clearCogData()" class="mt-8 text-[10px] uppercase font-black text-red-900/50">Wipe Stats</button>
+            </div>
+        </div>
+
+        <div id="settings-modal" class="hidden fixed inset-0 bg-slate-950/95 z-[500] flex flex-col items-center justify-center p-6 text-center backdrop-blur-sm">
+            <h1 class="text-4xl font-black italic mb-2 tracking-tighter uppercase text-white">Denoosed</h1>
+            <div class="w-full max-w-sm space-y-3">
+                <button onclick="loadGuestMode()" id="guest-btn" disabled class="w-full bg-slate-800 border border-slate-700 py-4 rounded-xl font-black uppercase text-xs shadow-xl text-slate-400 mb-2 opacity-50">Loading Engine...</button>
+                <div class="flex items-center gap-2 py-2"><div class="h-px flex-1 bg-slate-800"></div><span class="text-[10px] font-black text-slate-600 uppercase">Or Sync History</span><div class="h-px flex-1 bg-slate-800"></div></div>
+                <input type="text" id="input-chesscom" placeholder="Chess.com Username" class="w-full bg-slate-900 border border-slate-800 p-4 rounded-xl text-white font-bold outline-none">
+                <input type="text" id="input-lichess" placeholder="Lichess Username" class="w-full bg-slate-900 border border-slate-800 p-4 rounded-xl text-white font-bold outline-none">
+                <button onclick="performSync()" id="sync-btn" class="w-full bg-purple-600 py-4 rounded-xl font-black uppercase shadow-xl text-white">Sync Tactical Bag</button>
+                <button onclick="closeSettings()" id="close-settings" class="w-full py-2 text-xs font-bold text-slate-500 uppercase hidden">Close</button>
+            </div>
+        </div>
+
+        <header class="w-full max-w-[640px] flex justify-between items-end mb-4 mx-auto">
+            <div class="flex flex-col"><h1 class="text-2xl font-black italic uppercase leading-none tracking-tight text-white">DE<span class="text-purple-500">NOOSED</span></h1><span class="text-[8px] text-slate-600 uppercase font-black tracking-[.25em]">You Can't Hang</span></div>
+            <div class="flex flex-col items-end gap-1">
+                <button onclick="openSettings(false)" id="user-display" class="text-[9px] text-slate-400 font-black uppercase border-b border-slate-800 pb-0.5">Switch Account</button>
+                <div id="rating-display" class="text-[8px] text-emerald-500 font-bold stat-val"></div>
+            </div>
+        </header>
+
+        <div id="dashboard-container" class="w-full max-w-[640px] mx-auto bg-slate-900/40 border border-slate-800/60 rounded-xl px-4 py-3 mb-4 backdrop-blur-sm relative overflow-hidden">
+            <div id="progress-bar" style="width: 100%;"></div>
+            <div class="relative z-10 flex justify-between items-center w-full">
+                <div class="flex flex-col"><span class="text-[9px] uppercase text-slate-500 font-black">Avg Speed</span><span id="avg-speed-display" class="text-base font-black text-white stat-val">0.0s</span></div>
+                <div class="flex flex-col items-center"><span class="text-[9px] uppercase text-slate-500 font-black">Streak</span><span id="streak-display" class="text-base font-black text-emerald-400 stat-val">0</span></div>
+                <div class="flex flex-col items-end"><span class="text-[9px] uppercase text-slate-500 font-black">Timer</span><span id="timer" class="text-base font-black text-purple-400 stat-val">0.0s</span></div>
+            </div>
+        </div>
+
+        <div id="board-wrapper">
+            <main id="board-container" class="relative w-full">
+                <div id="board" class="w-full"></div>
+                <div id="board-overlay" class="absolute inset-0 z-10"></div>
+            </main>
+        </div>
+
+        <div class="w-full flex flex-col items-center justify-center mt-4 mb-4">
+            <div id="perspective-badge" class="text-[12px] font-black uppercase text-slate-500 tracking-[.4em] mb-1">Standby</div>
+            <div id="status" class="text-[10px] font-bold text-slate-400 uppercase tracking-widest min-h-[14px]">Ready</div>
+        </div>
+
+        <div class="w-full max-w-[640px] mx-auto flex flex-col gap-2 mt-auto">
+            <div class="grid grid-cols-4 gap-2">
+                <button onclick="setMode('standard')" class="mode-btn mode-standard bg-purple-900/40 py-3 rounded-lg text-[9px] font-black uppercase text-white border border-purple-500">Speed</button>
+                <button onclick="setMode('loose')" class="mode-btn mode-loose bg-slate-900 py-3 rounded-lg text-[9px] font-black uppercase border border-slate-800 text-slate-500">Loose</button>
+                <button onclick="setMode('tt', 30)" class="mode-btn mode-tt30 bg-slate-900 py-3 rounded-lg text-[9px] font-black uppercase border border-slate-800 text-slate-500 text-center">30s Trial</button>
+                <button onclick="setMode('tt', 60)" class="mode-btn mode-tt60 bg-slate-900 py-3 rounded-lg text-[9px] font-black uppercase border border-slate-800 text-slate-500 text-center">1m Trial</button>
+            </div>
+            <button id="action-btn" disabled onclick="toggleGame()" class="w-full h-14 bg-slate-800 rounded-xl font-black text-xl uppercase shadow-xl text-white opacity-50">Loading Engine...</button>
+            <div class="grid grid-cols-3 gap-2 pb-2">
+                <button onclick="toggleStats()" class="bg-slate-900 py-3 rounded-lg border border-slate-800 text-[9px] font-black uppercase text-slate-400">📊 Stats</button>
+                <button onclick="$('#instr-modal').show()" class="bg-slate-900 py-3 rounded-lg border border-slate-800 text-[9px] font-black uppercase text-slate-400">📖 Info</button>
+                <button id="review-btn" onclick="openReview()" disabled class="bg-slate-900 py-3 rounded-lg border border-slate-800 text-[9px] font-black uppercase text-slate-400 opacity-50 text-center">🔍 Analyze Last</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let failedCurrentPuzzle = false, sessionSpeeds = [], maxStreak = 0, currentStreak = 0, sessionTotalCorrect = 0;
+        let pyodide, analyze_position, extract_elo, board, reviewBoard = null, puzzles = [], puzzleBag = [], currentPuzzle = null, lastPuzzleData = null;
+        let foundPuzzles = [];
+        let isRunning = false, isTransitioning = false, gameMode = 'standard', ttDuration = 0, startTime, timerInterval, globalTimer, globalTimerEnd = 0, pauseTime = 0;
+        let heatmapData = {}, ratingHistory = { chesscom: [], lichess: [] };
+
+        // Base structure for migration/init (Bug 13)
+        const cogDataTemplate = { 
+            regions: { rim:{h:0,m:0}, center:{h:0,m:0}, enemy:{h:0,m:0}, friendly:{h:0,m:0} }, 
+            pieces: { p:{h:0,m:0}, n:{h:0,m:0}, b:{h:0,m:0}, r:{h:0,m:0}, q:{h:0,m:0} }, 
+            assassins: { p:{h:0,m:0}, n:{h:0,m:0}, b:{h:0,m:0}, r:{h:0,m:0}, q:{h:0,m:0} } 
+        };
+        let cogData = JSON.parse(JSON.stringify(cogDataTemplate));
+
+        const PIECE_THEME = 'https://chessboardjs.com/img/chesspieces/wikipedia/{piece}.png';
+        const GUEST_FENS = [
+            "r1bqkbnr/pppp1ppp/2n5/4p3/4P3/5N2/PPPP1PPP/RNBQKB1R w KQkq - 2 3",
+            "r1b1k1nr/pppp1ppp/2n5/2b1p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 5",
+            "r1bqkb1r/pppp1ppp/2n2n2/4p3/2B1P3/5N2/PPPP1PPP/RNBQK2R w KQkq - 4 4",
+            "r2q1rk1/ppp1bppp/2np1n2/4p1B1/2B1P1b1/P1NP1N2/1PP1QPPP/R4RK1 b - - 4 9",
+            "3r2k1/p4p1p/1p4p1/2r1p3/2B1P3/2P5/PP3PPP/R4RK1 w - - 0 1",
+            "2r3k1/pp3p1p/3p2p1/4b3/4P3/1P6/P4PPP/3R1RK1 w - - 0 1"
+        ];
+
+        $(window).on('resize orientationchange', () => { if(board) board.resize(); if(reviewBoard) reviewBoard.resize(); });
+
+        window.addEventListener('visibilitychange', () => { 
+            if (document.visibilityState === 'hidden') { 
+                // Bug 2 Fix: Force saves on tab hide
+                saveHeatmapNow();
+                saveCogDataNow();
+                if (isRunning) pauseTime = Date.now(); 
+            } else { 
+                if (isRunning && pauseTime) { 
+                    let delta = Date.now() - pauseTime; 
+                    startTime += delta; 
+                    if (gameMode === 'tt') globalTimerEnd += delta; 
+                    pauseTime = 0; 
+                } 
+            }
+        });
+
+        function vibe(pattern) { if (window.navigator.vibrate) window.navigator.vibrate(pattern); }
+
+        async function init() {
+            try {
+                pyodide = await loadPyodide(); await pyodide.loadPackage("micropip");
+                const micropip = pyodide.pyimport("micropip"); await micropip.install('chess');
+                const pyCode = `
+import chess, chess.pgn, json, io, random
+
+def analyze(fen, mode="standard"):
+    b = chess.Board(fen)
+    targets = []
+    val_map = {chess.PAWN: 1, chess.KNIGHT: 3, chess.BISHOP: 3, chess.ROOK: 5, chess.QUEEN: 9, chess.KING: 100}
+    
+    for sq in chess.SQUARES:
+        p = b.piece_at(sq)
+        if not p or p.piece_type == chess.KING: continue
+        
+        # STRICTLY limit to the side whose turn it is
+        if p.color != b.turn: continue
+        
+        atks = b.attackers(not p.color, sq)
+        defs = b.attackers(p.color, sq)
+        
+        is_target = False
+        atkr_type = "none"
+        reason = ""
+
+        if mode == "loose":
+            # STRICTLY look for 0 defenders. Attacked or not doesn't matter.
+            if len(defs) == 0:
+                is_target = True
+                reason = "Loose piece (0 defenders)."
+        else:
+            # STANDARD mode: actively losing material or hanging
+            if atks:
+                non_king_atks = [b.piece_at(a) for a in atks if b.piece_at(a).piece_type != chess.KING]
+                if non_king_atks:
+                    best_atk = min(non_king_atks, key=lambda x: val_map[x.piece_type])
+                    atkr_type = best_atk.symbol().lower()
+            
+            if len(defs) == 0 and len(atks) > 0: 
+                is_target = True
+                reason = f"Hanging! Attacked by {atkr_type.upper()} with 0 defenders."
+            elif len(atks) > len(defs) and len(defs) > 0: 
+                is_target = True
+                reason = f"Overloaded! {len(atks)} attackers vs {len(defs)} defenders."
+            elif len(atks) > 0 and atkr_type != "none" and val_map[chess.Piece.from_symbol(atkr_type).piece_type] < val_map[p.piece_type]: 
+                is_target = True
+                reason = f"Trade Loss! {p.symbol().upper()} is worth more than {atkr_type.upper()}."
+
+        if is_target: 
+            targets.append({"sq": chess.square_name(sq), "p": p.symbol().lower(), "atkr": atkr_type, "reason": reason})
+            
+    return json.dumps(targets)
+
+def get_elo(pgn_str, username):
+    game = chess.pgn.read_game(io.StringIO(pgn_str))
+    if not game: return json.dumps({"fens": [], "elo": 0})
+    elo = 0
+    try:
+        w_user, b_user = game.headers.get("White", "").lower(), game.headers.get("Black", "").lower()
+        if w_user == username.lower(): elo = int(game.headers.get("WhiteElo", 0))
+        elif b_user == username.lower(): elo = int(game.headers.get("BlackElo", 0))
+    except: pass
+    b = game.board(); fens = []
+    for move in game.mainline_moves():
+        b.push(move)
+        if 12 <= b.ply() <= 70: fens.append(b.fen())
+    sample = random.sample(fens, min(len(fens), 10)) if fens else []
+    return json.dumps({"fens": sample, "elo": elo})
+`;
+                await pyodide.runPythonAsync(pyCode);
+                analyze_position = pyodide.globals.get('analyze');
+                extract_elo = pyodide.globals.get('get_elo');
+                
+                puzzles = await localforage.getItem('puzzles') || [];
+                ratingHistory = await localforage.getItem('ratingHistory') || ratingHistory;
+                
+                // Bug 13 Fix: Migration step
+                let storedCog = await localforage.getItem('cogData');
+                if(storedCog) cogData = migrateData(cogDataTemplate, storedCog);
+                
+                heatmapData = await localforage.getItem('heatmap') || {};
+                
+                updateUserDisplay();
+                finalizeSetup();
+                if (puzzles.length === 0) openSettings(true);
+            } catch (e) { 
+                console.error("Init Error", e);
+                $('#guest-btn').text("Engine Error - Refresh Page").addClass("text-red-400");
+                $('#action-btn').text("Engine Failed").addClass("bg-red-900/40 text-red-500");
+            }
+        }
+
+        function migrateData(template, stored) {
+            let migrated = JSON.parse(JSON.stringify(template));
+            for (let cat in template) {
+                if (stored[cat]) {
+                    for (let key in template[cat]) {
+                        if (stored[cat][key]) migrated[cat][key] = stored[cat][key];
+                    }
+                }
+            }
+            return migrated;
+        }
+
+        async function loadGuestMode() {
+            if (!analyze_position) return alert("Engine still loading, try again in a moment.");
+            $('#guest-btn').text("Preparing Guest Demo...").prop('disabled', true);
+            try {
+                let all = [];
+                for(let f of GUEST_FENS) all.push({ fen: f, turn: f.split(' ')[1] });
+                for(let p of all) {
+                    p.h_standard = JSON.parse(analyze_position(p.fen, 'standard'));
+                    p.h_loose = JSON.parse(analyze_position(p.fen, 'loose'));
+                }
+                puzzles = all;
+                await localforage.setItem('puzzles', all);
+                await localforage.setItem('chesscom_user', 'Guest');
+                updateUserDisplay();
+                finalizeSetup();
+                closeSettings();
+            } catch(e) {
+                console.error("Guest mode error", e);
+                alert("Could not load guest mode. Try again.");
+            } finally {
+                $('#guest-btn').prop('disabled', false).text("Try Guest Mode (No Account)");
+            }
+        }
+
+        async function updateUserDisplay() {
+            const cU = await localforage.getItem('chesscom_user'), lU = await localforage.getItem('lichess_user');
+            $('#user-display').text(`${[cU, lU].filter(x => x).join(' | ').toUpperCase() || 'Switch Account'}`);
+            if(ratingHistory.chesscom.length || ratingHistory.lichess.length) {
+                const cLast = ratingHistory.chesscom.slice(-1)[0] || 0, lLast = ratingHistory.lichess.slice(-1)[0] || 0;
+                $('#rating-display').text(`${cLast ? 'C: '+cLast : ''} ${lLast ? 'L: '+lLast : ''}`);
+            }
+        }
+
+        function finalizeSetup() { 
+            $('#action-btn').prop('disabled', false).text("Start Training").addClass('bg-purple-600').removeClass('opacity-50'); 
+            $('#guest-btn').prop('disabled', false).text("Try Guest Mode (No Account)").removeClass('opacity-50');
+            if (!board) board = Chessboard('board', { position: 'start', pieceTheme: PIECE_THEME }); 
+            $('#close-settings').removeClass('hidden'); 
+        }
+
+        function openSettings(forceSetup = false) { $('#settings-modal').removeClass('hidden'); if(forceSetup) $('#close-settings').addClass('hidden'); else $('#close-settings').removeClass('hidden'); }
+        function closeSettings() { $('#settings-modal').addClass('hidden'); }
+
+        async function performSync() {
+            let cU = $('#input-chesscom').val().trim(), lU = $('#input-lichess').val().trim();
+            if(!cU && !lU) return alert("Enter a username.");
+            $('#sync-btn').prop('disabled', true).text("Fetching Games...");
+            let all = [], cHistory = [], lHistory = [];
+            let seenFens = new Set(); // Bug 8: Deduplication Tracker
+            
+            try {
+                if(cU) {
+                    const res = await fetch(`https://api.chess.com/pub/player/${cU}/games/archives`);
+                    const data = await res.json();
+                    if(data.archives) {
+                        for(let url of data.archives.slice(-2)) {
+                            const month = await (await fetch(url)).json();
+                            month.games.forEach(g => {
+                                try {
+                                    const parsed = JSON.parse(extract_elo(g.pgn, cU));
+                                    if(parsed.elo > 0) cHistory.push(parsed.elo);
+                                    parsed.fens.forEach(f => {
+                                        // Bug 8 Fix: Avoid duplicate fens
+                                        if(!seenFens.has(f)) {
+                                            all.push({ fen: f, turn: f.split(' ')[1] });
+                                            seenFens.add(f);
+                                        }
+                                    });
+                                } catch(e) { console.warn("Skipped game", e); }
+                            });
+                        }
+                        await localforage.setItem('chesscom_user', cU);
+                    } else { throw new Error("Chess.com user not found."); }
+                }
+                if(lU) {
+                    const res = await fetch(`https://lichess.org/api/games/user/${lU}?max=100&pgnInJson=true`, { headers: { 'Accept': 'application/x-ndjson' } });
+                    if(!res.ok) throw new Error("Lichess user not found.");
+                    const text = await res.text();
+                    text.split('\n').filter(Boolean).forEach(line => {
+                        try {
+                            const g = JSON.parse(line);
+                            const parsed = JSON.parse(extract_elo(g.pgn, lU));
+                            if(parsed.elo > 0) lHistory.push(parsed.elo);
+                            parsed.fens.forEach(f => {
+                                // Bug 8 Fix: Avoid duplicate fens
+                                if(!seenFens.has(f)) {
+                                    all.push({ fen: f, turn: f.split(' ')[1] });
+                                    seenFens.add(f);
+                                }
+                            });
+                        } catch(e) { console.warn("Skipped game", e); }
+                    });
+                    await localforage.setItem('lichess_user', lU);
+                }
+
+                if(all.length > 0) {
+                    $('#sync-btn').text("Analyzing...");
+                    for(let i = 0; i < all.length; i++) {
+                        let p = all[i];
+                        try {
+                            p.h_standard = JSON.parse(analyze_position(p.fen, 'standard'));
+                            p.h_loose = JSON.parse(analyze_position(p.fen, 'loose'));
+                        } catch(e) { p.h_standard = []; p.h_loose = []; }
+                        if (i % 2 === 0) { $('#sync-btn').text(`Analyzing... ${Math.round((i/all.length)*100)}%`); await new Promise(r => setTimeout(r, 0)); }
+                    }
+                    ratingHistory.chesscom = cHistory.slice(-50); ratingHistory.lichess = lHistory.slice(-50);
+                    puzzles = all;
+                    await localforage.setItem('puzzles', all); await localforage.setItem('ratingHistory', ratingHistory);
+                    
+                    // Bug 12 Fix: Update header ratings
+                    finalizeSetup(); closeSettings(); updateUserDisplay();
+                } else { alert("No games found."); }
+            } catch(e) { alert(e.message); } 
+            finally { $('#sync-btn').prop('disabled', false).text("Sync Tactical Bag"); }
+        }
+
+        function refillBag() { 
+            let pool = puzzles.map(p => {
+                let t = gameMode === 'loose' ? p.h_loose : p.h_standard;
+                return { ...p, h: t ? JSON.parse(JSON.stringify(t)) : [] };
+            }).filter(p => p.h.length > 0);
+            puzzleBag = pool.sort(() => Math.random() - 0.5).slice(0, 50); 
+        }
+
+        function setMode(m, d=0) { 
+            // Bug 7 Fix: Stop drill visual feedback
+            if(isRunning) {
+                vibe([50]);
+                $('#status').text("Stop the drill to change modes").addClass('text-red-400');
+                setTimeout(() => $('#status').removeClass('text-red-400'), 1500);
+                return;
+            }
+            gameMode=m; ttDuration=d; 
+            $('.mode-btn').removeClass('bg-purple-900/40 text-white border-purple-500').addClass('bg-slate-900 text-slate-500'); 
+            const sel = (m === 'tt') ? `.mode-tt${d}` : `.mode-${m}`;
+            $(sel).addClass('bg-purple-900/40 text-white border-purple-500');
+        }
+
+        function toggleGame() { isRunning ? stopGame() : startGame(); }
+
+        function startGame() { 
+            if(puzzles.length === 0) return openSettings(true);
+            isRunning = true; sessionSpeeds = []; currentStreak = 0; maxStreak = 0; sessionTotalCorrect = 0; pauseTime = 0;
+            $('#progress-bar').css('width', '100%');
+            $('#action-btn').text("Stop Drill").addClass('bg-red-900/40 border-red-500/50').removeClass('bg-purple-600');
+            if (gameMode === 'tt') { 
+                globalTimerEnd = Date.now() + (ttDuration * 1000); 
+                globalTimer = setInterval(() => { 
+                    if(pauseTime) return;
+                    let left = Math.max(0, (globalTimerEnd - Date.now()) / 1000); 
+                    $('#timer').text(left.toFixed(1) + "s"); 
+                    $('#progress-bar').css('width', (left / ttDuration * 100) + '%'); 
+                    if (left <= 0) stopGame(); 
+                }, 50); 
+            }
+            loadPuzzle(); 
+        }
+
+        function stopGame() { 
+            isRunning = false; isTransitioning = false; clearInterval(timerInterval); clearInterval(globalTimer); 
+            $('#action-btn').text("Start Training").removeClass('bg-red-900/40 border-red-500/50').addClass('bg-purple-600');
+            if (currentPuzzle) lastPuzzleData = JSON.parse(JSON.stringify(currentPuzzle));
+            $('#review-btn').prop('disabled', !lastPuzzleData).removeClass('opacity-50');
+            const pbKey = `pb_${gameMode}_${ttDuration}`;
+            localforage.getItem(pbKey).then(oldPB => {
+                let score = (gameMode === 'tt') ? sessionTotalCorrect : maxStreak;
+                let isNewPB = score > 0 && score > (oldPB || 0);
+                if (isNewPB) localforage.setItem(pbKey, score);
+                showReport(isNewPB);
+            });
+        }
+
+        function showReport(isNewPB) { 
+            const avg = sessionSpeeds.length ? (sessionSpeeds.reduce((a,b)=>a+b,0)/sessionSpeeds.length).toFixed(2) : "0.00";
+            $('#sum-speed').text(avg + "s");
+            $('#sum-score-label').text(gameMode === 'tt' ? "Total Found" : "Best Streak");
+            $('#sum-score').text(gameMode === 'tt' ? sessionTotalCorrect : maxStreak);
+            isNewPB ? $('#new-pb-badge').show() : $('#new-pb-badge').hide();
+            $('#summary-modal').css('display', 'flex'); 
+        }
+
+        function loadPuzzle() {
+            if (!isRunning) return;
+            if (puzzleBag.length === 0) refillBag();
+            
+            // Bug 9 Fix: Helpful empty bag error message
+            if (puzzleBag.length === 0) { 
+                alert("Tactical bag empty! Sync more games or switch modes — some positions have no targets in the current mode."); 
+                return stopGame(); 
+            }
+
+            if (currentPuzzle) lastPuzzleData = JSON.parse(JSON.stringify(currentPuzzle));
+            $('#review-btn').prop('disabled', !lastPuzzleData).removeClass('opacity-50');
+            
+            currentPuzzle = puzzleBag.pop(); foundPuzzles = []; failedCurrentPuzzle = false;
+            board.position(currentPuzzle.fen, false); board.orientation(currentPuzzle.turn === 'b' ? 'black' : 'white');
+            const prefix = gameMode === 'loose' ? 'DELOOSE' : 'DENOOSE';
+            $('#perspective-badge').text(`${prefix} ${currentPuzzle.turn === 'w' ? 'WHITE' : 'BLACK'}`).addClass('text-purple-400');
+            $('#status').text(gameMode === 'loose' ? `Find ALL ${currentPuzzle.h.length} loose pieces` : "Find one hanging piece");
+
+            startTime = Date.now(); isTransitioning = false;
+            if (gameMode !== 'tt') {
+                clearInterval(timerInterval);
+                timerInterval = setInterval(() => { if(pauseTime) return; $('#timer').text(((Date.now()-startTime)/1000).toFixed(1)+"s"); }, 100);
+            }
+        }
+
+        $('#board').on('click', '[data-square]', function() {
+            if (!isRunning || isTransitioning || !currentPuzzle) return;
+            const sq = $(this).attr('data-square'), target = currentPuzzle.h.find(x => x.sq === sq);
+            if (target) {
+                if (!foundPuzzles.includes(sq)) {
+                    foundPuzzles.push(sq); 
+                    $(this).addClass('found-sq'); 
+                    vibe(15);
+                    
+                    // Bug 4 Fix: Unique count completion using Sets
+                    const uniqueFoundCount = new Set(foundPuzzles).size;
+                    const uniqueTargetCount = new Set(currentPuzzle.h.map(x=>x.sq)).size;
+                    
+                    if (gameMode !== 'loose' || uniqueFoundCount === uniqueTargetCount) checkGuess(true, sq, true);
+                    else checkGuess(true, sq, false);
+                }
+            } else { 
+                vibe([30, 50, 30]); 
+                checkGuess(false, sq, true); 
+            }
+        });
+
+        function checkGuess(correct, sq, advance) {
+            logCognition(correct, sq, currentPuzzle, foundPuzzles);
+            const overlay = $('#board-overlay');
+            if (correct) {
+                if (advance) { 
+                    isTransitioning = true; sessionTotalCorrect++; 
+                    if(!failedCurrentPuzzle){ currentStreak++; if(currentStreak>maxStreak) maxStreak=currentStreak; sessionSpeeds.push((Date.now()-startTime)/1000); } 
+                    updateDashboard(); overlay.addClass('bg-emerald-500/20'); setTimeout(() => { overlay.removeClass('bg-emerald-500/20'); loadPuzzle(); }, 250);
+                } else if (gameMode === 'loose') { 
+                    // Bug 4 Fix: Status display update based on unique target
+                    const uniqueTargetCount = new Set(currentPuzzle.h.map(x=>x.sq)).size;
+                    $('#status').text(`${new Set(foundPuzzles).size} of ${uniqueTargetCount} loose pieces found`); 
+                }
+            } else { 
+                failedCurrentPuzzle = true; currentStreak = 0; updateDashboard(); 
+                $('#board-container').addClass('shake'); setTimeout(()=>$('#board-container').removeClass('shake'), 300);
+                overlay.addClass('bg-red-600/30'); setTimeout(() => overlay.removeClass('bg-red-600/30'), 300);
+            }
+        }
+
+        function updateDashboard() { $('#avg-speed-display').text(sessionSpeeds.length ? (sessionSpeeds.reduce((a,b)=>a+b,0)/sessionSpeeds.length).toFixed(1)+"s" : "0.0s"); $('#streak-display').text(currentStreak); }
+
+        // Bug 1 Fix: stats log clicked square/piece on miss
+        async function logCognition(correct, sq, puz, found) {
+            let target;
+            if (correct) {
+                target = puz.h.find(x => x.sq === sq);
+            } else {
+                const pos = board.position();
+                const pieceCode = pos[sq];
+                target = {
+                    sq: sq,
+                    p: pieceCode ? pieceCode[1].toLowerCase() : null,
+                    atkr: "none"
+                };
+            }
+
+            if (!target) return;
+            const r = parseInt(target.sq[1]), f = target.sq[0];
+            const isRim = (f==='a'||f==='h'||r===1||r===8), isCenter = ['d4','d5','e4','e5'].includes(target.sq);
+            const isEnemy = (puz.turn==='w'&&r>=5)||(puz.turn==='b'&&r<=4);
+            
+            const update = (obj, hit) => { if(!obj) return; if(hit) obj.h++; else obj.m++; };
+            
+            if (correct) {
+                update(cogData.pieces[target.p], true);
+                if(isRim) update(cogData.regions.rim, true);
+                if(isCenter) update(cogData.regions.center, true);
+                if(isEnemy) update(cogData.regions.enemy, true); else update(cogData.regions.friendly, true);
+                if (target.atkr && target.atkr !== "none") update(cogData.assassins[target.atkr], true);
+                saveHeatmap(target.sq, true);
+            } else {
+                if(target.p) update(cogData.pieces[target.p], false);
+                if(isRim) update(cogData.regions.rim, false);
+                if(isCenter) update(cogData.regions.center, false);
+                if(isEnemy) update(cogData.regions.enemy, false); else update(cogData.regions.friendly, false);
+                saveHeatmap(target.sq, false); 
+            }
+            // Bug 2 Fix: Call periodic saving
+            saveCogData(); 
+        }
+
+        // Bug 2 Fix: Debounced save functions
+        function saveCogData() { clearTimeout(window.cogT); window.cogT = setTimeout(saveCogDataNow, 1000); }
+        function saveCogDataNow() { localforage.setItem('cogData', cogData); }
+
+        function saveHeatmap(sq, hit) { if(!heatmapData[sq]) heatmapData[sq]={h:0,m:0}; if(hit) heatmapData[sq].h++; else heatmapData[sq].m++; clearTimeout(window.hmt); window.hmt = setTimeout(saveHeatmapNow, 500); }
+        function saveHeatmapNow() { localforage.setItem('heatmap', heatmapData); }
+
+        async function toggleStats() { $('#stats-panel').toggle(); if($('#stats-panel').is(':visible')){ $('#pb-30-val').text(await localforage.getItem('pb_tt_30')||0); $('#pb-60-val').text(await localforage.getItem('pb_tt_60')||0); renderHeatmap(); renderRadars(); renderTrends(); } }
+
+        function renderRadars() {
+            const cfg = { type: 'radar', options: { maintainAspectRatio: false, scales: { r: { min: 0, max: 100, ticks: { display: false }, grid: { color: 'rgba(71, 85, 105, 0.4)' }, angleLines: { color: 'rgba(71, 85, 105, 0.4)' }, pointLabels: { color: '#cbd5e1', font: { size: 9, weight: 'bold' } } } }, plugins: { legend: { display: false } } } }; 
+            const getRate = (obj) => (!obj || obj.h + obj.m < 1) ? 0 : Math.round((obj.m / (obj.h + obj.m)) * 100); 
+            Chart.getChart('assassinRadar')?.destroy(); Chart.getChart('pieceRadar')?.destroy(); Chart.getChart('regionRadar')?.destroy();
+            new Chart(document.getElementById('assassinRadar'), { ...cfg, data: { labels: ['P', 'N', 'B', 'R', 'Q'], datasets: [{ data: ['p','n','b','r','q'].map(k => getRate(cogData.assassins[k])), backgroundColor: 'rgba(16, 185, 129, 0.2)', borderColor: '#10b981' }] } }); 
+            new Chart(document.getElementById('pieceRadar'), { ...cfg, data: { labels: ['P', 'N', 'B', 'R', 'Q'], datasets: [{ data: ['p','n','b','r','q'].map(k => getRate(cogData.pieces[k])), backgroundColor: 'rgba(168, 85, 247, 0.2)', borderColor: '#a855f7' }] } }); 
+            new Chart(document.getElementById('regionRadar'), { ...cfg, data: { labels: ['RIM', 'CNTR', 'ENMY', 'FRND'], datasets: [{ data: [getRate(cogData.regions.rim), getRate(cogData.regions.center), getRate(cogData.regions.enemy), getRate(cogData.regions.friendly)], backgroundColor: 'rgba(59, 130, 246, 0.2)', borderColor: '#3b82f6' }] } }); 
+        }
+
+        function renderHeatmap() {
+            const grid = $('#heatmap-grid').empty(); const getCol = (r) => r <= 0 ? 'rgba(59,130,246,0.8)' : (r >= 1 ? 'rgba(239,68,68,0.8)' : 'rgba(234,179,8,0.8)');
+            ['8','7','6','5','4','3','2','1'].forEach(r => { ['a','b','c','d','e','f','g','h'].forEach(f => {
+                const sq=f+r, d=heatmapData[sq]||{h:0,m:0}, tot=d.h+d.m;
+                grid.append(`<div class="relative flex items-center justify-center text-[8px] font-bold" style="background:${(f.charCodeAt(0)+parseInt(r))%2?'#0f172a':'#1e293b'}">${tot?`<div class="absolute inset-0" style="background:${getCol(d.m/tot)}"></div>`:''}<span class="relative z-10">${sq}</span></div>`);
+            }); });
+        }
+
+        // Bug 6 Fix: Use empty() instead of destroy()
+        function openReview() { 
+            if (!lastPuzzleData) return; 
+            $('#review-modal').css('display', 'flex'); 
+            $('#review-board').empty(); 
+            
+            reviewBoard = Chessboard('review-board', { position: lastPuzzleData.fen, pieceTheme: PIECE_THEME }); 
+            reviewBoard.orientation(lastPuzzleData.turn === 'b' ? 'black' : 'white'); 
+            let html = ''; lastPuzzleData.h.forEach(t => html += `<div class="bg-slate-950 p-3 rounded-lg border border-slate-800 text-left"><span class="text-purple-400 font-bold uppercase text-[10px] block mb-1">${t.sq}</span><p class="text-xs text-slate-300 leading-tight">${t.reason}</p></div>`); 
+            $('#review-content').html(html); 
+            
+            // Bug 10 Fix: RAF
+            requestAnimationFrame(() => reviewBoard.resize());
+        }
+
+        // Bug 13 Fix: Reset to template
+        function clearCogData() { if(confirm("Wipe stats?")) { heatmapData={}; cogData = JSON.parse(JSON.stringify(cogDataTemplate)); localforage.removeItem('cogData'); localforage.removeItem('heatmap').then(()=>location.reload()); } }
+
+        function renderTrends() { 
+            Chart.getChart('ratingChart')?.destroy();
+            new Chart(document.getElementById('ratingChart'), { type: 'line', data: { labels: ratingHistory.chesscom.map((_,i)=>i), datasets: [{ label: 'Chess.com', data: ratingHistory.chesscom, borderColor: '#81b64c', tension: 0.3 }, { label: 'Lichess', data: ratingHistory.lichess, borderColor: '#f8fafc', tension: 0.3 }] }, options: { maintainAspectRatio: false, plugins: { legend: { display: false } }, scales: { x: { display: false }, y: { grid: { color: '#1e293b' }, ticks: { color: '#94a3b8', font: { size: 8 } } } } } }); 
+        }
+        
+        // Bug 11 Fix: Revoke blob URL 
+        async function exportData() { 
+            let b = []; 
+            await localforage.iterate((v, k) => b.push({key:k, val:v})); 
+            const blob = new Blob([JSON.stringify(b)], {type: 'application/json'}); 
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a'); 
+            a.href = url; 
+            a.download = 'denoosed_backup.json'; 
+            a.click(); 
+            setTimeout(() => URL.revokeObjectURL(url), 1000);
+        }
+
+        function importData(i) { const r = new FileReader(); r.onload = () => { try { const d = JSON.parse(r.result); if(!Array.isArray(d)) throw new Error("Invalid format"); Promise.all(d.map(it => localforage.setItem(it.key, it.val))).then(() => location.reload()); } catch(e) { alert("Invalid Backup"); } }; r.readAsText(i.files[0]); }
+
+        init();
+    </script>
+</body>
+</html>

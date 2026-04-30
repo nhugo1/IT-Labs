@@ -1,0 +1,18 @@
+{
+  "name": "Chess Vision Pro",
+  "short_name": "ChessVision",
+  "start_url": ".",
+  "orientation": "portrait",	
+  "display": "standalone",
+  "background_color": "#111827",
+  "theme_color": "#8b5cf6",
+  "description": "Pro-grade chess board vision and hanging piece trainer.",
+  "icons": [
+    {
+      "src": "https://cdn-icons-png.flaticon.com/512/3067/3067406.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
